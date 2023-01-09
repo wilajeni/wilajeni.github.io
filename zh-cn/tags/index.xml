@@ -1,0 +1,23 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Tags - 标签 - wilajeni&#39;s blog</title>
+        <link>https://wilajeni.github.io/zh-cn/tags/</link>
+        <description>Tags - 标签 - wilajeni&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 07 Jan 2023 15:50:51 &#43;0000</lastBuildDate><atom:link href="https://wilajeni.github.io/zh-cn/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>RPA</title>
+    <link>https://wilajeni.github.io/zh-cn/tags/rpa/</link>
+    <pubDate>Sat, 07 Jan 2023 15:50:51 &#43;0000</pubDate>
+    <author>wilajeni</author>
+    <guid>https://wilajeni.github.io/zh-cn/tags/rpa/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>VBA</title>
+    <link>https://wilajeni.github.io/zh-cn/tags/vba/</link>
+    <pubDate>Sat, 07 Jan 2023 15:50:51 &#43;0000</pubDate>
+    <author>wilajeni</author>
+    <guid>https://wilajeni.github.io/zh-cn/tags/vba/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
+</rss>
