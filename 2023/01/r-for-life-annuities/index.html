@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/wilajeni.github.io\/2023\/01\/r-for-life-annuities\/"
-        },"genre": "posts","keywords": "r, life","wordcount":  38 ,
+        },"genre": "posts","keywords": "r, life","wordcount":  181 ,
         "url": "https:\/\/wilajeni.github.io\/2023\/01\/r-for-life-annuities\/","datePublished": "2023-01-08T16:48:40+00:00","dateModified": "2023-01-08T16:48:40+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -121,17 +121,23 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">R for Life Annuities</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://wilajeni.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>wilajeni</a></span>&nbsp;<span class="post-category">included in <a href="/categories/actuarial-science/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Actuarial Science</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-01-08">2023-01-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;38 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-01-08">2023-01-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;181 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#whole-life-annuity-due">Whole Life Annuity Due</a></li>
+    <li><a href="#whole-life-annuity">Whole Life Annuity</a></li>
+    <li><a href="#temporary-life-annuity-due">Temporary Life Annuity Due</a></li>
+  </ul>
+</nav></div>
             </div><div class="content" id="content"><div class="details admonition note open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Life Annuities<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>EPVs of Life Annuities<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><ol>
@@ -145,7 +151,42 @@
 </div>
         </div>
     </div>
-</div><div class="post-footer" id="post-footer">
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Argument List<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p><code>life_table</code>: A life table with mortality rates $q_x$ from age 0.</p>
+<p><code>age</code>: The individual&rsquo;s age at this moment.</p>
+<p><code>i</code>: A given constant interest rate.</p>
+<p><code>n</code>: A given period of temporary products.</p>
+</div>
+        </div>
+    </div>
+<h2 id="whole-life-annuity-due">Whole Life Annuity Due</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Function to compute the EPV of a whole life annuity due for a given age, interest rate i and life table</span>
+</span></span><span class="line"><span class="cl"><span class="n">life_annuity_due</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">life_table</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">px</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">-</span><span class="n">life_table</span><span class="o">$</span><span class="n">qx</span>
+</span></span><span class="line"><span class="cl">  <span class="n">kpx</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="nf">cumprod</span><span class="p">(</span><span class="n">px</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">px</span><span class="p">)</span><span class="n">]</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="n">discount_factors</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="n">^</span> <span class="o">-</span> <span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">kpx</span><span class="p">)</span><span class="m">-1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">sum</span><span class="p">(</span><span class="n">discount_factors</span> <span class="o">*</span> <span class="n">kpx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="whole-life-annuity">Whole Life Annuity</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">life_immediate_annuity</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">life_table</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">px</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">-</span><span class="n">life_table</span><span class="o">$</span><span class="n">qx</span>
+</span></span><span class="line"><span class="cl">  <span class="n">kpx</span> <span class="o">&lt;-</span> <span class="nf">cumprod</span><span class="p">(</span><span class="n">px</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">px</span><span class="p">)</span><span class="n">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">discount_factors</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="n">^</span> <span class="o">-</span> <span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">kpx</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">sum</span><span class="p">(</span><span class="n">discount_factors</span> <span class="o">*</span> <span class="n">kpx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="temporary-life-annuity-due">Temporary Life Annuity Due</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">temporary_life_annuity_due</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">age</span><span class="p">,</span><span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">life_table</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">px</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">-</span><span class="n">life_table</span><span class="o">$</span><span class="n">qx</span>
+</span></span><span class="line"><span class="cl">  <span class="n">kpx</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="nf">cumprod</span><span class="p">(</span><span class="n">px</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="n">age</span><span class="o">+</span><span class="n">n</span><span class="m">-1</span><span class="p">)</span><span class="n">]</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">if </span><span class="p">((</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">age</span><span class="o">+</span><span class="n">n</span><span class="m">-1</span><span class="p">))</span> <span class="p">{</span><span class="n">kpx</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">)}</span>      <span class="c1"># fix 1</span>
+</span></span><span class="line"><span class="cl">  <span class="n">discount_factors</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="n">^</span> <span class="o">-</span> <span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">kpx</span><span class="p">)</span><span class="m">-1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">sum</span><span class="p">(</span><span class="n">discount_factors</span> <span class="o">*</span> <span class="n">kpx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
