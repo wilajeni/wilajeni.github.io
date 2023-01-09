@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/wilajeni.github.io\/2023\/01\/r-for-life-annuities\/"
-        },"genre": "posts","keywords": "r, life","wordcount":  181 ,
+        },"genre": "posts","keywords": "r, life","wordcount":  301 ,
         "url": "https:\/\/wilajeni.github.io\/2023\/01\/r-for-life-annuities\/","datePublished": "2023-01-08T16:48:40+00:00","dateModified": "2023-01-08T16:48:40+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -121,8 +121,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">R for Life Annuities</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://wilajeni.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>wilajeni</a></span>&nbsp;<span class="post-category">included in <a href="/categories/actuarial-science/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Actuarial Science</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-01-08">2023-01-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;181 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-01-08">2023-01-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;301 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -133,6 +133,9 @@
     <li><a href="#whole-life-annuity-due">Whole Life Annuity Due</a></li>
     <li><a href="#whole-life-annuity">Whole Life Annuity</a></li>
     <li><a href="#temporary-life-annuity-due">Temporary Life Annuity Due</a></li>
+    <li><a href="#temporary-life-annuity">Temporary Life Annuity</a></li>
+    <li><a href="#pension--deferred-whole-life-annuity">Pension / Deferred Whole Life Annuity</a></li>
+    <li><a href="#increasing-whole-life-annuity-due">Increasing Whole Life Annuity Due</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><div class="details admonition note open">
@@ -141,12 +144,24 @@
         </div>
         <div class="details-content">
             <div class="admonition-content"><ol>
-<li><strong>Whole Life Annuity Due</strong>: $\ddot a_x$</li>
-<li><strong>Whole Life Immediate Annuity</strong>: $a_x$</li>
-<li><strong>Temporary Life Annuity Due</strong>: $\ddot a_{x:\overline n|}$</li>
-<li><strong>Temporary Life Annuity</strong>: $a_{x:\overline n|}$</li>
-<li><strong>Pension / Deferred Whole Life Annuity</strong>: $_{u|}a_x$</li>
-<li><strong>Increasing Whole Life Annuity</strong>: $(I\ddot a)_x$</li>
+<li>
+<p><strong>Whole Life Annuity Due</strong>: $\ddot a_x$</p>
+</li>
+<li>
+<p><strong>Whole Life Immediate Annuity</strong>: $a_x$</p>
+</li>
+<li>
+<p><strong>Temporary Life Annuity Due</strong>: $\ddot a_{x:\overline n|}$</p>
+</li>
+<li>
+<p><strong>Temporary Life Annuity</strong>: $a_{x:\overline n|}$</p>
+</li>
+<li>
+<p><strong>Pension / Deferred Whole Life Annuity</strong>: $_{u|}a_x$</p>
+</li>
+<li>
+<p><strong>Increasing Whole Life Annuity Due</strong>: $(I\ddot a)_x$</p>
+</li>
 </ol>
 </div>
         </div>
@@ -185,6 +200,45 @@
 </span></span><span class="line"><span class="cl">  <span class="nf">if </span><span class="p">((</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">age</span><span class="o">+</span><span class="n">n</span><span class="m">-1</span><span class="p">))</span> <span class="p">{</span><span class="n">kpx</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">)}</span>      <span class="c1"># fix 1</span>
 </span></span><span class="line"><span class="cl">  <span class="n">discount_factors</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="n">^</span> <span class="o">-</span> <span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">kpx</span><span class="p">)</span><span class="m">-1</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">sum</span><span class="p">(</span><span class="n">discount_factors</span> <span class="o">*</span> <span class="n">kpx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="temporary-life-annuity">Temporary Life Annuity</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">temporary_life_annuity</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">age</span><span class="p">,</span><span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">life_table</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">px</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">-</span><span class="n">life_table</span><span class="o">$</span><span class="n">qx</span>
+</span></span><span class="line"><span class="cl">  <span class="n">kpx</span> <span class="o">&lt;-</span> <span class="nf">cumprod</span><span class="p">(</span><span class="n">px</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="n">age</span><span class="o">+</span><span class="n">n</span><span class="m">-1</span><span class="p">)</span><span class="n">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">discount_factors</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="n">^</span> <span class="o">-</span> <span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">kpx</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">sum</span><span class="p">(</span><span class="n">discount_factors</span> <span class="o">*</span> <span class="n">kpx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="pension--deferred-whole-life-annuity">Pension / Deferred Whole Life Annuity</h2>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Assumption<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">The benefits are 0 for the first <code>u</code> years and a fixed annual payment of <code>benf</code> thereafter.</div>
+        </div>
+    </div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">pension_due</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">benf</span><span class="p">,</span> <span class="n">life_table</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">px</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">-</span><span class="n">life_table</span><span class="o">$</span><span class="n">qx</span>
+</span></span><span class="line"><span class="cl">  <span class="n">kpx</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="nf">cumprod</span><span class="p">(</span><span class="n">px</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">px</span><span class="p">))</span><span class="n">]</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="n">discount_factors</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="n">^</span> <span class="o">-</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">kpx</span><span class="p">)</span><span class="m">-1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="n">benefits</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">u</span><span class="p">),</span><span class="nf">rep</span><span class="p">(</span><span class="n">benf</span><span class="p">,(</span><span class="nf">length</span><span class="p">(</span><span class="n">kpx</span><span class="p">)</span><span class="o">-</span><span class="n">u</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">sum</span><span class="p">(</span><span class="n">benefits</span><span class="o">*</span><span class="n">discount_factors</span><span class="o">*</span><span class="n">kpx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="increasing-whole-life-annuity-due">Increasing Whole Life Annuity Due</h2>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">An whole life annuity-due commencing at 1 and increasing 1 per annum.</div>
+        </div>
+    </div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">increasing_life_annuity_due</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">life_table</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">px</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">-</span><span class="n">life_table</span><span class="o">$</span><span class="n">qx</span>
+</span></span><span class="line"><span class="cl">  <span class="n">kpx</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="nf">cumprod</span><span class="p">(</span><span class="n">px</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">px</span><span class="p">)</span><span class="n">]</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="n">discount_factors</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="n">^</span> <span class="o">-</span> <span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">kpx</span><span class="p">)</span><span class="m">-1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="n">benefits</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">kpx</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">sum</span><span class="p">(</span><span class="n">benefits</span> <span class="o">*</span> <span class="n">discount_factors</span> <span class="o">*</span> <span class="n">kpx</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
