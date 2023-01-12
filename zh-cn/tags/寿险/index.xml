@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>寿险 - 标签 - wilajeni&#39;s blog</title>
+        <link>https://wilajeni.github.io/zh-cn/tags/%E5%AF%BF%E9%99%A9/</link>
+        <description>寿险 - 标签 - wilajeni&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 29 Dec 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wilajeni.github.io/zh-cn/tags/%E5%AF%BF%E9%99%A9/" rel="self" type="application/rss+xml" /><item>
+    <title>R for Life Annuities</title>
+    <link>https://wilajeni.github.io/zh-cn/2022/12/r-for-life-annuities/</link>
+    <pubDate>Thu, 29 Dec 2022 00:00:00 &#43;0000</pubDate>
+    <author>wilajeni</author>
+    <guid>https://wilajeni.github.io/zh-cn/2022/12/r-for-life-annuities/</guid>
+    <description><![CDATA[用R构建各类常见年金的期望现值计算函数。]]></description>
+</item>
+</channel>
+</rss>

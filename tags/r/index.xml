@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>r - Tag - wilajeni&#39;s blog</title>
+        <title>R - Tag - wilajeni&#39;s blog</title>
         <link>https://wilajeni.github.io/tags/r/</link>
-        <description>r - Tag - wilajeni&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 08 Jan 2023 16:48:40 &#43;0000</lastBuildDate><atom:link href="https://wilajeni.github.io/tags/r/" rel="self" type="application/rss+xml" /><item>
+        <description>R - Tag - wilajeni&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 28 Dec 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wilajeni.github.io/tags/r/" rel="self" type="application/rss+xml" /><item>
     <title>R for Life Annuities</title>
-    <link>https://wilajeni.github.io/2023/01/r-for-life-annuities/</link>
-    <pubDate>Sun, 08 Jan 2023 16:48:40 &#43;0000</pubDate>
+    <link>https://wilajeni.github.io/2022/12/r-for-life-annuities/</link>
+    <pubDate>Wed, 28 Dec 2022 00:00:00 &#43;0000</pubDate>
     <author>wilajeni</author>
-    <guid>https://wilajeni.github.io/2023/01/r-for-life-annuities/</guid>
+    <guid>https://wilajeni.github.io/2022/12/r-for-life-annuities/</guid>
     <description><![CDATA[Composing R functions to calculate EPVs of common life products.]]></description>
 </item>
 </channel>
