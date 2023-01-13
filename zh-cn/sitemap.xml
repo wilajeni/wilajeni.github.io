@@ -11,7 +11,7 @@
                     hreflang="zh-cn"
                     href="https://wilajeni.github.io/zh-cn/about/"
                     /></url><url>
-            <loc>https://wilajeni.github.io/zh-cn/categories/</loc><lastmod>2022-12-29T00:00:00&#43;00:00</lastmod><xhtml:link
+            <loc>https://wilajeni.github.io/zh-cn/categories/</loc><lastmod>2023-01-01T00:00:00&#43;00:00</lastmod><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://wilajeni.github.io/categories/"
@@ -20,7 +20,7 @@
                     hreflang="zh-cn"
                     href="https://wilajeni.github.io/zh-cn/categories/"
                     /></url><url>
-            <loc>https://wilajeni.github.io/zh-cn/posts/</loc><lastmod>2022-12-29T00:00:00&#43;00:00</lastmod><xhtml:link
+            <loc>https://wilajeni.github.io/zh-cn/posts/</loc><lastmod>2023-01-01T00:00:00&#43;00:00</lastmod><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://wilajeni.github.io/posts/"
@@ -29,17 +29,7 @@
                     hreflang="zh-cn"
                     href="https://wilajeni.github.io/zh-cn/posts/"
                     /></url><url>
-            <loc>https://wilajeni.github.io/zh-cn/2022/12/r-for-life-annuities/</loc><lastmod>2022-12-29T00:00:00&#43;00:00</lastmod><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://wilajeni.github.io/2022/12/r-for-life-annuities/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="zh-cn"
-                    href="https://wilajeni.github.io/zh-cn/2022/12/r-for-life-annuities/"
-                    /></url><url>
-            <loc>https://wilajeni.github.io/zh-cn/tags/r%E8%AF%AD%E8%A8%80/</loc><lastmod>2022-12-29T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://wilajeni.github.io/zh-cn/tags/</loc><lastmod>2022-12-29T00:00:00&#43;00:00</lastmod><xhtml:link
+            <loc>https://wilajeni.github.io/zh-cn/tags/</loc><lastmod>2023-01-01T00:00:00&#43;00:00</lastmod><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://wilajeni.github.io/tags/"
@@ -48,7 +38,7 @@
                     hreflang="zh-cn"
                     href="https://wilajeni.github.io/zh-cn/tags/"
                     /></url><url>
-            <loc>https://wilajeni.github.io/zh-cn/</loc><lastmod>2022-12-29T00:00:00&#43;00:00</lastmod><xhtml:link
+            <loc>https://wilajeni.github.io/zh-cn/</loc><lastmod>2023-01-01T00:00:00&#43;00:00</lastmod><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://wilajeni.github.io/"
@@ -57,9 +47,21 @@
                     hreflang="zh-cn"
                     href="https://wilajeni.github.io/zh-cn/"
                     /></url><url>
+            <loc>https://wilajeni.github.io/zh-cn/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/</loc><lastmod>2023-01-01T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://wilajeni.github.io/zh-cn/tags/%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/</loc><lastmod>2023-01-01T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://wilajeni.github.io/zh-cn/2023/01/%E7%94%A8github-pages%E6%90%AD%E9%85%8Dhugo%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/</loc><lastmod>2023-01-01T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://wilajeni.github.io/zh-cn/tags/r%E8%AF%AD%E8%A8%80/</loc><lastmod>2022-12-29T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://wilajeni.github.io/zh-cn/2022/12/r%E8%AF%AD%E8%A8%80%E5%AF%BF%E9%99%A9%E7%B2%BE%E7%AE%97%E4%B8%80%E5%B9%B4%E9%87%91%E9%99%A9/</loc><lastmod>2022-12-29T00:00:00&#43;00:00</lastmod><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="https://wilajeni.github.io/2022/12/r-for-life-annuities/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="zh-cn"
+                    href="https://wilajeni.github.io/zh-cn/2022/12/r%E8%AF%AD%E8%A8%80%E5%AF%BF%E9%99%A9%E7%B2%BE%E7%AE%97%E4%B8%80%E5%B9%B4%E9%87%91%E9%99%A9/"
+                    /></url><url>
             <loc>https://wilajeni.github.io/zh-cn/categories/%E7%B2%BE%E7%AE%97%E7%A7%91%E5%AD%A6/</loc><lastmod>2022-12-29T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://wilajeni.github.io/zh-cn/tags/%E5%AF%BF%E9%99%A9/</loc><lastmod>2022-12-29T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://wilajeni.github.io/zh-cn/2022/09/excel-vba%E9%80%9A%E8%BF%87%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E7%BE%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%8F%91%E9%80%81%E5%B7%A5%E4%BD%9C%E8%A1%A8%E5%8C%BA%E5%9F%9F%E6%88%AA%E5%9B%BE/</loc><lastmod>2022-09-30T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://wilajeni.github.io/zh-cn/tags/rpa/</loc><lastmod>2022-09-30T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://wilajeni.github.io/zh-cn/tags/vba/</loc><lastmod>2022-09-30T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://wilajeni.github.io/zh-cn/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/</loc><lastmod>2022-09-30T00:00:00&#43;00:00</lastmod></url></urlset>
+            <loc>https://wilajeni.github.io/zh-cn/tags/vba/</loc><lastmod>2022-09-30T00:00:00&#43;00:00</lastmod></url></urlset>
