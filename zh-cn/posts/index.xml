@@ -3,7 +3,15 @@
         <title>所有文章 - wilajeni&#39;s blog</title>
         <link>https://wilajeni.github.io/zh-cn/posts/</link>
         <description>所有文章 | wilajeni&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wilajeni.github.io/zh-cn/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 23 Jan 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wilajeni.github.io/zh-cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>R语言寿险精算（二）：人寿保险</title>
+    <link>https://wilajeni.github.io/zh-cn/2023/01/r%E8%AF%AD%E8%A8%80%E5%AF%BF%E9%99%A9%E7%B2%BE%E7%AE%97%E4%BA%8C%E4%BA%BA%E5%AF%BF%E4%BF%9D%E9%99%A9/</link>
+    <pubDate>Mon, 23 Jan 2023 00:00:00 &#43;0000</pubDate>
+    <author>wilajeni</author>
+    <guid>https://wilajeni.github.io/zh-cn/2023/01/r%E8%AF%AD%E8%A8%80%E5%AF%BF%E9%99%A9%E7%B2%BE%E7%AE%97%E4%BA%8C%E4%BA%BA%E5%AF%BF%E4%BF%9D%E9%99%A9/</guid>
+    <description><![CDATA[用R构建各类常见寿险的期望现值计算函数。]]></description>
+</item>
+<item>
     <title>用GitHub Pages搭配Hugo建立个人网站</title>
     <link>https://wilajeni.github.io/zh-cn/2023/01/%E7%94%A8github-pages%E6%90%AD%E9%85%8Dhugo%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/</link>
     <pubDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</pubDate>
@@ -12,11 +20,11 @@
     <description><![CDATA[本站的搭建过程。]]></description>
 </item>
 <item>
-    <title>R语言寿险精算（一）：年金险</title>
-    <link>https://wilajeni.github.io/zh-cn/2022/12/r%E8%AF%AD%E8%A8%80%E5%AF%BF%E9%99%A9%E7%B2%BE%E7%AE%97%E4%B8%80%E5%B9%B4%E9%87%91%E9%99%A9/</link>
+    <title>R语言寿险精算（一）：年金保险</title>
+    <link>https://wilajeni.github.io/zh-cn/2022/12/r%E8%AF%AD%E8%A8%80%E5%AF%BF%E9%99%A9%E7%B2%BE%E7%AE%97%E4%B8%80%E5%B9%B4%E9%87%91%E4%BF%9D%E9%99%A9/</link>
     <pubDate>Thu, 29 Dec 2022 00:00:00 &#43;0000</pubDate>
     <author>wilajeni</author>
-    <guid>https://wilajeni.github.io/zh-cn/2022/12/r%E8%AF%AD%E8%A8%80%E5%AF%BF%E9%99%A9%E7%B2%BE%E7%AE%97%E4%B8%80%E5%B9%B4%E9%87%91%E9%99%A9/</guid>
+    <guid>https://wilajeni.github.io/zh-cn/2022/12/r%E8%AF%AD%E8%A8%80%E5%AF%BF%E9%99%A9%E7%B2%BE%E7%AE%97%E4%B8%80%E5%B9%B4%E9%87%91%E4%BF%9D%E9%99%A9/</guid>
     <description><![CDATA[用R构建各类常见年金的期望现值计算函数。]]></description>
 </item>
 <item>
