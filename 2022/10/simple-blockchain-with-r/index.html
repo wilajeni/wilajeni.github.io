@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Simple Blockchain with R - wilajeni&#39;s blog | learn, build, share</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Simple Blockchain with R" />
+<meta property="og:description" content="Learning about how blockchain works and the basic structure by writing one in R." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wilajeni.github.io/2022/10/simple-blockchain-with-r/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-10-28T00:00:00+00:00" /><meta property="og:site_name" content="wilajeni&#39;s blog | learn, build, share" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Simple Blockchain with R"/>
+<meta name="twitter:description" content="Learning about how blockchain works and the basic structure by writing one in R."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wilajeni.github.io/2022/10/simple-blockchain-with-r/" /><link rel="next" href="https://wilajeni.github.io/2022/12/r-for-life-annuities/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Simple Blockchain with R",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/wilajeni.github.io\/2022\/10\/simple-blockchain-with-r\/"
+        },"genre": "posts","keywords": "R, Blockchain","wordcount":  531 ,
+        "url": "https:\/\/wilajeni.github.io\/2022\/10\/simple-blockchain-with-r\/","datePublished": "2022-10-28T00:00:00+00:00","dateModified": "2022-10-28T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "wilageni"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="wilajeni&#39;s blog | learn, build, share"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/index.png"
+        data-srcset="/img/index.png, /img/index.png 1.5x, /img/index.png 2x"
+        data-sizes="auto"
+        alt="/img/index.png"
+        title="/img/index.png" />wilajeni&#39;s blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/"><i class='fa-solid fa-house'></i> Home </a><a class="menu-item" href="/posts/"><i class='fa fa-file'></i> Posts </a><a class="menu-item" href="/tags/"><i class='fa fa-tags'></i> Tags </a><a class="menu-item" href="/categories/"><i class='fa fa-list-ul'></i> Categories </a><a class="menu-item" href="/about/"><i class='fas fa-user-circle'></i> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/2022/10/simple-blockchain-with-r/" selected>English</option><option value="/zh-cn/2022/11/%E7%94%A8r%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A0%81%E7%90%86%E8%A7%A3%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BD%A2%E5%BC%8F/">简体中文</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="wilajeni&#39;s blog | learn, build, share"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/index.png"
+        data-srcset="/img/index.png, /img/index.png 1.5x, /img/index.png 2x"
+        data-sizes="auto"
+        alt="/img/index.png"
+        title="/img/index.png" />wilajeni&#39;s blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/" title=""><i class='fa-solid fa-house'></i>Home</a><a class="menu-item" href="/posts/" title=""><i class='fa fa-file'></i>Posts</a><a class="menu-item" href="/tags/" title=""><i class='fa fa-tags'></i>Tags</a><a class="menu-item" href="/categories/" title=""><i class='fa fa-list-ul'></i>Categories</a><a class="menu-item" href="/about/" title=""><i class='fas fa-user-circle'></i>About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/2022/10/simple-blockchain-with-r/" selected>English</option><option value="/zh-cn/2022/11/%E7%94%A8r%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A0%81%E7%90%86%E8%A7%A3%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BD%A2%E5%BC%8F/">简体中文</option></select>
+                </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Simple Blockchain with R</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://wilajeni.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>wilageni</a></span>&nbsp;<span class="post-category">included in <a href="/categories/tech/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Tech</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-28">2022-10-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;531 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#creating-the-first-block">Creating the First Block</a>
+      <ul>
+        <li><a href="#hashing-a-single-block">Hashing a Single Block</a></li>
+      </ul>
+    </li>
+    <li><a href="#mining-function">&ldquo;Mining&rdquo; Function</a></li>
+    <li><a href="#example">Example</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="details admonition quote open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-quote-right fa-fw" aria-hidden="true"></i>References<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p><a href="https://www.datacamp.com/tutorial/blockchain-r" target="_blank" rel="noopener noreffer ">Understanding Blockchains by Coding One in R</a>：This article uses a proof-of-work algorithm other than the BTC&rsquo;s that helps understand the design and evaluation of the algorithm&rsquo;s ideas.</p>
+<p><a href="https://www.r-bloggers.com/2017/12/building-your-own-blockchain-in-r/" target="_blank" rel="noopener noreffer ">Building your own blockchain in R</a>：This article is very detailed and creates an local interactive API.</p>
+</div>
+        </div>
+    </div>
+<div class="details admonition abstract open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ul fa-fw" aria-hidden="true"></i>Summary<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ol>
+<li>
+<p>Each block in the blockchain is represented by a <code>list</code> in R, containing the content that needs to be stored.</p>
+</li>
+<li>
+<p>New blocks are created by taking the hash value of the previous block&rsquo;s content to ensure that the previous block&rsquo;s content cannot be modified, and it is currently impossible to infer the content represented by the hash value by exhaustive search.</p>
+</li>
+<li>
+<p>Introduce a proof-of-work algorithm to increase the difficulty of creating a block, i.e. adding additional verification to each block to determine whether the new block is valid.</p>
+</li>
+</ol>
+</div>
+        </div>
+    </div>
+<h2 id="creating-the-first-block">Creating the First Block</h2>
+<p>The data type list can store multiple different types of data in one object.</p>
+<p>In addition to the data to be stored, a block also includes time, block index, the previous block&rsquo;s hash, and a counter for proof-of-work verification.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Create a list to store our blockchain</span>
+</span></span><span class="line"><span class="cl"><span class="n">blockchain</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Create the first block in the blockchain</span>
+</span></span><span class="line"><span class="cl"><span class="n">blockchain[[1]]</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                       <span class="n">timestamp</span> <span class="o">=</span> <span class="nf">Sys.time</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">                       <span class="n">data</span> <span class="o">=</span> <span class="s">&#34;Genesis Block&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                       <span class="n">previous_hash</span> <span class="o">=</span> <span class="s">&#34;0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                       <span class="n">nonce</span> <span class="o">=</span> <span class="m">0</span><span class="p">)</span>
+</span></span></code></pre></div><h3 id="hashing-a-single-block">Hashing a Single Block</h3>
+<p>Use the <code>digest</code> function to calculate the hash of a block.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Function to calculate the hash of a block</span>
+</span></span><span class="line"><span class="cl"><span class="n">hash_block</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">block</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">return</span><span class="p">(</span><span class="n">digest</span><span class="o">::</span><span class="nf">digest</span><span class="p">(</span><span class="nf">toString</span><span class="p">(</span><span class="n">block</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="mining-function">&ldquo;Mining&rdquo; Function</h2>
+<p>&ldquo;Mining&rdquo; is the verification of creating a new block through the proof-of-work algorithm. BTC&rsquo;s verification is that the hash of the new block meets the requirement of having a consecutive $n$ number of 0s at the beginning. $n$ is adjusted by the number of actual new blocks created in the past 2 weeks, with the goal of creating a new block every 10 minutes on average.</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Bitcoin Blocks<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>As of October 2022 (block #760,446), the Bitcoin network required that the first 77 out of 256 hash bits must be zero.</p>
+<p><a href="https://explorer.btc.com/btc/block/760446" target="_blank" rel="noopener noreffer ">#760,446</a> &rsquo;s hash is <code>00000000000000000004ee4fcb027dce239c91568cbbc367790a26c06d5b5e2c</code></p>
+</div>
+        </div>
+    </div>
+<p>A counter called <code>nonce</code> is included in a single block. By repeatedly trying different values for the nonce, a block&rsquo;s hash is made to satisfy the verification.</p>
+<p>Using $n=4$ as an example, the input parameters of the function are the current blockchain and the data to be stored in the new block, and the output is a blockchain with an added block.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Function to mine a new block</span>
+</span></span><span class="line"><span class="cl"><span class="n">mine_block</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">blockchain</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># Get the last block in the blockchain</span>
+</span></span><span class="line"><span class="cl">  <span class="n">last_block</span> <span class="o">&lt;-</span> <span class="n">blockchain[</span><span class="nf">[length</span><span class="p">(</span><span class="n">blockchain</span><span class="p">)</span><span class="n">]]</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1"># Create a new block</span>
+</span></span><span class="line"><span class="cl">  <span class="n">new_block</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="n">last_block</span><span class="o">$</span><span class="n">index</span> <span class="o">+</span> <span class="m">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">timestamp</span> <span class="o">=</span> <span class="nf">Sys.time</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">previous_hash</span> <span class="o">=</span> <span class="nf">hash_block</span><span class="p">(</span><span class="n">last_block</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">nonce</span> <span class="o">=</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1"># Find a nonce that satisfies the proof-of-work requirement</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">while</span><span class="p">(</span><span class="nf">substr</span><span class="p">(</span><span class="nf">hash_block</span><span class="p">(</span><span class="n">new_block</span><span class="p">),</span> <span class="m">1</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span> <span class="o">!=</span> <span class="s">&#34;0000&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">new_block</span><span class="o">$</span><span class="n">nonce</span> <span class="o">&lt;-</span> <span class="n">new_block</span><span class="o">$</span><span class="n">nonce</span> <span class="o">+</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1"># Add the new block to the blockchain</span>
+</span></span><span class="line"><span class="cl">  <span class="n">blockchain[[new_block</span><span class="o">$</span><span class="n">index]]</span> <span class="o">&lt;-</span> <span class="n">new_block</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="nf">return</span><span class="p">(</span><span class="n">blockchain</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="example">Example</h2>
+<p>The following is an example of adding a new block and storing custom data in the blockchain.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Add some data to our blockchain</span>
+</span></span><span class="line"><span class="cl"><span class="n">blockchain</span> <span class="o">&lt;-</span> <span class="nf">mine_block</span><span class="p">(</span><span class="n">blockchain</span><span class="p">,</span> <span class="s">&#34;Block 1 Data&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">blockchain</span> <span class="o">&lt;-</span> <span class="nf">mine_block</span><span class="p">(</span><span class="n">blockchain</span><span class="p">,</span> <span class="s">&#34;Block 2 Data&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">blockchain</span> <span class="o">&lt;-</span> <span class="nf">mine_block</span><span class="p">(</span><span class="n">blockchain</span><span class="p">,</span> <span class="s">&#34;Block 3 Data&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># View the blockchain</span>
+</span></span><span class="line"><span class="cl"><span class="n">blockchain</span>
+</span></span></code></pre></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-10-28</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/r/">R</a>,&nbsp;<a href="/tags/blockchain/">Blockchain</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/2022/12/r-for-life-annuities/" class="next" rel="next" title="R for Life Annuities">R for Life Annuities<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.109.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://wilajeni.github.io/" target="_blank">wilajeni</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":30},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

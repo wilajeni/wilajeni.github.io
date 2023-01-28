@@ -1,6 +1,6 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>wilajeni&#39;s blog</title>
+        <title>wilajeni&#39;s blog | learn, build, share</title>
         <link>https://wilajeni.github.io/zh-cn/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 23 Jan 2023 00:00:00 &#43;0000</lastBuildDate>
@@ -28,6 +28,14 @@
     <author>wilajeni</author>
     <guid>https://wilajeni.github.io/zh-cn/2022/12/r%E8%AF%AD%E8%A8%80%E5%AF%BF%E9%99%A9%E7%B2%BE%E7%AE%97%E4%B8%80%E5%B9%B4%E9%87%91%E4%BF%9D%E9%99%A9/</guid>
     <description><![CDATA[用R构建各类常见年金的期望现值计算函数。]]></description>
+</item>
+<item>
+    <title>用R语言编码理解区块链的数据形式</title>
+    <link>https://wilajeni.github.io/zh-cn/2022/11/%E7%94%A8r%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A0%81%E7%90%86%E8%A7%A3%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BD%A2%E5%BC%8F/</link>
+    <pubDate>Wed, 02 Nov 2022 00:00:00 &#43;0000</pubDate>
+    <author>wilageni</author>
+    <guid>https://wilajeni.github.io/zh-cn/2022/11/%E7%94%A8r%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A0%81%E7%90%86%E8%A7%A3%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BD%A2%E5%BC%8F/</guid>
+    <description><![CDATA[使用R语言的list数据类型和BTC的proof-of-work算法实现最简单的区块链。]]></description>
 </item>
 <item>
     <title>Excel VBA通过企业微信群机器人发送工作表区域截图</title>

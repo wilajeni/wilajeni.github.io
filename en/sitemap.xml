@@ -67,4 +67,15 @@
                     rel="alternate"
                     hreflang="en"
                     href="https://wilajeni.github.io/2022/12/r-for-life-annuities/"
-                    /></url></urlset>
+                    /></url><url>
+            <loc>https://wilajeni.github.io/tags/blockchain/</loc><lastmod>2022-10-28T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://wilajeni.github.io/2022/10/simple-blockchain-with-r/</loc><lastmod>2022-10-28T00:00:00&#43;00:00</lastmod><xhtml:link
+                        rel="alternate"
+                        hreflang="zh-cn"
+                        href="https://wilajeni.github.io/zh-cn/2022/11/%E7%94%A8r%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A0%81%E7%90%86%E8%A7%A3%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BD%A2%E5%BC%8F/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="https://wilajeni.github.io/2022/10/simple-blockchain-with-r/"
+                    /></url><url>
+            <loc>https://wilajeni.github.io/categories/tech/</loc><lastmod>2022-10-28T00:00:00&#43;00:00</lastmod></url></urlset>

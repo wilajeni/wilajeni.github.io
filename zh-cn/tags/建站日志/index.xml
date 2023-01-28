@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>建站日志 - 标签 - wilajeni&#39;s blog</title>
+        <title>建站日志 - 标签 - wilajeni&#39;s blog | learn, build, share</title>
         <link>https://wilajeni.github.io/zh-cn/tags/%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/</link>
-        <description>建站日志 - 标签 - wilajeni&#39;s blog</description>
+        <description>建站日志 - 标签 - wilajeni&#39;s blog | learn, build, share</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wilajeni.github.io/zh-cn/tags/%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/" rel="self" type="application/rss+xml" /><item>
     <title>用GitHub Pages搭配Hugo建立个人网站</title>
     <link>https://wilajeni.github.io/zh-cn/2023/01/%E7%94%A8github-pages%E6%90%AD%E9%85%8Dhugo%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/</link>

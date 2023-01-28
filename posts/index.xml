@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>All Posts - wilajeni&#39;s blog</title>
+        <title>All Posts - wilajeni&#39;s blog | learn, build, share</title>
         <link>https://wilajeni.github.io/posts/</link>
-        <description>All Posts | wilajeni&#39;s blog</description>
+        <description>All Posts | wilajeni&#39;s blog | learn, build, share</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 12 Jan 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wilajeni.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>R for Life Assurances</title>
     <link>https://wilajeni.github.io/2023/01/r-for-life-assurances/</link>
@@ -18,6 +18,14 @@
     <author>wilajeni</author>
     <guid>https://wilajeni.github.io/2022/12/r-for-life-annuities/</guid>
     <description><![CDATA[Composing R functions to calculate EPVs of common life products.]]></description>
+</item>
+<item>
+    <title>Simple Blockchain with R</title>
+    <link>https://wilajeni.github.io/2022/10/simple-blockchain-with-r/</link>
+    <pubDate>Fri, 28 Oct 2022 00:00:00 &#43;0000</pubDate>
+    <author>wilageni</author>
+    <guid>https://wilajeni.github.io/2022/10/simple-blockchain-with-r/</guid>
+    <description><![CDATA[Learning about how blockchain works and the basic structure by writing one in R.]]></description>
 </item>
 </channel>
 </rss>
