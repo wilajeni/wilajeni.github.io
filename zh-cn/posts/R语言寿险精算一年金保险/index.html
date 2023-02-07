@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/wilajeni.github.io\/zh-cn\/posts\/R%E8%AF%AD%E8%A8%80%E5%AF%BF%E9%99%A9%E7%B2%BE%E7%AE%97%E4%B8%80%E5%B9%B4%E9%87%91%E4%BF%9D%E9%99%A9\/"
-        },"genre": "posts","keywords": "R语言, 寿险","wordcount":  398 ,
+        },"genre": "posts","keywords": "R语言, 寿险","wordcount":  390 ,
         "url": "https:\/\/wilajeni.github.io\/zh-cn\/posts\/R%E8%AF%AD%E8%A8%80%E5%AF%BF%E9%99%A9%E7%B2%BE%E7%AE%97%E4%B8%80%E5%B9%B4%E9%87%91%E4%BF%9D%E9%99%A9\/","datePublished": "2022-12-29T00:00:00+00:00","dateModified": "2022-12-29T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -89,7 +89,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">R语言寿险精算（一）：年金保险</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://wilajeni.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>wilajeni</a></span>&nbsp;<span class="post-category">收录于 <a href="/zh-cn/categories/%E7%B2%BE%E7%AE%97%E7%A7%91%E5%AD%A6/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>精算科学</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-29">2022-12-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 398 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-29">2022-12-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 390 字&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
@@ -128,25 +128,13 @@
 </div>
         </div>
     </div>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">life_immediate_annuity</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">life_table</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="n">px</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">-</span><span class="n">life_table</span><span class="o">$</span><span class="n">qx</span>
-</span></span><span class="line"><span class="cl">  <span class="n">kpx</span> <span class="o">&lt;-</span> <span class="nf">cumprod</span><span class="p">(</span><span class="n">px</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">px</span><span class="p">)</span><span class="n">]</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="n">discount_factors</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="n">^</span> <span class="o">-</span> <span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">kpx</span><span class="p">)))</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">sum</span><span class="p">(</span><span class="n">discount_factors</span> <span class="o">*</span> <span class="n">kpx</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="定期生存年金"><strong>定期生存年金</strong></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">life_immediate_annuity</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">life_table</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">  <span class="n">px</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">-</span><span class="n">life_table</span><span class="o">$</span><span class="n">qx</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">  <span class="n">kpx</span> <span class="o">&lt;-</span> <span class="nf">cumprod</span><span class="p">(</span><span class="n">px</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">px</span><span class="p">)</span><span class="n">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">  <span class="n">discount_factors</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="n">^</span> <span class="o">-</span> <span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">kpx</span><span class="p">)))</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">  <span class="nf">sum</span><span class="p">(</span><span class="n">discount_factors</span> <span class="o">*</span> <span class="n">kpx</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="定期生存年金"><strong>定期生存年金</strong></h2>
 <div class="details admonition note open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Temporary Life Annuity: $a_{x:\overline n|}$<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
@@ -157,25 +145,13 @@
 </div>
         </div>
     </div>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">temporary_life_annuity</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">age</span><span class="p">,</span><span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">life_table</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="n">px</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">-</span><span class="n">life_table</span><span class="o">$</span><span class="n">qx</span>
-</span></span><span class="line"><span class="cl">  <span class="n">kpx</span> <span class="o">&lt;-</span> <span class="nf">cumprod</span><span class="p">(</span><span class="n">px</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="n">age</span><span class="o">+</span><span class="n">n</span><span class="m">-1</span><span class="p">)</span><span class="n">]</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="n">discount_factors</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="n">^</span> <span class="o">-</span> <span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">kpx</span><span class="p">)))</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">sum</span><span class="p">(</span><span class="n">discount_factors</span> <span class="o">*</span> <span class="n">kpx</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="养老金--延期年金"><strong>养老金 / 延期年金</strong></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">temporary_life_annuity</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">age</span><span class="p">,</span><span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">life_table</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">  <span class="n">px</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">-</span><span class="n">life_table</span><span class="o">$</span><span class="n">qx</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">  <span class="n">kpx</span> <span class="o">&lt;-</span> <span class="nf">cumprod</span><span class="p">(</span><span class="n">px</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="n">age</span><span class="o">+</span><span class="n">n</span><span class="m">-1</span><span class="p">)</span><span class="n">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">  <span class="n">discount_factors</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="n">^</span> <span class="o">-</span> <span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">kpx</span><span class="p">)))</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">  <span class="nf">sum</span><span class="p">(</span><span class="n">discount_factors</span> <span class="o">*</span> <span class="n">kpx</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="养老金--延期年金"><strong>养老金 / 延期年金</strong></h2>
 <div class="details admonition note open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Pension / Deferred Whole Life Annuity: $_{u|}a_x$<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
@@ -184,27 +160,14 @@
             <div class="admonition-content">假设养老金为到达退休年龄期初给付，从投保到退休期间的<code>u</code>年不给付，退休时每期的金额为定值<code>benf</code>。</div>
         </div>
     </div>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">pension_due</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">benf</span><span class="p">,</span> <span class="n">life_table</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">  <span class="n">px</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">-</span><span class="n">life_table</span><span class="o">$</span><span class="n">qx</span>
-</span></span><span class="line"><span class="cl">  <span class="n">kpx</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="nf">cumprod</span><span class="p">(</span><span class="n">px</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">px</span><span class="p">))</span><span class="n">]</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">  <span class="n">discount_factors</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="n">^</span> <span class="o">-</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">kpx</span><span class="p">)</span><span class="m">-1</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">  <span class="n">benefits</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">u</span><span class="p">),</span><span class="nf">rep</span><span class="p">(</span><span class="n">benf</span><span class="p">,(</span><span class="nf">length</span><span class="p">(</span><span class="n">kpx</span><span class="p">)</span><span class="o">-</span><span class="n">u</span><span class="p">)))</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">sum</span><span class="p">(</span><span class="n">benefits</span><span class="o">*</span><span class="n">discount_factors</span><span class="o">*</span><span class="n">kpx</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="增额年金"><strong>增额年金</strong></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">pension_due</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">benf</span><span class="p">,</span> <span class="n">life_table</span><span class="p">){</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">  <span class="n">px</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">-</span><span class="n">life_table</span><span class="o">$</span><span class="n">qx</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">  <span class="n">kpx</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="nf">cumprod</span><span class="p">(</span><span class="n">px</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">px</span><span class="p">))</span><span class="n">]</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">  <span class="n">discount_factors</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="n">^</span> <span class="o">-</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">kpx</span><span class="p">)</span><span class="m">-1</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">  <span class="n">benefits</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">u</span><span class="p">),</span><span class="nf">rep</span><span class="p">(</span><span class="n">benf</span><span class="p">,(</span><span class="nf">length</span><span class="p">(</span><span class="n">kpx</span><span class="p">)</span><span class="o">-</span><span class="n">u</span><span class="p">)))</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">  <span class="nf">sum</span><span class="p">(</span><span class="n">benefits</span><span class="o">*</span><span class="n">discount_factors</span><span class="o">*</span><span class="n">kpx</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="增额年金"><strong>增额年金</strong></h2>
 <div class="details admonition note open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Increasing Whole Life Annuity: $(Ia)_x$<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
@@ -215,27 +178,14 @@
 </div>
         </div>
     </div>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">increasing_life_annuity_due</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">life_table</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="n">px</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">-</span><span class="n">life_table</span><span class="o">$</span><span class="n">qx</span>
-</span></span><span class="line"><span class="cl">  <span class="n">kpx</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="nf">cumprod</span><span class="p">(</span><span class="n">px</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">px</span><span class="p">)</span><span class="n">]</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">  <span class="n">discount_factors</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="n">^</span> <span class="o">-</span> <span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">kpx</span><span class="p">)</span><span class="m">-1</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">  <span class="n">benefits</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">kpx</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">sum</span><span class="p">(</span><span class="n">benefits</span> <span class="o">*</span> <span class="n">discount_factors</span> <span class="o">*</span> <span class="n">kpx</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="post-footer" id="post-footer">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">increasing_life_annuity_due</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">life_table</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">  <span class="n">px</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">-</span><span class="n">life_table</span><span class="o">$</span><span class="n">qx</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">  <span class="n">kpx</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="nf">cumprod</span><span class="p">(</span><span class="n">px</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">px</span><span class="p">)</span><span class="n">]</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">  <span class="n">discount_factors</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="n">^</span> <span class="o">-</span> <span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">kpx</span><span class="p">)</span><span class="m">-1</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">  <span class="n">benefits</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">kpx</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">  <span class="nf">sum</span><span class="p">(</span><span class="n">benefits</span> <span class="o">*</span> <span class="n">discount_factors</span> <span class="o">*</span> <span class="n">kpx</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

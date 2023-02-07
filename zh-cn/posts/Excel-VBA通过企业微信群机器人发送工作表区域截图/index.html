@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/wilajeni.github.io\/zh-cn\/posts\/Excel-VBA%E9%80%9A%E8%BF%87%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E7%BE%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%8F%91%E9%80%81%E5%B7%A5%E4%BD%9C%E8%A1%A8%E5%8C%BA%E5%9F%9F%E6%88%AA%E5%9B%BE\/"
-        },"genre": "posts","keywords": "VBA, RPA","wordcount":  1370 ,
+        },"genre": "posts","keywords": "VBA, RPA","wordcount":  1351 ,
         "url": "https:\/\/wilajeni.github.io\/zh-cn\/posts\/Excel-VBA%E9%80%9A%E8%BF%87%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E7%BE%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%8F%91%E9%80%81%E5%B7%A5%E4%BD%9C%E8%A1%A8%E5%8C%BA%E5%9F%9F%E6%88%AA%E5%9B%BE\/","datePublished": "2022-09-30T00:00:00+00:00","dateModified": "2022-09-30T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -89,7 +89,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Excel VBA通过企业微信群机器人发送工作表区域截图</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://wilajeni.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>wilajeni</a></span>&nbsp;<span class="post-category">收录于 <a href="/zh-cn/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>技术分享</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-30">2022-09-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1370 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-30">2022-09-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1351 字&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
@@ -122,357 +122,173 @@
             <div class="admonition-content">保存的图片有可能为空白，可以增加文件大小校验。</div>
         </div>
     </div>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vb" data-lang="vb"><span class="line"><span class="cl"><span class="k">Public</span> <span class="k">Function</span> <span class="nf">RangeToPic</span><span class="p">(</span><span class="n">Rng</span> <span class="ow">As</span> <span class="n">Range</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="c">&#39;使用当前文件所在路径作为输出路径
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>
-</span></span><span class="line"><span class="cl">    <span class="n">Pth</span> <span class="o">=</span> <span class="n">ActiveWorkbook</span><span class="p">.</span><span class="n">Path</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c">&#39;使用【文件名_区域地址】作为输出文件名
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>
-</span></span><span class="line"><span class="cl">    <span class="n">Pnm</span> <span class="o">=</span> <span class="n">Left</span><span class="p">(</span><span class="n">ActiveWorkbook</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">InStrRev</span><span class="p">(</span><span class="n">ActiveWorkbook</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="s">&#34;.&#34;</span><span class="p">)</span> <span class="o">-</span> <span class="n">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s">&#34;_&#34;</span> <span class="o">&amp;</span> <span class="n">Replace</span><span class="p">(</span><span class="n">Rng</span><span class="p">.</span><span class="n">Address</span><span class="p">(</span><span class="n">0</span><span class="p">,</span> <span class="n">0</span><span class="p">),</span> <span class="s">&#34;:&#34;</span><span class="p">,</span> <span class="s">&#34;_&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="c">&#39;把选择范围内容转化为截屏图片信息
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>
-</span></span><span class="line"><span class="cl">    <span class="n">Rng</span><span class="p">.</span><span class="n">CopyPicture</span> <span class="n">Appearance</span><span class="p">:</span><span class="o">=</span><span class="n">xlScreen</span><span class="p">,</span> <span class="n">Format</span><span class="p">:</span><span class="o">=</span><span class="n">xlBitmap</span>
-</span></span><span class="line"><span class="cl">    <span class="k">With</span> <span class="n">ActiveSheet</span><span class="p">.</span><span class="n">ChartObjects</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">0</span><span class="p">,</span> <span class="n">0</span><span class="p">,</span> <span class="n">Rng</span><span class="p">.</span><span class="n">Width</span> <span class="o">+</span> <span class="n">1</span><span class="p">,</span> <span class="n">Rng</span><span class="p">.</span><span class="n">Height</span> <span class="o">+</span> <span class="n">1</span><span class="p">).</span><span class="n">Chart</span>
-</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">ChartArea</span><span class="p">.</span><span class="n">Border</span><span class="p">.</span><span class="n">LineStyle</span> <span class="o">=</span> <span class="n">0</span>
-</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">Parent</span><span class="p">.</span><span class="n">Select</span>
-</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">Paste</span>
-</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">Export</span> <span class="n">Pth</span> <span class="o">&amp;</span> <span class="s">&#34;\&#34;</span> <span class="o">&amp;</span> <span class="n">Pnm</span> <span class="o">&amp;</span> <span class="s">&#34;.png&#34;</span><span class="p">,</span> <span class="s">&#34;PNG&#34;</span>
-</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">Parent</span><span class="p">.</span><span class="n">Delete</span>
-</span></span><span class="line"><span class="cl">    <span class="k">End</span> <span class="k">With</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">End</span> <span class="k">Function</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="二用vba获取文件md5">（二）用VBA获取文件MD5</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-vb" data-lang="vb"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="k">Public</span> <span class="k">Function</span> <span class="nf">RangeToPic</span><span class="p">(</span><span class="n">Rng</span> <span class="ow">As</span> <span class="n">Range</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="c">&#39;使用当前文件所在路径作为输出路径
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="c"></span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="n">Pth</span> <span class="o">=</span> <span class="n">ActiveWorkbook</span><span class="p">.</span><span class="n">Path</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="c">&#39;使用【文件名_区域地址】作为输出文件名
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="c"></span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="n">Pnm</span> <span class="o">=</span> <span class="n">Left</span><span class="p">(</span><span class="n">ActiveWorkbook</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">InStrRev</span><span class="p">(</span><span class="n">ActiveWorkbook</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="s">&#34;.&#34;</span><span class="p">)</span> <span class="o">-</span> <span class="n">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s">&#34;_&#34;</span> <span class="o">&amp;</span> <span class="n">Replace</span><span class="p">(</span><span class="n">Rng</span><span class="p">.</span><span class="n">Address</span><span class="p">(</span><span class="n">0</span><span class="p">,</span> <span class="n">0</span><span class="p">),</span> <span class="s">&#34;:&#34;</span><span class="p">,</span> <span class="s">&#34;_&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="c">&#39;把选择范围内容转化为截屏图片信息
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="c"></span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="n">Rng</span><span class="p">.</span><span class="n">CopyPicture</span> <span class="n">Appearance</span><span class="p">:</span><span class="o">=</span><span class="n">xlScreen</span><span class="p">,</span> <span class="n">Format</span><span class="p">:</span><span class="o">=</span><span class="n">xlBitmap</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">    <span class="k">With</span> <span class="n">ActiveSheet</span><span class="p">.</span><span class="n">ChartObjects</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">0</span><span class="p">,</span> <span class="n">0</span><span class="p">,</span> <span class="n">Rng</span><span class="p">.</span><span class="n">Width</span> <span class="o">+</span> <span class="n">1</span><span class="p">,</span> <span class="n">Rng</span><span class="p">.</span><span class="n">Height</span> <span class="o">+</span> <span class="n">1</span><span class="p">).</span><span class="n">Chart</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">        <span class="p">.</span><span class="n">ChartArea</span><span class="p">.</span><span class="n">Border</span><span class="p">.</span><span class="n">LineStyle</span> <span class="o">=</span> <span class="n">0</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">        <span class="p">.</span><span class="n">Parent</span><span class="p">.</span><span class="n">Select</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">        <span class="p">.</span><span class="n">Paste</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">        <span class="p">.</span><span class="n">Export</span> <span class="n">Pth</span> <span class="o">&amp;</span> <span class="s">&#34;\&#34;</span> <span class="o">&amp;</span> <span class="n">Pnm</span> <span class="o">&amp;</span> <span class="s">&#34;.png&#34;</span><span class="p">,</span> <span class="s">&#34;PNG&#34;</span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl">        <span class="p">.</span><span class="n">Parent</span><span class="p">.</span><span class="n">Delete</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">    <span class="k">End</span> <span class="k">With</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">
+</span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="k">End</span> <span class="k">Function</span>
+</span></span></code></pre></div><h2 id="二用vba获取文件md5">（二）用VBA获取文件MD5</h2>
 <p>建议封装为模块，使用时调用MD5File(文件路径)</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span><span class="lnt">62
-</span><span class="lnt">63
-</span><span class="lnt">64
-</span><span class="lnt">65
-</span><span class="lnt">66
-</span><span class="lnt">67
-</span><span class="lnt">68
-</span><span class="lnt">69
-</span><span class="lnt">70
-</span><span class="lnt">71
-</span><span class="lnt">72
-</span><span class="lnt">73
-</span><span class="lnt">74
-</span><span class="lnt">75
-</span><span class="lnt">76
-</span><span class="lnt">77
-</span><span class="lnt">78
-</span><span class="lnt">79
-</span><span class="lnt">80
-</span><span class="lnt">81
-</span><span class="lnt">82
-</span><span class="lnt">83
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vb" data-lang="vb"><span class="line"><span class="cl"><span class="k">Option</span> <span class="n">Explicit</span>
-</span></span><span class="line"><span class="cl"><span class="n">Type</span> <span class="n">MD5_CTX</span>
-</span></span><span class="line"><span class="cl">      <span class="n">dwNUMa</span>      <span class="ow">As</span> <span class="kt">Long</span>
-</span></span><span class="line"><span class="cl">      <span class="n">dwNUMb</span>      <span class="ow">As</span> <span class="kt">Long</span>
-</span></span><span class="line"><span class="cl">      <span class="n">Buffer</span><span class="p">(</span><span class="n">15</span><span class="p">)</span>  <span class="ow">As</span> <span class="kt">Byte</span>
-</span></span><span class="line"><span class="cl">      <span class="n">cIN</span><span class="p">(</span><span class="n">63</span><span class="p">)</span>     <span class="ow">As</span> <span class="kt">Byte</span>
-</span></span><span class="line"><span class="cl">      <span class="n">cDig</span><span class="p">(</span><span class="n">15</span><span class="p">)</span>    <span class="ow">As</span> <span class="kt">Byte</span>
-</span></span><span class="line"><span class="cl"><span class="k">End</span> <span class="n">Type</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">Private</span> <span class="k">Declare</span> <span class="n">PtrSafe</span> <span class="k">Sub</span> <span class="nf">MD5Init</span> <span class="k">Lib</span> <span class="s">&#34;advapi32&#34;</span> <span class="p">(</span><span class="n">lpContext</span> <span class="ow">As</span> <span class="n">MD5_CTX</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">Private</span> <span class="k">Declare</span> <span class="n">PtrSafe</span> <span class="k">Sub</span> <span class="nf">MD5Final</span> <span class="k">Lib</span> <span class="s">&#34;advapi32&#34;</span> <span class="p">(</span><span class="n">lpContext</span> <span class="ow">As</span> <span class="n">MD5_CTX</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">Private</span> <span class="k">Declare</span> <span class="n">PtrSafe</span> <span class="k">Sub</span> <span class="nf">MD5Update</span> <span class="k">Lib</span> <span class="s">&#34;advapi32&#34;</span> <span class="p">(</span><span class="n">lpContext</span> <span class="ow">As</span> <span class="n">MD5_CTX</span><span class="p">,</span> <span class="k">ByRef</span> <span class="n">lpBuffer</span> <span class="ow">As</span> <span class="n">Any</span><span class="p">,</span> <span class="k">ByVal</span> <span class="n">BufSize</span> <span class="ow">As</span> <span class="kt">Long</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">Private</span> <span class="n">stcContext</span>   <span class="ow">As</span> <span class="n">MD5_CTX</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c">&#39;计算一个字符串（ANSI编码）的MD5码：输入字符串文本，返回MD5码（16字节的Byte数组）
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>
-</span></span><span class="line"><span class="cl"><span class="k">Public</span> <span class="k">Function</span> <span class="nf">MD5String</span><span class="p">(</span><span class="n">strText</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">Byte</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">aBuffer</span><span class="p">()</span> <span class="ow">As</span> <span class="kt">Byte</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Call</span> <span class="n">MD5Init</span><span class="p">(</span><span class="n">stcContext</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="k">If</span> <span class="p">(</span><span class="n">Len</span><span class="p">(</span><span class="n">strText</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">0</span><span class="p">)</span> <span class="k">Then</span>
-</span></span><span class="line"><span class="cl">        <span class="n">aBuffer</span> <span class="o">=</span> <span class="n">StrConv</span><span class="p">(</span><span class="n">strText</span><span class="p">,</span> <span class="n">vbFromUnicode</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="k">Call</span> <span class="n">MD5Update</span><span class="p">(</span><span class="n">stcContext</span><span class="p">,</span> <span class="n">aBuffer</span><span class="p">(</span><span class="n">0</span><span class="p">),</span> <span class="n">UBound</span><span class="p">(</span><span class="n">aBuffer</span><span class="p">)</span> <span class="o">+</span> <span class="n">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Else</span>
-</span></span><span class="line"><span class="cl">        <span class="k">Call</span> <span class="n">MD5Update</span><span class="p">(</span><span class="n">stcContext</span><span class="p">,</span> <span class="n">0</span><span class="p">,</span> <span class="n">0</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="k">End</span> <span class="k">If</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Call</span> <span class="n">MD5Final</span><span class="p">(</span><span class="n">stcContext</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">MD5String</span> <span class="o">=</span> <span class="n">stcContext</span><span class="p">.</span><span class="n">cDig</span>
-</span></span><span class="line"><span class="cl"><span class="k">End</span> <span class="k">Function</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c">&#39;计算一个字节流的MD5码：输入Byte数组和长度（可选，默认计算整个长度），返回MD5码 （16字节的Byte数组）
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>
-</span></span><span class="line"><span class="cl"><span class="k">Public</span> <span class="k">Function</span> <span class="nf">MD5Bytes</span><span class="p">(</span><span class="n">Buffer</span><span class="p">()</span> <span class="ow">As</span> <span class="kt">Byte</span><span class="p">,</span> _
-</span></span><span class="line"><span class="cl">    <span class="k">Optional</span> <span class="k">ByVal</span> <span class="n">size</span> <span class="ow">As</span> <span class="kt">Long</span> <span class="o">=</span> <span class="o">-</span><span class="n">1</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">Byte</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">U</span> <span class="ow">As</span> <span class="kt">Long</span><span class="p">,</span> <span class="n">pBase</span> <span class="ow">As</span> <span class="kt">Long</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="n">pBase</span> <span class="o">=</span> <span class="n">LBound</span><span class="p">(</span><span class="n">Buffer</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">U</span> <span class="o">=</span> <span class="n">UBound</span><span class="p">(</span><span class="n">Buffer</span><span class="p">)</span> <span class="o">-</span> <span class="n">pBase</span>
-</span></span><span class="line"><span class="cl">    <span class="k">If</span> <span class="p">(</span><span class="o">-</span><span class="n">1</span> <span class="o">=</span> <span class="n">size</span><span class="p">)</span> <span class="k">Then</span> <span class="n">size</span> <span class="o">=</span> <span class="n">U</span> <span class="o">+</span> <span class="n">1</span>
-</span></span><span class="line"><span class="cl">        <span class="k">Call</span> <span class="n">MD5Init</span><span class="p">(</span><span class="n">stcContext</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="k">If</span> <span class="p">(</span><span class="o">-</span><span class="n">1</span> <span class="o">=</span> <span class="n">U</span><span class="p">)</span> <span class="k">Then</span>
-</span></span><span class="line"><span class="cl">        <span class="k">Call</span> <span class="n">MD5Update</span><span class="p">(</span><span class="n">stcContext</span><span class="p">,</span> <span class="n">0</span><span class="p">,</span> <span class="n">0</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Else</span>
-</span></span><span class="line"><span class="cl">        <span class="k">Call</span> <span class="n">MD5Update</span><span class="p">(</span><span class="n">stcContext</span><span class="p">,</span> <span class="n">Buffer</span><span class="p">(</span><span class="n">pBase</span><span class="p">),</span> <span class="n">size</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="k">End</span> <span class="k">If</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Call</span> <span class="n">MD5Final</span><span class="p">(</span><span class="n">stcContext</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">MD5Bytes</span> <span class="o">=</span> <span class="n">stcContext</span><span class="p">.</span><span class="n">cDig</span>
-</span></span><span class="line"><span class="cl"><span class="k">End</span> <span class="k">Function</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c">&#39;计算一个文件的MD5码：输入磁盘文件名（完整路径），返回MD5码 （16字节的Byte数组）
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>
-</span></span><span class="line"><span class="cl"><span class="k">Public</span> <span class="k">Function</span> <span class="nf">MD5File</span><span class="p">(</span><span class="k">ByVal</span> <span class="n">FileName</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">Byte</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Const</span> <span class="n">BUFFERSIZE</span>  <span class="ow">As</span> <span class="kt">Long</span> <span class="o">=</span> <span class="n">1024</span><span class="o">&amp;</span> <span class="o">*</span> <span class="n">512</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">DataBuff</span><span class="p">()</span> <span class="ow">As</span> <span class="kt">Byte</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">lFileSize</span>  <span class="ow">As</span> <span class="kt">Long</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">iFn</span>        <span class="ow">As</span> <span class="kt">Long</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="k">On</span> <span class="k">Error</span> <span class="k">GoTo</span> <span class="n">E_Handle_MD5</span>
-</span></span><span class="line"><span class="cl">    <span class="k">If</span> <span class="p">(</span><span class="n">Len</span><span class="p">(</span><span class="n">Dir</span><span class="err">$</span><span class="p">(</span><span class="n">FileName</span><span class="p">))</span> <span class="o">=</span> <span class="n">0</span><span class="p">)</span> <span class="k">Then</span> <span class="n">Err</span><span class="p">.</span><span class="n">Raise</span> <span class="n">5</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="k">ReDim</span> <span class="n">DataBuff</span><span class="p">(</span><span class="n">BUFFERSIZE</span> <span class="o">-</span> <span class="n">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">iFn</span> <span class="o">=</span> <span class="n">FreeFile</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Open</span> <span class="n">FileName</span> <span class="k">For</span> <span class="n">Binary</span> <span class="ow">As</span> <span class="p">#</span><span class="n">iFn</span>
-</span></span><span class="line"><span class="cl">    <span class="n">lFileSize</span> <span class="o">=</span> <span class="n">LOF</span><span class="p">(</span><span class="n">iFn</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Call</span> <span class="n">MD5Init</span><span class="p">(</span><span class="n">stcContext</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="k">If</span> <span class="p">(</span><span class="n">lFileSize</span> <span class="o">=</span> <span class="n">0</span><span class="p">)</span> <span class="k">Then</span>
-</span></span><span class="line"><span class="cl">        <span class="k">Call</span> <span class="n">MD5Update</span><span class="p">(</span><span class="n">stcContext</span><span class="p">,</span> <span class="n">0</span><span class="p">,</span> <span class="n">0</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Else</span>
-</span></span><span class="line"><span class="cl">        <span class="k">Do</span> <span class="k">While</span> <span class="p">(</span><span class="n">lFileSize</span> <span class="o">&gt;</span> <span class="n">0</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">            <span class="k">Get</span> <span class="n">iFn</span><span class="p">,</span> <span class="p">,</span> <span class="n">DataBuff</span>
-</span></span><span class="line"><span class="cl">            <span class="k">If</span> <span class="p">(</span><span class="n">lFileSize</span> <span class="o">&gt;</span> <span class="n">BUFFERSIZE</span><span class="p">)</span> <span class="k">Then</span>
-</span></span><span class="line"><span class="cl">                <span class="k">Call</span> <span class="n">MD5Update</span><span class="p">(</span><span class="n">stcContext</span><span class="p">,</span> <span class="n">DataBuff</span><span class="p">(</span><span class="n">0</span><span class="p">),</span> <span class="n">BUFFERSIZE</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">            <span class="k">Else</span>
-</span></span><span class="line"><span class="cl">                <span class="k">Call</span> <span class="n">MD5Update</span><span class="p">(</span><span class="n">stcContext</span><span class="p">,</span> <span class="n">DataBuff</span><span class="p">(</span><span class="n">0</span><span class="p">),</span> <span class="n">lFileSize</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">            <span class="k">End</span> <span class="k">If</span>
-</span></span><span class="line"><span class="cl">            <span class="n">lFileSize</span> <span class="o">=</span> <span class="n">lFileSize</span> <span class="o">-</span> <span class="n">BUFFERSIZE</span>
-</span></span><span class="line"><span class="cl">        <span class="k">Loop</span>
-</span></span><span class="line"><span class="cl">    <span class="k">End</span> <span class="k">If</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Close</span> <span class="n">iFn</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Call</span> <span class="n">MD5Final</span><span class="p">(</span><span class="n">stcContext</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">E_Handle_MD5</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">MD5File</span> <span class="o">=</span> <span class="n">stcContext</span><span class="p">.</span><span class="n">cDig</span>
-</span></span><span class="line"><span class="cl"><span class="k">End</span> <span class="k">Function</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="三用vba获取图片base64">（三）用VBA获取图片Base64</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-vb" data-lang="vb"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="k">Option</span> <span class="n">Explicit</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="n">Type</span> <span class="n">MD5_CTX</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">      <span class="n">dwNUMa</span>      <span class="ow">As</span> <span class="kt">Long</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">      <span class="n">dwNUMb</span>      <span class="ow">As</span> <span class="kt">Long</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">      <span class="n">Buffer</span><span class="p">(</span><span class="n">15</span><span class="p">)</span>  <span class="ow">As</span> <span class="kt">Byte</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">      <span class="n">cIN</span><span class="p">(</span><span class="n">63</span><span class="p">)</span>     <span class="ow">As</span> <span class="kt">Byte</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">      <span class="n">cDig</span><span class="p">(</span><span class="n">15</span><span class="p">)</span>    <span class="ow">As</span> <span class="kt">Byte</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="k">End</span> <span class="n">Type</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="k">Private</span> <span class="k">Declare</span> <span class="n">PtrSafe</span> <span class="k">Sub</span> <span class="nf">MD5Init</span> <span class="k">Lib</span> <span class="s">&#34;advapi32&#34;</span> <span class="p">(</span><span class="n">lpContext</span> <span class="ow">As</span> <span class="n">MD5_CTX</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="k">Private</span> <span class="k">Declare</span> <span class="n">PtrSafe</span> <span class="k">Sub</span> <span class="nf">MD5Final</span> <span class="k">Lib</span> <span class="s">&#34;advapi32&#34;</span> <span class="p">(</span><span class="n">lpContext</span> <span class="ow">As</span> <span class="n">MD5_CTX</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="k">Private</span> <span class="k">Declare</span> <span class="n">PtrSafe</span> <span class="k">Sub</span> <span class="nf">MD5Update</span> <span class="k">Lib</span> <span class="s">&#34;advapi32&#34;</span> <span class="p">(</span><span class="n">lpContext</span> <span class="ow">As</span> <span class="n">MD5_CTX</span><span class="p">,</span> <span class="k">ByRef</span> <span class="n">lpBuffer</span> <span class="ow">As</span> <span class="n">Any</span><span class="p">,</span> <span class="k">ByVal</span> <span class="n">BufSize</span> <span class="ow">As</span> <span class="kt">Long</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="k">Private</span> <span class="n">stcContext</span>   <span class="ow">As</span> <span class="n">MD5_CTX</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">
+</span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="c">&#39;计算一个字符串（ANSI编码）的MD5码：输入字符串文本，返回MD5码（16字节的Byte数组）
+</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="c"></span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="k">Public</span> <span class="k">Function</span> <span class="nf">MD5String</span><span class="p">(</span><span class="n">strText</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">Byte</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl">    <span class="k">Dim</span> <span class="n">aBuffer</span><span class="p">()</span> <span class="ow">As</span> <span class="kt">Byte</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">    <span class="k">Call</span> <span class="n">MD5Init</span><span class="p">(</span><span class="n">stcContext</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">    <span class="k">If</span> <span class="p">(</span><span class="n">Len</span><span class="p">(</span><span class="n">strText</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">0</span><span class="p">)</span> <span class="k">Then</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">        <span class="n">aBuffer</span> <span class="o">=</span> <span class="n">StrConv</span><span class="p">(</span><span class="n">strText</span><span class="p">,</span> <span class="n">vbFromUnicode</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">        <span class="k">Call</span> <span class="n">MD5Update</span><span class="p">(</span><span class="n">stcContext</span><span class="p">,</span> <span class="n">aBuffer</span><span class="p">(</span><span class="n">0</span><span class="p">),</span> <span class="n">UBound</span><span class="p">(</span><span class="n">aBuffer</span><span class="p">)</span> <span class="o">+</span> <span class="n">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">23</span><span class="cl">    <span class="k">Else</span>
+</span></span><span class="line"><span class="ln">24</span><span class="cl">        <span class="k">Call</span> <span class="n">MD5Update</span><span class="p">(</span><span class="n">stcContext</span><span class="p">,</span> <span class="n">0</span><span class="p">,</span> <span class="n">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">25</span><span class="cl">    <span class="k">End</span> <span class="k">If</span>
+</span></span><span class="line"><span class="ln">26</span><span class="cl">    <span class="k">Call</span> <span class="n">MD5Final</span><span class="p">(</span><span class="n">stcContext</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">27</span><span class="cl">    <span class="n">MD5String</span> <span class="o">=</span> <span class="n">stcContext</span><span class="p">.</span><span class="n">cDig</span>
+</span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="k">End</span> <span class="k">Function</span>
+</span></span><span class="line"><span class="ln">29</span><span class="cl">
+</span></span><span class="line"><span class="ln">30</span><span class="cl"><span class="c">&#39;计算一个字节流的MD5码：输入Byte数组和长度（可选，默认计算整个长度），返回MD5码 （16字节的Byte数组）
+</span></span></span><span class="line"><span class="ln">31</span><span class="cl"><span class="c"></span>
+</span></span><span class="line"><span class="ln">32</span><span class="cl"><span class="k">Public</span> <span class="k">Function</span> <span class="nf">MD5Bytes</span><span class="p">(</span><span class="n">Buffer</span><span class="p">()</span> <span class="ow">As</span> <span class="kt">Byte</span><span class="p">,</span> _
+</span></span><span class="line"><span class="ln">33</span><span class="cl">    <span class="k">Optional</span> <span class="k">ByVal</span> <span class="n">size</span> <span class="ow">As</span> <span class="kt">Long</span> <span class="o">=</span> <span class="o">-</span><span class="n">1</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">Byte</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">34</span><span class="cl">    <span class="k">Dim</span> <span class="n">U</span> <span class="ow">As</span> <span class="kt">Long</span><span class="p">,</span> <span class="n">pBase</span> <span class="ow">As</span> <span class="kt">Long</span>
+</span></span><span class="line"><span class="ln">35</span><span class="cl">    
+</span></span><span class="line"><span class="ln">36</span><span class="cl">    <span class="n">pBase</span> <span class="o">=</span> <span class="n">LBound</span><span class="p">(</span><span class="n">Buffer</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">37</span><span class="cl">    <span class="n">U</span> <span class="o">=</span> <span class="n">UBound</span><span class="p">(</span><span class="n">Buffer</span><span class="p">)</span> <span class="o">-</span> <span class="n">pBase</span>
+</span></span><span class="line"><span class="ln">38</span><span class="cl">    <span class="k">If</span> <span class="p">(</span><span class="o">-</span><span class="n">1</span> <span class="o">=</span> <span class="n">size</span><span class="p">)</span> <span class="k">Then</span> <span class="n">size</span> <span class="o">=</span> <span class="n">U</span> <span class="o">+</span> <span class="n">1</span>
+</span></span><span class="line"><span class="ln">39</span><span class="cl">        <span class="k">Call</span> <span class="n">MD5Init</span><span class="p">(</span><span class="n">stcContext</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">40</span><span class="cl">    <span class="k">If</span> <span class="p">(</span><span class="o">-</span><span class="n">1</span> <span class="o">=</span> <span class="n">U</span><span class="p">)</span> <span class="k">Then</span>
+</span></span><span class="line"><span class="ln">41</span><span class="cl">        <span class="k">Call</span> <span class="n">MD5Update</span><span class="p">(</span><span class="n">stcContext</span><span class="p">,</span> <span class="n">0</span><span class="p">,</span> <span class="n">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">42</span><span class="cl">    <span class="k">Else</span>
+</span></span><span class="line"><span class="ln">43</span><span class="cl">        <span class="k">Call</span> <span class="n">MD5Update</span><span class="p">(</span><span class="n">stcContext</span><span class="p">,</span> <span class="n">Buffer</span><span class="p">(</span><span class="n">pBase</span><span class="p">),</span> <span class="n">size</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">44</span><span class="cl">    <span class="k">End</span> <span class="k">If</span>
+</span></span><span class="line"><span class="ln">45</span><span class="cl">    <span class="k">Call</span> <span class="n">MD5Final</span><span class="p">(</span><span class="n">stcContext</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">46</span><span class="cl">    <span class="n">MD5Bytes</span> <span class="o">=</span> <span class="n">stcContext</span><span class="p">.</span><span class="n">cDig</span>
+</span></span><span class="line"><span class="ln">47</span><span class="cl"><span class="k">End</span> <span class="k">Function</span>
+</span></span><span class="line"><span class="ln">48</span><span class="cl">
+</span></span><span class="line"><span class="ln">49</span><span class="cl"><span class="c">&#39;计算一个文件的MD5码：输入磁盘文件名（完整路径），返回MD5码 （16字节的Byte数组）
+</span></span></span><span class="line"><span class="ln">50</span><span class="cl"><span class="c"></span>
+</span></span><span class="line"><span class="ln">51</span><span class="cl"><span class="k">Public</span> <span class="k">Function</span> <span class="nf">MD5File</span><span class="p">(</span><span class="k">ByVal</span> <span class="n">FileName</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">Byte</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">52</span><span class="cl">    <span class="k">Const</span> <span class="n">BUFFERSIZE</span>  <span class="ow">As</span> <span class="kt">Long</span> <span class="o">=</span> <span class="n">1024</span><span class="o">&amp;</span> <span class="o">*</span> <span class="n">512</span>
+</span></span><span class="line"><span class="ln">53</span><span class="cl">    <span class="k">Dim</span> <span class="n">DataBuff</span><span class="p">()</span> <span class="ow">As</span> <span class="kt">Byte</span>
+</span></span><span class="line"><span class="ln">54</span><span class="cl">    <span class="k">Dim</span> <span class="n">lFileSize</span>  <span class="ow">As</span> <span class="kt">Long</span>
+</span></span><span class="line"><span class="ln">55</span><span class="cl">    <span class="k">Dim</span> <span class="n">iFn</span>        <span class="ow">As</span> <span class="kt">Long</span>
+</span></span><span class="line"><span class="ln">56</span><span class="cl">    
+</span></span><span class="line"><span class="ln">57</span><span class="cl">    <span class="k">On</span> <span class="k">Error</span> <span class="k">GoTo</span> <span class="n">E_Handle_MD5</span>
+</span></span><span class="line"><span class="ln">58</span><span class="cl">    <span class="k">If</span> <span class="p">(</span><span class="n">Len</span><span class="p">(</span><span class="n">Dir</span><span class="err">$</span><span class="p">(</span><span class="n">FileName</span><span class="p">))</span> <span class="o">=</span> <span class="n">0</span><span class="p">)</span> <span class="k">Then</span> <span class="n">Err</span><span class="p">.</span><span class="n">Raise</span> <span class="n">5</span>
+</span></span><span class="line"><span class="ln">59</span><span class="cl">    
+</span></span><span class="line"><span class="ln">60</span><span class="cl">    <span class="k">ReDim</span> <span class="n">DataBuff</span><span class="p">(</span><span class="n">BUFFERSIZE</span> <span class="o">-</span> <span class="n">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">61</span><span class="cl">    <span class="n">iFn</span> <span class="o">=</span> <span class="n">FreeFile</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">62</span><span class="cl">    <span class="n">Open</span> <span class="n">FileName</span> <span class="k">For</span> <span class="n">Binary</span> <span class="ow">As</span> <span class="p">#</span><span class="n">iFn</span>
+</span></span><span class="line"><span class="ln">63</span><span class="cl">    <span class="n">lFileSize</span> <span class="o">=</span> <span class="n">LOF</span><span class="p">(</span><span class="n">iFn</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">64</span><span class="cl">    <span class="k">Call</span> <span class="n">MD5Init</span><span class="p">(</span><span class="n">stcContext</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">65</span><span class="cl">    
+</span></span><span class="line"><span class="ln">66</span><span class="cl">    <span class="k">If</span> <span class="p">(</span><span class="n">lFileSize</span> <span class="o">=</span> <span class="n">0</span><span class="p">)</span> <span class="k">Then</span>
+</span></span><span class="line"><span class="ln">67</span><span class="cl">        <span class="k">Call</span> <span class="n">MD5Update</span><span class="p">(</span><span class="n">stcContext</span><span class="p">,</span> <span class="n">0</span><span class="p">,</span> <span class="n">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">68</span><span class="cl">    <span class="k">Else</span>
+</span></span><span class="line"><span class="ln">69</span><span class="cl">        <span class="k">Do</span> <span class="k">While</span> <span class="p">(</span><span class="n">lFileSize</span> <span class="o">&gt;</span> <span class="n">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">70</span><span class="cl">            <span class="k">Get</span> <span class="n">iFn</span><span class="p">,</span> <span class="p">,</span> <span class="n">DataBuff</span>
+</span></span><span class="line"><span class="ln">71</span><span class="cl">            <span class="k">If</span> <span class="p">(</span><span class="n">lFileSize</span> <span class="o">&gt;</span> <span class="n">BUFFERSIZE</span><span class="p">)</span> <span class="k">Then</span>
+</span></span><span class="line"><span class="ln">72</span><span class="cl">                <span class="k">Call</span> <span class="n">MD5Update</span><span class="p">(</span><span class="n">stcContext</span><span class="p">,</span> <span class="n">DataBuff</span><span class="p">(</span><span class="n">0</span><span class="p">),</span> <span class="n">BUFFERSIZE</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">73</span><span class="cl">            <span class="k">Else</span>
+</span></span><span class="line"><span class="ln">74</span><span class="cl">                <span class="k">Call</span> <span class="n">MD5Update</span><span class="p">(</span><span class="n">stcContext</span><span class="p">,</span> <span class="n">DataBuff</span><span class="p">(</span><span class="n">0</span><span class="p">),</span> <span class="n">lFileSize</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">75</span><span class="cl">            <span class="k">End</span> <span class="k">If</span>
+</span></span><span class="line"><span class="ln">76</span><span class="cl">            <span class="n">lFileSize</span> <span class="o">=</span> <span class="n">lFileSize</span> <span class="o">-</span> <span class="n">BUFFERSIZE</span>
+</span></span><span class="line"><span class="ln">77</span><span class="cl">        <span class="k">Loop</span>
+</span></span><span class="line"><span class="ln">78</span><span class="cl">    <span class="k">End</span> <span class="k">If</span>
+</span></span><span class="line"><span class="ln">79</span><span class="cl">    <span class="n">Close</span> <span class="n">iFn</span>
+</span></span><span class="line"><span class="ln">80</span><span class="cl">    <span class="k">Call</span> <span class="n">MD5Final</span><span class="p">(</span><span class="n">stcContext</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">81</span><span class="cl"><span class="n">E_Handle_MD5</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">82</span><span class="cl">    <span class="n">MD5File</span> <span class="o">=</span> <span class="n">stcContext</span><span class="p">.</span><span class="n">cDig</span>
+</span></span><span class="line"><span class="ln">83</span><span class="cl"><span class="k">End</span> <span class="k">Function</span>
+</span></span></code></pre></div><h2 id="三用vba获取图片base64">（三）用VBA获取图片Base64</h2>
 <p>使用时调用EncodeFilebase64(文件路径)</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vb" data-lang="vb"><span class="line"><span class="cl"><span class="k">Public</span> <span class="k">Function</span> <span class="nf">EncodeFilebase64</span><span class="p">(</span><span class="n">strPicPath</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">String</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">PicExtn</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">,</span> <span class="n">FLPath</span> <span class="ow">As</span> <span class="kt">String</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">StrPath</span> <span class="ow">As</span> <span class="kt">Variant</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">BSC</span> <span class="ow">As</span> <span class="kt">Long</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">fso</span> <span class="ow">As</span> <span class="kt">Object</span>
-</span></span><span class="line"><span class="cl">    <span class="n">PicExtn</span> <span class="o">=</span> <span class="n">Split</span><span class="p">(</span><span class="n">strPicPath</span><span class="p">,</span> <span class="s">&#34;.&#34;</span><span class="p">)(</span><span class="n">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">FLPath</span> <span class="o">=</span> <span class="n">Replace</span><span class="p">(</span><span class="n">strPicPath</span><span class="p">,</span> <span class="n">PicExtn</span><span class="p">,</span> <span class="s">&#34;.txt&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">EncodeFilebase64</span> <span class="o">=</span> <span class="n">Replace</span><span class="p">(</span><span class="n">EncodeFile</span><span class="p">(</span><span class="n">strPicPath</span><span class="p">),</span> <span class="n">Chr</span><span class="p">(</span><span class="n">10</span><span class="p">),</span> <span class="s">&#34;&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">End</span> <span class="k">Function</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">Public</span> <span class="k">Function</span> <span class="nf">EncodeFile</span><span class="p">(</span><span class="n">strPicPath</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">String</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Const</span> <span class="n">adTypeBinary</span> <span class="o">=</span> <span class="n">1</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">objXML</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">objDocElem</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">objStream</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">Set</span> <span class="n">objStream</span> <span class="o">=</span> <span class="n">CreateObject</span><span class="p">(</span><span class="s">&#34;ADODB.Stream&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">objStream</span><span class="p">.</span><span class="n">Type</span> <span class="o">=</span> <span class="n">adTypeBinary</span>
-</span></span><span class="line"><span class="cl">    <span class="n">objStream</span><span class="p">.</span><span class="n">Open</span>
-</span></span><span class="line"><span class="cl">    <span class="n">objStream</span><span class="p">.</span><span class="n">LoadFromFile</span> <span class="p">(</span><span class="n">strPicPath</span><span class="p">)</span> 
-</span></span><span class="line"><span class="cl">    <span class="k">Set</span> <span class="n">objXML</span> <span class="o">=</span> <span class="n">CreateObject</span><span class="p">(</span><span class="s">&#34;MSXml2.DOMDocument&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Set</span> <span class="n">objDocElem</span> <span class="o">=</span> <span class="n">objXML</span><span class="p">.</span><span class="n">createElement</span><span class="p">(</span><span class="s">&#34;Base64Data&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="n">objDocElem</span><span class="p">.</span><span class="n">DataType</span> <span class="o">=</span> <span class="s">&#34;bin.base64&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">objDocElem</span><span class="p">.</span><span class="n">nodeTypedValue</span> <span class="o">=</span> <span class="n">objStream</span><span class="p">.</span><span class="n">Read</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="n">EncodeFile</span> <span class="o">=</span> <span class="n">objDocElem</span><span class="p">.</span><span class="n">text</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">Set</span> <span class="n">objXML</span> <span class="o">=</span> <span class="k">Nothing</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Set</span> <span class="n">objDocElem</span> <span class="o">=</span> <span class="k">Nothing</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Set</span> <span class="n">objStream</span> <span class="o">=</span> <span class="k">Nothing</span>
-</span></span><span class="line"><span class="cl"><span class="k">End</span> <span class="k">Function</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="四通过vba调用企业微信群机器人">（四）通过VBA调用企业微信群机器人</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-vb" data-lang="vb"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="k">Public</span> <span class="k">Function</span> <span class="nf">EncodeFilebase64</span><span class="p">(</span><span class="n">strPicPath</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">String</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="k">Dim</span> <span class="n">PicExtn</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">,</span> <span class="n">FLPath</span> <span class="ow">As</span> <span class="kt">String</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="k">Dim</span> <span class="n">StrPath</span> <span class="ow">As</span> <span class="kt">Variant</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="k">Dim</span> <span class="n">BSC</span> <span class="ow">As</span> <span class="kt">Long</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="k">Dim</span> <span class="n">fso</span> <span class="ow">As</span> <span class="kt">Object</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="n">PicExtn</span> <span class="o">=</span> <span class="n">Split</span><span class="p">(</span><span class="n">strPicPath</span><span class="p">,</span> <span class="s">&#34;.&#34;</span><span class="p">)(</span><span class="n">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="n">FLPath</span> <span class="o">=</span> <span class="n">Replace</span><span class="p">(</span><span class="n">strPicPath</span><span class="p">,</span> <span class="n">PicExtn</span><span class="p">,</span> <span class="s">&#34;.txt&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="n">EncodeFilebase64</span> <span class="o">=</span> <span class="n">Replace</span><span class="p">(</span><span class="n">EncodeFile</span><span class="p">(</span><span class="n">strPicPath</span><span class="p">),</span> <span class="n">Chr</span><span class="p">(</span><span class="n">10</span><span class="p">),</span> <span class="s">&#34;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="k">End</span> <span class="k">Function</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="k">Public</span> <span class="k">Function</span> <span class="nf">EncodeFile</span><span class="p">(</span><span class="n">strPicPath</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">String</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="k">Const</span> <span class="n">adTypeBinary</span> <span class="o">=</span> <span class="n">1</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">    <span class="k">Dim</span> <span class="n">objXML</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="k">Dim</span> <span class="n">objDocElem</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">    <span class="k">Dim</span> <span class="n">objStream</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">
+</span></span><span class="line"><span class="ln">17</span><span class="cl">    <span class="k">Set</span> <span class="n">objStream</span> <span class="o">=</span> <span class="n">CreateObject</span><span class="p">(</span><span class="s">&#34;ADODB.Stream&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl">    <span class="n">objStream</span><span class="p">.</span><span class="n">Type</span> <span class="o">=</span> <span class="n">adTypeBinary</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">    <span class="n">objStream</span><span class="p">.</span><span class="n">Open</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">    <span class="n">objStream</span><span class="p">.</span><span class="n">LoadFromFile</span> <span class="p">(</span><span class="n">strPicPath</span><span class="p">)</span> 
+</span></span><span class="line"><span class="ln">21</span><span class="cl">    <span class="k">Set</span> <span class="n">objXML</span> <span class="o">=</span> <span class="n">CreateObject</span><span class="p">(</span><span class="s">&#34;MSXml2.DOMDocument&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">    <span class="k">Set</span> <span class="n">objDocElem</span> <span class="o">=</span> <span class="n">objXML</span><span class="p">.</span><span class="n">createElement</span><span class="p">(</span><span class="s">&#34;Base64Data&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">23</span><span class="cl">    
+</span></span><span class="line"><span class="ln">24</span><span class="cl">    <span class="n">objDocElem</span><span class="p">.</span><span class="n">DataType</span> <span class="o">=</span> <span class="s">&#34;bin.base64&#34;</span>
+</span></span><span class="line"><span class="ln">25</span><span class="cl">    <span class="n">objDocElem</span><span class="p">.</span><span class="n">nodeTypedValue</span> <span class="o">=</span> <span class="n">objStream</span><span class="p">.</span><span class="n">Read</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">26</span><span class="cl">    <span class="n">EncodeFile</span> <span class="o">=</span> <span class="n">objDocElem</span><span class="p">.</span><span class="n">text</span>
+</span></span><span class="line"><span class="ln">27</span><span class="cl">
+</span></span><span class="line"><span class="ln">28</span><span class="cl">    <span class="k">Set</span> <span class="n">objXML</span> <span class="o">=</span> <span class="k">Nothing</span>
+</span></span><span class="line"><span class="ln">29</span><span class="cl">    <span class="k">Set</span> <span class="n">objDocElem</span> <span class="o">=</span> <span class="k">Nothing</span>
+</span></span><span class="line"><span class="ln">30</span><span class="cl">    <span class="k">Set</span> <span class="n">objStream</span> <span class="o">=</span> <span class="k">Nothing</span>
+</span></span><span class="line"><span class="ln">31</span><span class="cl"><span class="k">End</span> <span class="k">Function</span>
+</span></span></code></pre></div><h2 id="四通过vba调用企业微信群机器人">（四）通过VBA调用企业微信群机器人</h2>
 <p>将图片组建成json格式传值给机器人函数，然后直接发送。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vb" data-lang="vb"><span class="line"><span class="cl"><span class="k">Public</span> <span class="k">Function</span> <span class="nf">BotPic</span><span class="p">(</span><span class="n">Picname</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">,</span> <span class="n">url</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">,</span> <span class="k">Optional</span> <span class="n">PicPth</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">String</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">params</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">,</span> <span class="n">ibase64</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">,</span> <span class="n">imd5</span> <span class="ow">As</span> <span class="kt">String</span>
-</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">strPicPath</span> <span class="ow">As</span> <span class="kt">String</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="k">If</span> <span class="n">PicPth</span> <span class="o">=</span> <span class="s">&#34;&#34;</span> <span class="k">Then</span> <span class="n">PicPth</span> <span class="o">=</span> <span class="n">ActiveWorkbook</span><span class="p">.</span><span class="n">Path</span>
-</span></span><span class="line"><span class="cl">    <span class="n">strPicPath</span> <span class="o">=</span> <span class="n">PicPth</span> <span class="o">&amp;</span> <span class="s">&#34;\&#34;</span> <span class="o">&amp;</span> <span class="n">Picname</span> <span class="o">&amp;</span> <span class="s">&#34;.jpg&#34;</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="c">&#39;获取base64转码
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>
-</span></span><span class="line"><span class="cl">    <span class="n">ibase64</span> <span class="o">=</span> <span class="n">EncodeFilebase64</span><span class="p">(</span><span class="n">strPicPath</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="c">&#39;获取MD5转码
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>
-</span></span><span class="line"><span class="cl">    <span class="k">Call</span> <span class="n">MD5File</span><span class="p">(</span><span class="n">strPicPath</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">imd5</span> <span class="o">=</span> <span class="n">LCase</span><span class="p">(</span><span class="n">GetMD5Text</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="c">&#39;发送内容构建成json格式
-</span></span></span><span class="line"><span class="cl"><span class="c"></span>    
-</span></span><span class="line"><span class="cl">    <span class="n">para1</span> <span class="o">=</span> <span class="s">&#34;{&#34;&#34;msgtype&#34;&#34;:&#34;&#34;image&#34;&#34;,&#34;&#34;image&#34;&#34;:{&#34;&#34;base64&#34;&#34;:&#34;&#34;&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">para2</span> <span class="o">=</span> <span class="s">&#34;&#34;&#34;,&#34;&#34;md5&#34;&#34;:&#34;&#34;&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">para3</span> <span class="o">=</span> <span class="s">&#34;&#34;&#34;}}&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">params</span> <span class="o">=</span> <span class="n">para1</span> <span class="o">&amp;</span> <span class="n">ibase64</span> <span class="o">&amp;</span> <span class="n">para2</span> <span class="o">&amp;</span> <span class="n">imd5</span> <span class="o">&amp;</span> <span class="n">para3</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">BotPic</span> <span class="o">=</span> <span class="n">HttpRequest</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s">&#34;POST&#34;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">End</span> <span class="k">Function</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="post-footer" id="post-footer">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-vb" data-lang="vb"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="k">Public</span> <span class="k">Function</span> <span class="nf">BotPic</span><span class="p">(</span><span class="n">Picname</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">,</span> <span class="n">url</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">,</span> <span class="k">Optional</span> <span class="n">PicPth</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">String</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="k">Dim</span> <span class="n">params</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">,</span> <span class="n">ibase64</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">,</span> <span class="n">imd5</span> <span class="ow">As</span> <span class="kt">String</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="k">Dim</span> <span class="n">strPicPath</span> <span class="ow">As</span> <span class="kt">String</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="k">If</span> <span class="n">PicPth</span> <span class="o">=</span> <span class="s">&#34;&#34;</span> <span class="k">Then</span> <span class="n">PicPth</span> <span class="o">=</span> <span class="n">ActiveWorkbook</span><span class="p">.</span><span class="n">Path</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="n">strPicPath</span> <span class="o">=</span> <span class="n">PicPth</span> <span class="o">&amp;</span> <span class="s">&#34;\&#34;</span> <span class="o">&amp;</span> <span class="n">Picname</span> <span class="o">&amp;</span> <span class="s">&#34;.jpg&#34;</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="c">&#39;获取base64转码
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c"></span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="n">ibase64</span> <span class="o">=</span> <span class="n">EncodeFilebase64</span><span class="p">(</span><span class="n">strPicPath</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">    
+</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="c">&#39;获取MD5转码
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="c"></span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="k">Call</span> <span class="n">MD5File</span><span class="p">(</span><span class="n">strPicPath</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">    <span class="n">imd5</span> <span class="o">=</span> <span class="n">LCase</span><span class="p">(</span><span class="n">GetMD5Text</span><span class="p">())</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">    
+</span></span><span class="line"><span class="ln">17</span><span class="cl">    <span class="c">&#39;发送内容构建成json格式
+</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="c"></span>    
+</span></span><span class="line"><span class="ln">19</span><span class="cl">    <span class="n">para1</span> <span class="o">=</span> <span class="s">&#34;{&#34;&#34;msgtype&#34;&#34;:&#34;&#34;image&#34;&#34;,&#34;&#34;image&#34;&#34;:{&#34;&#34;base64&#34;&#34;:&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">    <span class="n">para2</span> <span class="o">=</span> <span class="s">&#34;&#34;&#34;,&#34;&#34;md5&#34;&#34;:&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">    <span class="n">para3</span> <span class="o">=</span> <span class="s">&#34;&#34;&#34;}}&#34;</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">    <span class="n">params</span> <span class="o">=</span> <span class="n">para1</span> <span class="o">&amp;</span> <span class="n">ibase64</span> <span class="o">&amp;</span> <span class="n">para2</span> <span class="o">&amp;</span> <span class="n">imd5</span> <span class="o">&amp;</span> <span class="n">para3</span>
+</span></span><span class="line"><span class="ln">23</span><span class="cl">
+</span></span><span class="line"><span class="ln">24</span><span class="cl">    <span class="n">BotPic</span> <span class="o">=</span> <span class="n">HttpRequest</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s">&#34;POST&#34;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="k">End</span> <span class="k">Function</span>
+</span></span></code></pre></div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
