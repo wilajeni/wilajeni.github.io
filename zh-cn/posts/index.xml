@@ -3,7 +3,15 @@
         <title>所有文章 - wilajeni&#39;s blog | learn, build, share</title>
         <link>https://wilajeni.github.io/zh-cn/posts/</link>
         <description>所有文章 | wilajeni&#39;s blog | learn, build, share</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 23 Jan 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wilajeni.github.io/zh-cn/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 15 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wilajeni.github.io/zh-cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Hugo建站日常更新</title>
+    <link>https://wilajeni.github.io/zh-cn/posts/Hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%B8%B8%E6%9B%B4%E6%96%B0/</link>
+    <pubDate>Wed, 15 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>wilajeni</author>
+    <guid>https://wilajeni.github.io/zh-cn/posts/Hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%B8%B8%E6%9B%B4%E6%96%B0/</guid>
+    <description><![CDATA[杂七杂八的小功能添加记录。]]></description>
+</item>
+<item>
     <title>R语言寿险精算（二）：人寿保险</title>
     <link>https://wilajeni.github.io/zh-cn/posts/R%E8%AF%AD%E8%A8%80%E5%AF%BF%E9%99%A9%E7%B2%BE%E7%AE%97%E4%BA%8C%E4%BA%BA%E5%AF%BF%E4%BF%9D%E9%99%A9/</link>
     <pubDate>Mon, 23 Jan 2023 00:00:00 &#43;0000</pubDate>
