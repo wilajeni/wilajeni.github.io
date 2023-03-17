@@ -5,50 +5,50 @@
         <description>所有文章 | wilajeni&#39;s blog | learn, build, share</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 15 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wilajeni.github.io/zh-cn/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Hugo建站日常更新</title>
-    <link>https://wilajeni.github.io/zh-cn/posts/Hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%B8%B8%E6%9B%B4%E6%96%B0/</link>
+    <link>https://wilajeni.github.io/zh-cn/posts/web-2.html/</link>
     <pubDate>Wed, 15 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>wilajeni</author>
-    <guid>https://wilajeni.github.io/zh-cn/posts/Hugo%E5%BB%BA%E7%AB%99%E6%97%A5%E5%B8%B8%E6%9B%B4%E6%96%B0/</guid>
+    <guid>https://wilajeni.github.io/zh-cn/posts/web-2.html/</guid>
     <description><![CDATA[杂七杂八的小功能添加记录。]]></description>
 </item>
 <item>
     <title>R语言寿险精算（二）：人寿保险</title>
-    <link>https://wilajeni.github.io/zh-cn/posts/R%E8%AF%AD%E8%A8%80%E5%AF%BF%E9%99%A9%E7%B2%BE%E7%AE%97%E4%BA%8C%E4%BA%BA%E5%AF%BF%E4%BF%9D%E9%99%A9/</link>
+    <link>https://wilajeni.github.io/zh-cn/posts/r-life-2.html/</link>
     <pubDate>Mon, 23 Jan 2023 00:00:00 &#43;0000</pubDate>
     <author>wilajeni</author>
-    <guid>https://wilajeni.github.io/zh-cn/posts/R%E8%AF%AD%E8%A8%80%E5%AF%BF%E9%99%A9%E7%B2%BE%E7%AE%97%E4%BA%8C%E4%BA%BA%E5%AF%BF%E4%BF%9D%E9%99%A9/</guid>
+    <guid>https://wilajeni.github.io/zh-cn/posts/r-life-2.html/</guid>
     <description><![CDATA[用R构建各类常见寿险的期望现值计算函数。]]></description>
 </item>
 <item>
     <title>用GitHub Pages搭配Hugo建立个人网站</title>
-    <link>https://wilajeni.github.io/zh-cn/posts/%E7%94%A8GitHub-Pages%E6%90%AD%E9%85%8DHugo%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/</link>
+    <link>https://wilajeni.github.io/zh-cn/posts/web-1.html/</link>
     <pubDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</pubDate>
     <author>wilajeni</author>
-    <guid>https://wilajeni.github.io/zh-cn/posts/%E7%94%A8GitHub-Pages%E6%90%AD%E9%85%8DHugo%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/</guid>
+    <guid>https://wilajeni.github.io/zh-cn/posts/web-1.html/</guid>
     <description><![CDATA[本站的搭建过程。]]></description>
 </item>
 <item>
     <title>R语言寿险精算（一）：年金保险</title>
-    <link>https://wilajeni.github.io/zh-cn/posts/R%E8%AF%AD%E8%A8%80%E5%AF%BF%E9%99%A9%E7%B2%BE%E7%AE%97%E4%B8%80%E5%B9%B4%E9%87%91%E4%BF%9D%E9%99%A9/</link>
+    <link>https://wilajeni.github.io/zh-cn/posts/r-life-1.html/</link>
     <pubDate>Thu, 29 Dec 2022 00:00:00 &#43;0000</pubDate>
     <author>wilajeni</author>
-    <guid>https://wilajeni.github.io/zh-cn/posts/R%E8%AF%AD%E8%A8%80%E5%AF%BF%E9%99%A9%E7%B2%BE%E7%AE%97%E4%B8%80%E5%B9%B4%E9%87%91%E4%BF%9D%E9%99%A9/</guid>
+    <guid>https://wilajeni.github.io/zh-cn/posts/r-life-1.html/</guid>
     <description><![CDATA[用R构建各类常见年金的期望现值计算函数。]]></description>
 </item>
 <item>
     <title>用R语言编码理解区块链的数据形式</title>
-    <link>https://wilajeni.github.io/zh-cn/posts/%E7%94%A8R%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A0%81%E7%90%86%E8%A7%A3%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BD%A2%E5%BC%8F/</link>
+    <link>https://wilajeni.github.io/zh-cn/posts/r-blockchain.html/</link>
     <pubDate>Wed, 02 Nov 2022 00:00:00 &#43;0000</pubDate>
     <author>wilageni</author>
-    <guid>https://wilajeni.github.io/zh-cn/posts/%E7%94%A8R%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A0%81%E7%90%86%E8%A7%A3%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BD%A2%E5%BC%8F/</guid>
+    <guid>https://wilajeni.github.io/zh-cn/posts/r-blockchain.html/</guid>
     <description><![CDATA[使用R语言的list数据类型和BTC的proof-of-work算法实现最简单的区块链。]]></description>
 </item>
 <item>
     <title>Excel VBA通过企业微信群机器人发送工作表区域截图</title>
-    <link>https://wilajeni.github.io/zh-cn/posts/Excel-VBA%E9%80%9A%E8%BF%87%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E7%BE%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%8F%91%E9%80%81%E5%B7%A5%E4%BD%9C%E8%A1%A8%E5%8C%BA%E5%9F%9F%E6%88%AA%E5%9B%BE/</link>
+    <link>https://wilajeni.github.io/zh-cn/posts/vba-1.html/</link>
     <pubDate>Fri, 30 Sep 2022 00:00:00 &#43;0000</pubDate>
     <author>wilajeni</author>
-    <guid>https://wilajeni.github.io/zh-cn/posts/Excel-VBA%E9%80%9A%E8%BF%87%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E7%BE%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%8F%91%E9%80%81%E5%B7%A5%E4%BD%9C%E8%A1%A8%E5%8C%BA%E5%9F%9F%E6%88%AA%E5%9B%BE/</guid>
+    <guid>https://wilajeni.github.io/zh-cn/posts/vba-1.html/</guid>
     <description><![CDATA[化简为繁：不用Python，一个Excel搞定发表自动化。]]></description>
 </item>
 </channel>

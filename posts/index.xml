@@ -5,42 +5,50 @@
         <description>All Posts | wilajeni&#39;s blog | learn, build, share</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wilajeni.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Irish Beginner: Gaeilge A1 (10)</title>
-    <link>https://wilajeni.github.io/posts/Irish-Beginner-Gaeilge-A1-10/</link>
+    <link>https://wilajeni.github.io/posts/irish-10.html/</link>
     <pubDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>wilajeni</author>
-    <guid>https://wilajeni.github.io/posts/Irish-Beginner-Gaeilge-A1-10/</guid>
+    <guid>https://wilajeni.github.io/posts/irish-10.html/</guid>
     <description><![CDATA[Learning Irish from Gaeltacht UCD. Anoad 10 of textbook A1 is about body.]]></description>
 </item>
 <item>
     <title>Irish Beginner: Gaeilge A1 (9)</title>
-    <link>https://wilajeni.github.io/posts/Irish-Beginner-Gaeilge-A1-9/</link>
+    <link>https://wilajeni.github.io/posts/irish-9.html/</link>
     <pubDate>Tue, 31 Jan 2023 00:00:00 &#43;0000</pubDate>
     <author>wilajeni</author>
-    <guid>https://wilajeni.github.io/posts/Irish-Beginner-Gaeilge-A1-9/</guid>
+    <guid>https://wilajeni.github.io/posts/irish-9.html/</guid>
     <description><![CDATA[Learning Irish from Gaeltacht UCD. Anoad 9 of textbook A1 is about family.]]></description>
 </item>
 <item>
+    <title>Irish Beginner: Gaeilge A1 (1)</title>
+    <link>https://wilajeni.github.io/posts/irish-1.html/</link>
+    <pubDate>Mon, 16 Jan 2023 00:00:00 &#43;0000</pubDate>
+    <author>wilajeni</author>
+    <guid>https://wilajeni.github.io/posts/irish-1.html/</guid>
+    <description><![CDATA[Learning Irish from Gaeltacht UCD. Dia duit, gaeilge!]]></description>
+</item>
+<item>
     <title>R for Life Assurances</title>
-    <link>https://wilajeni.github.io/posts/R-for-Life-Assurances/</link>
+    <link>https://wilajeni.github.io/posts/r-life-2.html/</link>
     <pubDate>Thu, 12 Jan 2023 00:00:00 &#43;0000</pubDate>
     <author>wilajeni</author>
-    <guid>https://wilajeni.github.io/posts/R-for-Life-Assurances/</guid>
+    <guid>https://wilajeni.github.io/posts/r-life-2.html/</guid>
     <description><![CDATA[Composing R functions to calculate EPVs of common life products.]]></description>
 </item>
 <item>
     <title>R for Life Annuities</title>
-    <link>https://wilajeni.github.io/posts/R-for-Life-Annuities/</link>
+    <link>https://wilajeni.github.io/posts/r-life-1.html/</link>
     <pubDate>Wed, 28 Dec 2022 00:00:00 &#43;0000</pubDate>
     <author>wilajeni</author>
-    <guid>https://wilajeni.github.io/posts/R-for-Life-Annuities/</guid>
+    <guid>https://wilajeni.github.io/posts/r-life-1.html/</guid>
     <description><![CDATA[Composing R functions to calculate EPVs of common life products.]]></description>
 </item>
 <item>
     <title>Simple Blockchain with R</title>
-    <link>https://wilajeni.github.io/posts/Simple-Blockchain-with-R/</link>
+    <link>https://wilajeni.github.io/posts/r-blockchain.html/</link>
     <pubDate>Fri, 28 Oct 2022 00:00:00 &#43;0000</pubDate>
     <author>wilageni</author>
-    <guid>https://wilajeni.github.io/posts/Simple-Blockchain-with-R/</guid>
+    <guid>https://wilajeni.github.io/posts/r-blockchain.html/</guid>
     <description><![CDATA[Learning about how blockchain works and the basic structure by writing one in R.]]></description>
 </item>
 </channel>

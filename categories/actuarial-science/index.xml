@@ -1,22 +1,22 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Actuarial Science - Category - wilajeni&#39;s blog | learn, build, share</title>
-        <link>https://wilajeni.github.io/categories/Actuarial-Science/</link>
+        <link>https://wilajeni.github.io/categories/actuarial-science/</link>
         <description>Actuarial Science - Category - wilajeni&#39;s blog | learn, build, share</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 12 Jan 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wilajeni.github.io/categories/Actuarial-Science/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 12 Jan 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wilajeni.github.io/categories/actuarial-science/" rel="self" type="application/rss+xml" /><item>
     <title>R for Life Assurances</title>
-    <link>https://wilajeni.github.io/posts/R-for-Life-Assurances/</link>
+    <link>https://wilajeni.github.io/posts/r-life-2.html/</link>
     <pubDate>Thu, 12 Jan 2023 00:00:00 &#43;0000</pubDate>
     <author>wilajeni</author>
-    <guid>https://wilajeni.github.io/posts/R-for-Life-Assurances/</guid>
+    <guid>https://wilajeni.github.io/posts/r-life-2.html/</guid>
     <description><![CDATA[Composing R functions to calculate EPVs of common life products.]]></description>
 </item>
 <item>
     <title>R for Life Annuities</title>
-    <link>https://wilajeni.github.io/posts/R-for-Life-Annuities/</link>
+    <link>https://wilajeni.github.io/posts/r-life-1.html/</link>
     <pubDate>Wed, 28 Dec 2022 00:00:00 &#43;0000</pubDate>
     <author>wilajeni</author>
-    <guid>https://wilajeni.github.io/posts/R-for-Life-Annuities/</guid>
+    <guid>https://wilajeni.github.io/posts/r-life-1.html/</guid>
     <description><![CDATA[Composing R functions to calculate EPVs of common life products.]]></description>
 </item>
 </channel>

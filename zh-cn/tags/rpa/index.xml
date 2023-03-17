@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>RPA - 标签 - wilajeni&#39;s blog | learn, build, share</title>
-        <link>https://wilajeni.github.io/zh-cn/tags/RPA/</link>
+        <link>https://wilajeni.github.io/zh-cn/tags/rpa/</link>
         <description>RPA - 标签 - wilajeni&#39;s blog | learn, build, share</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 30 Sep 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wilajeni.github.io/zh-cn/tags/RPA/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 30 Sep 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wilajeni.github.io/zh-cn/tags/rpa/" rel="self" type="application/rss+xml" /><item>
     <title>Excel VBA通过企业微信群机器人发送工作表区域截图</title>
-    <link>https://wilajeni.github.io/zh-cn/posts/Excel-VBA%E9%80%9A%E8%BF%87%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E7%BE%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%8F%91%E9%80%81%E5%B7%A5%E4%BD%9C%E8%A1%A8%E5%8C%BA%E5%9F%9F%E6%88%AA%E5%9B%BE/</link>
+    <link>https://wilajeni.github.io/zh-cn/posts/vba-1.html/</link>
     <pubDate>Fri, 30 Sep 2022 00:00:00 &#43;0000</pubDate>
     <author>wilajeni</author>
-    <guid>https://wilajeni.github.io/zh-cn/posts/Excel-VBA%E9%80%9A%E8%BF%87%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E7%BE%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%8F%91%E9%80%81%E5%B7%A5%E4%BD%9C%E8%A1%A8%E5%8C%BA%E5%9F%9F%E6%88%AA%E5%9B%BE/</guid>
+    <guid>https://wilajeni.github.io/zh-cn/posts/vba-1.html/</guid>
     <description><![CDATA[化简为繁：不用Python，一个Excel搞定发表自动化。]]></description>
 </item>
 </channel>

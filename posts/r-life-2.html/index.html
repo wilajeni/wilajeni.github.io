@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>R for Life Assurances - wilajeni&#39;s blog | learn, build, share</title><meta name="Description" content="Composing R functions to calculate EPVs of common life products."><meta property="og:title" content="R for Life Assurances" />
+<meta property="og:description" content="Composing R functions to calculate EPVs of common life products." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wilajeni.github.io/posts/r-life-2.html/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-01-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-01-12T00:00:00+00:00" /><meta property="og:site_name" content="wilajeni&#39;s blog | learn, build, share" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="R for Life Assurances"/>
+<meta name="twitter:description" content="Composing R functions to calculate EPVs of common life products."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wilajeni.github.io/posts/r-life-2.html/" /><link rel="prev" href="https://wilajeni.github.io/posts/r-life-1.html/" /><link rel="next" href="https://wilajeni.github.io/posts/irish-1.html/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "R for Life Assurances",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/wilajeni.github.io\/posts\/r-life-2.html\/"
+        },"genre": "posts","keywords": "R, life","wordcount":  372 ,
+        "url": "https:\/\/wilajeni.github.io\/posts\/r-life-2.html\/","datePublished": "2023-01-12T00:00:00+00:00","dateModified": "2023-01-12T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "wilajeni"
+            },"description": "Composing R functions to calculate EPVs of common life products."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="wilajeni&#39;s blog | learn, build, share"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/index.png"
+        data-srcset="/img/index.png, /img/index.png 1.5x, /img/index.png 2x"
+        data-sizes="auto"
+        alt="/img/index.png"
+        title="/img/index.png" />wilajeni&#39;s blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/"><i class='fa-solid fa-house'></i> Home </a><a class="menu-item" href="/posts/"><i class='fa fa-file'></i> Posts </a><a class="menu-item" href="/tags/"><i class='fa fa-tags'></i> Tags </a><a class="menu-item" href="/categories/"><i class='fa fa-list-ul'></i> Categories </a><a class="menu-item" href="/about/"><i class='fas fa-user-circle'></i> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/posts/r-life-2.html/" selected>English</option><option value="/zh-cn/posts/r-life-2.html/">简体中文</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="wilajeni&#39;s blog | learn, build, share"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/index.png"
+        data-srcset="/img/index.png, /img/index.png 1.5x, /img/index.png 2x"
+        data-sizes="auto"
+        alt="/img/index.png"
+        title="/img/index.png" />wilajeni&#39;s blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/" title=""><i class='fa-solid fa-house'></i>Home</a><a class="menu-item" href="/posts/" title=""><i class='fa fa-file'></i>Posts</a><a class="menu-item" href="/tags/" title=""><i class='fa fa-tags'></i>Tags</a><a class="menu-item" href="/categories/" title=""><i class='fa fa-list-ul'></i>Categories</a><a class="menu-item" href="/about/" title=""><i class='fas fa-user-circle'></i>About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/posts/r-life-2.html/" selected>English</option><option value="/zh-cn/posts/r-life-2.html/">简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+
+<script type="text/javascript"
+	color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">R for Life Assurances</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://wilajeni.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>wilajeni</a></span>&nbsp;<span class="post-category">included in <a href="/categories/actuarial-science/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Actuarial Science</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-01-12">2023-01-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;372 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#whole-life-insurance">Whole Life Insurance</a></li>
+    <li><a href="#temporary-life-insurance">Temporary Life Insurance</a></li>
+    <li><a href="#pure-endowment">Pure Endowment</a></li>
+    <li><a href="#endowment-insurance">Endowment Insurance</a></li>
+    <li><a href="#deferred-whole-life-insurance">Deferred Whole Life Insurance</a></li>
+    <li><a href="#increasing-whole-life-insurance">Increasing Whole Life Insurance</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>ref: <a href="https://www.amazon.co.uk/Actuarial-Mathematics-Contingent-International-Science/dp/1108478085/ref=sr_1_1?keywords=actuarial&#43;mathematics&#43;for&#43;life&#43;contingent&#43;risks&amp;qid=1673548858&amp;sr=8-1" target="_blank" rel="noopener noreffer ">Actuarial Mathematics for Life Contingent Risks</a></p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Life Assurances<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ol>
+<li>
+<p><strong>Whole Life Insurance</strong>: $A_x$</p>
+</li>
+<li>
+<p><strong>Temporary Life Insurance</strong>: $A_{\mathop{1\ \ \ }\limits_{x:\overline n|}}$</p>
+</li>
+<li>
+<p><strong>Pure Endowment</strong>: $A_{\mathop{\ \ 1} \limits_{x:\overline n|}}$</p>
+</li>
+<li>
+<p><strong>Endowment Insurance</strong>: $A_{x:\overline n|}$</p>
+</li>
+<li>
+<p><strong>Deferred Whole Life Insurance</strong>: $_{u|}A_x$</p>
+</li>
+<li>
+<p><strong>Increasing Whole Life Insurance</strong>: $(IA)_x$</p>
+</li>
+</ol>
+</div>
+        </div>
+    </div>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Argument List<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p><code>life_table</code>: A life table with mortality rates $q_x$ from age 0.</p>
+<p><code>age</code>: The individual&rsquo;s age at this moment.</p>
+<p><code>i</code>: A given constant interest rate.</p>
+<p><code>n</code>: A given period of temporary products.</p>
+</div>
+        </div>
+    </div>
+<h2 id="whole-life-insurance">Whole Life Insurance</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">whole_life_insurance</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">life_table</span><span class="p">){</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">  <span class="n">qx</span> <span class="o">&lt;-</span> <span class="n">life_table</span><span class="o">$</span><span class="n">qx</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">  <span class="n">px</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">-</span><span class="n">qx</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">  <span class="n">kpx</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="nf">cumprod</span><span class="p">(</span><span class="n">px</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">px</span><span class="p">)</span><span class="m">-1</span><span class="p">)</span><span class="n">]</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">  <span class="n">k_qx</span> <span class="o">&lt;-</span> <span class="n">kpx</span><span class="o">*</span><span class="n">qx</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">qx</span><span class="p">)</span><span class="n">]</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">  <span class="n">discount_factors</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="n">^</span> <span class="o">-</span> <span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">k_qx</span><span class="p">)))</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl">  <span class="nf">sum</span><span class="p">(</span><span class="n">discount_factors</span> <span class="o">*</span> <span class="n">k_qx</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="temporary-life-insurance">Temporary Life Insurance</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">temporary_life_insurance</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">life_table</span><span class="p">){</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">  <span class="n">qx</span> <span class="o">&lt;-</span> <span class="n">life_table</span><span class="o">$</span><span class="n">qx</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">  <span class="n">px</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">-</span><span class="n">qx</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">  <span class="n">kpx</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="nf">cumprod</span><span class="p">(</span><span class="n">px</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="n">age</span><span class="o">+</span><span class="n">n</span><span class="m">-1</span><span class="p">)</span><span class="n">]</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">  <span class="n">k_qx</span> <span class="o">&lt;-</span> <span class="n">kpx</span><span class="o">*</span><span class="n">qx</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="n">age</span><span class="o">+</span><span class="n">n</span><span class="p">)</span><span class="n">]</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">  <span class="n">discount_factors</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="n">^</span> <span class="o">-</span> <span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">k_qx</span><span class="p">)))</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl">  <span class="nf">sum</span><span class="p">(</span><span class="n">discount_factors</span> <span class="o">*</span> <span class="n">k_qx</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="pure-endowment">Pure Endowment</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">pure_endowment</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">life_table</span><span class="p">){</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">  <span class="n">px</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">-</span><span class="n">life_table</span><span class="o">$</span><span class="n">qx</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">  <span class="n">npx</span> <span class="o">&lt;-</span> <span class="nf">prod</span><span class="p">(</span><span class="n">px</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="n">age</span><span class="o">+</span><span class="n">n</span><span class="p">)</span><span class="n">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">  <span class="n">discount_factor</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="nf">^ </span><span class="p">(</span><span class="o">-</span><span class="n">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">  <span class="n">discount_factor</span> <span class="o">*</span> <span class="n">npx</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="endowment-insurance">Endowment Insurance</h2>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">$$A_{x:\overline n|} = A_{\mathop{1\ \ \ }\limits_{x:\overline n|}} + A_{\mathop{\ \ 1} \limits_{x:\overline n|}}$$</div>
+        </div>
+    </div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="n">endowment_insurance</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">life_table</span><span class="p">){</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">  <span class="n">qx</span> <span class="o">&lt;-</span> <span class="n">life_table</span><span class="o">$</span><span class="n">qx</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">  <span class="n">px</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">-</span><span class="n">qx</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">  <span class="c1"># temporary_life_insurance</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">  <span class="n">kpx</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="nf">cumprod</span><span class="p">(</span><span class="n">px</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="n">age</span><span class="o">+</span><span class="n">n</span><span class="m">-1</span><span class="p">)</span><span class="n">]</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">  <span class="nf">if </span><span class="p">((</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">age</span><span class="o">+</span><span class="n">n</span><span class="m">-1</span><span class="p">))</span> <span class="p">{</span><span class="n">kpx</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">)}</span>      <span class="c1"># fix 1</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">  <span class="n">k_qx</span> <span class="o">&lt;-</span> <span class="n">kpx</span><span class="o">*</span><span class="n">qx</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="n">age</span><span class="o">+</span><span class="n">n</span><span class="p">)</span><span class="n">]</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">  <span class="n">discount_factors</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="n">^</span> <span class="o">-</span> <span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">k_qx</span><span class="p">)))</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">  <span class="c1"># pure_endowment</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">  <span class="n">npx</span> <span class="o">&lt;-</span> <span class="nf">prod</span><span class="p">(</span><span class="n">px</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="n">age</span><span class="o">+</span><span class="n">n</span><span class="p">)</span><span class="n">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">  <span class="n">discount_factor</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="nf">^ </span><span class="p">(</span><span class="o">-</span><span class="n">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">  <span class="c1"># output</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">  <span class="n">discount_factor</span> <span class="o">*</span> <span class="n">npx</span> <span class="o">+</span> <span class="nf">sum</span><span class="p">(</span><span class="n">discount_factors</span> <span class="o">*</span> <span class="n">k_qx</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="deferred-whole-life-insurance">Deferred Whole Life Insurance</h2>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">The benefits are 0 if the assured dies in the first <code>u</code> years.</div>
+        </div>
+    </div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">deferred_life_insurance</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">life_table</span><span class="p">){</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">  <span class="n">qx</span> <span class="o">&lt;-</span> <span class="n">life_table</span><span class="o">$</span><span class="n">qx</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">  <span class="n">px</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">-</span><span class="n">qx</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">  <span class="n">kpx</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="nf">cumprod</span><span class="p">(</span><span class="n">px</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">px</span><span class="p">)</span><span class="m">-1</span><span class="p">)</span><span class="n">]</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">  <span class="n">k_qx</span> <span class="o">&lt;-</span> <span class="n">kpx</span><span class="o">*</span><span class="n">qx</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">qx</span><span class="p">))</span><span class="n">]</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">  <span class="n">discount_factors</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="n">^</span> <span class="o">-</span> <span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">k_qx</span><span class="p">)))</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl">  <span class="n">benefits</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">u</span><span class="p">),</span><span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="p">,(</span><span class="nf">length</span><span class="p">(</span><span class="n">k_qx</span><span class="p">)</span><span class="o">-</span><span class="n">u</span><span class="p">)))</span>
+</span></span><span class="line"><span class="ln">8</span><span class="cl">  <span class="nf">sum</span><span class="p">(</span><span class="n">benefits</span> <span class="o">*</span> <span class="n">discount_factors</span> <span class="o">*</span> <span class="n">k_qx</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">9</span><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="increasing-whole-life-insurance">Increasing Whole Life Insurance</h2>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">An whole life assurance commencing at 1 and increasing 1 per annum.</div>
+        </div>
+    </div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">increasing_life_insurance</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">life_table</span><span class="p">){</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">  <span class="n">qx</span> <span class="o">&lt;-</span> <span class="n">life_table</span><span class="o">$</span><span class="n">qx</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">  <span class="n">px</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">-</span><span class="n">qx</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">  <span class="n">kpx</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="nf">cumprod</span><span class="p">(</span><span class="n">px</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">px</span><span class="p">)</span><span class="m">-1</span><span class="p">)</span><span class="n">]</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">  <span class="n">k_qx</span> <span class="o">&lt;-</span> <span class="n">kpx</span><span class="o">*</span><span class="n">qx</span><span class="nf">[</span><span class="p">(</span><span class="n">age</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">qx</span><span class="p">)</span><span class="n">]</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">  <span class="n">discount_factors</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="n">^</span> <span class="o">-</span> <span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">k_qx</span><span class="p">)))</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl">  <span class="n">benefits</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">k_qx</span><span class="p">)))</span>
+</span></span><span class="line"><span class="ln">8</span><span class="cl">  <span class="nf">sum</span><span class="p">(</span><span class="n">benefits</span> <span class="o">*</span> <span class="n">discount_factors</span> <span class="o">*</span> <span class="n">k_qx</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">9</span><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-01-12</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/r/">R</a>,&nbsp;<a href="/tags/life/">life</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/r-life-1.html/" class="prev" rel="prev" title="R for Life Annuities"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>R for Life Annuities</a>
+            <a href="/posts/irish-1.html/" class="next" rel="next" title="Irish Beginner: Gaeilge A1 (1)">Irish Beginner: Gaeilge A1 (1)<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container">
+
+            
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+			</script>
+            <span id="busuanzi_container_site_pv">
+                <i class='fas fa-chalkboard'></i>PV: <span id="busuanzi_value_site_pv"></span>
+            </span> | 
+            <span id="busuanzi_container_site_uv">
+                <i class='fas fa-chalkboard-teacher'></i>UV: <span id="busuanzi_value_site_uv"></span>
+            </span><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.109.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://wilajeni.github.io/" target="_blank">wilajeni</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":30},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
