@@ -45,7 +45,15 @@
             <loc>https://wilajeni.github.io/posts/irish-1.html/</loc><lastmod>2023-01-16T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://wilajeni.github.io/categories/actuarial-science/</loc><lastmod>2023-01-12T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://wilajeni.github.io/tags/life/</loc><lastmod>2023-01-12T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://wilajeni.github.io/tags/r/</loc><lastmod>2023-01-12T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://wilajeni.github.io/tags/r/</loc><lastmod>2023-01-12T00:00:00&#43;00:00</lastmod><xhtml:link
+                        rel="alternate"
+                        hreflang="zh-cn"
+                        href="https://wilajeni.github.io/zh-cn/tags/r/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="https://wilajeni.github.io/tags/r/"
+                    /></url><url>
             <loc>https://wilajeni.github.io/posts/r-life-2.html/</loc><lastmod>2023-01-12T00:00:00&#43;00:00</lastmod><xhtml:link
                         rel="alternate"
                         hreflang="zh-cn"
