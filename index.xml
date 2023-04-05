@@ -3,9 +3,17 @@
         <title>wilajeni&#39;s blog | learn, build, share</title>
         <link>https://wilajeni.github.io/</link>
         <description>This is my cool site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 05 Apr 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://wilajeni.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Plotting with R: ggplot2 vs baseR</title>
+    <link>https://wilajeni.github.io/posts/r-plot-1.html/</link>
+    <pubDate>Wed, 05 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <author>wilajeni</author>
+    <guid>https://wilajeni.github.io/posts/r-plot-1.html/</guid>
+    <description><![CDATA[Comparing the different approaches to creating similar types of plots using ggplot2 and baseR.]]></description>
+</item>
+<item>
     <title>Irish Beginner: Gaeilge A1 (10)</title>
     <link>https://wilajeni.github.io/posts/irish-10.html/</link>
     <pubDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</pubDate>
