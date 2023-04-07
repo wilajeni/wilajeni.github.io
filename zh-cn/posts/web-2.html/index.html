@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/wilajeni.github.io\/zh-cn\/posts\/web-2.html\/"
-        },"genre": "posts","keywords": "建站日志","wordcount":  785 ,
+        },"genre": "posts","keywords": "建站日志","wordcount":  1086 ,
         "url": "https:\/\/wilajeni.github.io\/zh-cn\/posts\/web-2.html\/","datePublished": "2023-02-15T00:00:00+00:00","dateModified": "2023-02-15T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -47,7 +47,8 @@
             <div class="menu-inner"><a class="menu-item" href="/zh-cn/"><i class='fa-solid fa-house'></i> 主页 </a><a class="menu-item" href="/zh-cn/posts/"><i class='fa fa-file'></i> 文章 </a><a class="menu-item" href="/zh-cn/tags/"><i class='fa fa-tags'></i> 标签 </a><a class="menu-item" href="/zh-cn/categories/"><i class='fa fa-list-ul'></i> 分类 </a><a class="menu-item" href="/zh-cn/about/"><i class='fas fa-user-circle'></i> 关于 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a><a href="javascript:void(0);" class="menu-item language" title="选择语言">
-                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <i class="fa-solid fa-language" aria-hidden="true"></i>
+                    <span>简体中文</span>                     
                     <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/zh-cn/posts/web-2.html/" selected>简体中文</option></select>
                 </a></div>
         </div>
@@ -65,7 +66,8 @@
         <div class="menu" id="menu-mobile"><a class="menu-item" href="/zh-cn/" title=""><i class='fa-solid fa-house'></i>主页</a><a class="menu-item" href="/zh-cn/posts/" title=""><i class='fa fa-file'></i>文章</a><a class="menu-item" href="/zh-cn/tags/" title=""><i class='fa fa-tags'></i>标签</a><a class="menu-item" href="/zh-cn/categories/" title=""><i class='fa fa-list-ul'></i>分类</a><a class="menu-item" href="/zh-cn/about/" title=""><i class='fas fa-user-circle'></i>关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a><a href="javascript:void(0);" class="menu-item" title="选择语言">
-                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <i class="fa-solid fa-language" aria-hidden="true"></i>
+                    <span>简体中文</span>
                     <select class="language-select" onchange="location = this.value;"><option value="/zh-cn/posts/web-2.html/" selected>简体中文</option></select>
                 </a></div>
     </div>
@@ -79,8 +81,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Hugo建站日常更新</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://wilajeni.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>wilajeni</a></span>&nbsp;<span class="post-category">收录于 <a href="/zh-cn/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>技术分享</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-15">2023-02-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 785 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-15">2023-02-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1086 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -91,6 +93,7 @@
     <li><a href="#添加不蒜子网站计数">添加不蒜子网站计数</a></li>
     <li><a href="#背景添加动态线条效果">背景添加动态线条效果</a></li>
     <li><a href="#更改列表页模板">更改列表页模板</a></li>
+    <li><a href="#在语言选项菜单显示当前语言名称">在语言选项菜单显示当前语言名称</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="添加不蒜子网站计数">添加不蒜子网站计数</h2>
@@ -98,19 +101,19 @@
 <p>Hugo将.md文件渲染为html，因此找到其footer的html模板，引入代码，设置好统计量的显示样式，即可在每个页面显示访问统计量。</p>
 <p>要修改的html路径为：<code>\layouts\partials\footer.html</code>，如目录下无此文件，建议可从<code>themes</code>对应目录下复制一份使用。</p>
 <p>打开<code>\layouts\partials\footer.html</code>，在<code>&lt;div class=&quot;footer-container&quot;&gt;</code>层级下添加以下代码：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">    &lt;script async src=&#34;//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&#34;&gt;
-</span></span><span class="line"><span class="ln">2</span><span class="cl">    &lt;/script&gt;
-</span></span><span class="line"><span class="ln">3</span><span class="cl">    &lt;span id=&#34;busuanzi_container_site_pv&#34;&gt;
-</span></span><span class="line"><span class="ln">4</span><span class="cl">        本站访问量：&lt;span id=&#34;busuanzi_value_site_pv&#34;&gt;&lt;/span&gt;
-</span></span><span class="line"><span class="ln">5</span><span class="cl">    &lt;/span&gt; | 
-</span></span><span class="line"><span class="ln">6</span><span class="cl">    &lt;span id=&#34;busuanzi_container_site_uv&#34;&gt;
-</span></span><span class="line"><span class="ln">7</span><span class="cl">        本站访问人次：&lt;span id=&#34;busuanzi_value_site_uv&#34;&gt;&lt;/span&gt; 
-</span></span><span class="line"><span class="ln">8</span><span class="cl">    &lt;/span&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln">1</span><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">async</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;busuanzi_container_site_pv&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">	本站访问量：<span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;busuanzi_value_site_pv&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> | 
+</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;busuanzi_container_site_uv&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl">	本站访问人次：<span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;busuanzi_value_site_uv&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> 
+</span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 </span></span></code></pre></div><h2 id="背景添加动态线条效果">背景添加动态线条效果</h2>
 <p>和引入不蒜子同理，在<code>\layouts\partials\header.html</code>添加以下代码：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">&lt;script type=&#34;text/javascript&#34;
-</span></span><span class="line"><span class="ln">2</span><span class="cl">	color=&#34;220,220,220&#34; opacity=&#39;0.7&#39; zIndex=&#34;-2&#34; count=&#34;200&#34; src=&#34;//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js&#34;&gt;
-</span></span><span class="line"><span class="ln">3</span><span class="cl">&lt;/script&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln">1</span><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">	<span class="na">color</span><span class="o">=</span><span class="s">&#34;220,220,220&#34;</span> <span class="na">opacity</span><span class="o">=</span><span class="s">&#39;0.7&#39;</span> <span class="na">zIndex</span><span class="o">=</span><span class="s">&#34;-2&#34;</span> <span class="na">count</span><span class="o">=</span><span class="s">&#34;200&#34;</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </span></span></code></pre></div><ul>
 <li><code>color</code>：线条颜色RGB</li>
 <li><code>opacity</code>：线条透明度，范围0~1</li>
@@ -120,25 +123,37 @@
 <h2 id="更改列表页模板">更改列表页模板</h2>
 <p><code>\layouts\_default</code>中的html文件是特定种类页面的渲染模板，例如单个页面的<code>single.html</code>，列表页的<code>list.html</code>。如需修改可将目前在用theme的模板html复制到根目录下的相同路径。</p>
 <p>Taxonomies（默认为Tags和Categories）也是一种列表，在没有<code>terms.html</code>时使用<code>list.html</code>渲染。以下为根据<code>list.html</code>代码新建的<code>terms.html</code>。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln"> 1</span><span class="cl">{{ define &#34;main&#34; }}
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl">&lt;main class=&#34;main list&#34; role=&#34;main&#34;&gt;
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">	&lt;header class=&#34;main__header&#34;&gt;
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">		&lt;h1 class=&#34;main__title&#34;&gt;{{ .Title }} ({{ len .Data.Terms }})&lt;/h1&gt;
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">	&lt;/header&gt;
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">	&lt;div class=&#34;content main__content clearfix&#34;&gt;
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">		{{ range .Data.Terms.ByCount }}
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">		{{ $termLink := printf &#34;/%s/%s/&#34; $.Site.BaseURL . | urlize }}
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">		&lt;h3&gt;{{ .Term }} ({{ .Count }})&lt;/h3&gt;
-</span></span><span class="line"><span class="ln">10</span><span class="cl">		&lt;ul&gt;
-</span></span><span class="line"><span class="ln">11</span><span class="cl">			{{ range .Pages }}
-</span></span><span class="line"><span class="ln">12</span><span class="cl">			&lt;li&gt;&lt;a href=&#34;{{ .Permalink }}&#34;&gt;{{ .Title }}&lt;/a&gt;&lt;/li&gt;
-</span></span><span class="line"><span class="ln">13</span><span class="cl">			{{ end }}
-</span></span><span class="line"><span class="ln">14</span><span class="cl">		&lt;/ul&gt;
-</span></span><span class="line"><span class="ln">15</span><span class="cl">		{{ end }}
-</span></span><span class="line"><span class="ln">16</span><span class="cl">	&lt;/div&gt;
-</span></span><span class="line"><span class="ln">17</span><span class="cl">&lt;/main&gt;
-</span></span><span class="line"><span class="ln">18</span><span class="cl">{{ partial &#34;pagination.html&#34; . }}
-</span></span><span class="line"><span class="ln">19</span><span class="cl">{{ end }}
+<p>对于该Taxonomy，以h1显示标题<code>{{ .Title }}</code>，括号内显示其下Terms的个数<code>{{ len .Data.Terms }}</code>；</p>
+<p>按照Terms下Pages的数量降序排列Terms<code>{{ range .Data.Terms.ByCount }}</code>；</p>
+<p>以h3显示Terms的名称<code>{{ .Term }}</code>，括号内显示其下Pages的个数<code>{{ .Count }}</code>；</p>
+<p>以list显示每个Term下的Pages名称并带链接。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="p">{{</span> <span class="nx">define</span> <span class="s">&#34;main&#34;</span> <span class="p">}}</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="p">&lt;</span><span class="nx">main</span> <span class="nx">class</span><span class="p">=</span><span class="s">&#34;main list&#34;</span> <span class="nx">role</span><span class="p">=</span><span class="s">&#34;main&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">	<span class="p">&lt;</span><span class="nx">header</span> <span class="nx">class</span><span class="p">=</span><span class="s">&#34;main__header&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">		<span class="p">&lt;</span><span class="nx">h1</span> <span class="nx">class</span><span class="p">=</span><span class="s">&#34;main__title&#34;</span><span class="p">&gt;{{</span> <span class="p">.</span><span class="nx">Title</span> <span class="p">}}</span> <span class="p">({{</span> <span class="nx">len</span> <span class="p">.</span><span class="nx">Data</span><span class="p">.</span><span class="nx">Terms</span> <span class="p">}})&lt;</span><span class="o">/</span><span class="nx">h1</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">	<span class="p">&lt;</span><span class="o">/</span><span class="nx">header</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">	<span class="p">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="p">=</span><span class="s">&#34;content main__content clearfix&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">		<span class="p">{{</span> <span class="k">range</span> <span class="p">.</span><span class="nx">Data</span><span class="p">.</span><span class="nx">Terms</span><span class="p">.</span><span class="nx">ByCount</span> <span class="p">}}</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">		<span class="p">{{</span> <span class="err">$</span><span class="nx">termLink</span> <span class="o">:=</span> <span class="nx">printf</span> <span class="s">&#34;/%s/%s/&#34;</span> <span class="err">$</span><span class="p">.</span><span class="nx">Site</span><span class="p">.</span><span class="nx">BaseURL</span> <span class="p">.</span> <span class="p">|</span> <span class="nx">urlize</span> <span class="p">}}</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">		<span class="p">&lt;</span><span class="nx">h3</span><span class="p">&gt;{{</span> <span class="p">.</span><span class="nx">Term</span> <span class="p">}}</span> <span class="p">({{</span> <span class="p">.</span><span class="nx">Count</span> <span class="p">}})&lt;</span><span class="o">/</span><span class="nx">h3</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">		<span class="p">&lt;</span><span class="nx">ul</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">			<span class="p">{{</span> <span class="k">range</span> <span class="p">.</span><span class="nx">Pages</span> <span class="p">}}</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">			<span class="p">&lt;</span><span class="nx">li</span><span class="p">&gt;&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="p">=</span><span class="s">&#34;{{ .Permalink }}&#34;</span><span class="p">&gt;{{</span> <span class="p">.</span><span class="nx">Title</span> <span class="p">}}&lt;</span><span class="o">/</span><span class="nx">a</span><span class="p">&gt;&lt;</span><span class="o">/</span><span class="nx">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">			<span class="p">{{</span> <span class="nx">end</span> <span class="p">}}</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">		<span class="p">&lt;</span><span class="o">/</span><span class="nx">ul</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">		<span class="p">{{</span> <span class="nx">end</span> <span class="p">}}</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">	<span class="p">&lt;</span><span class="o">/</span><span class="nx">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="p">&lt;</span><span class="o">/</span><span class="nx">main</span><span class="p">&gt;</span>
+</span></span></code></pre></div><h2 id="在语言选项菜单显示当前语言名称">在语言选项菜单显示当前语言名称</h2>
+<p>目前使用的LoveIt主题对于语言选项菜单仅显示一个fontawesome的globe符号。这个主题的语言选项放置在<code>header.html</code>中，修改符号为language并增加显示当前语言名称<code>{{ site.Language.LanguageName }}</code></p>
+<p>注意修改的是<code>{{- /* Desktop header */ -}}</code>还是<code>{{- /* Mobile header */ -}}</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="ln">1</span><span class="cl"><span class="p">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="p">=</span><span class="s">&#34;javascript:void(0);&#34;</span> <span class="nx">class</span><span class="p">=</span><span class="s">&#34;menu-item language&#34;</span> <span class="nx">title</span><span class="p">=</span><span class="s">&#34;{{ T &#34;</span><span class="nx">selectLanguage</span><span class="s">&#34; }}&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">	<span class="p">&lt;</span><span class="nx">i</span> <span class="nx">class</span><span class="p">=</span><span class="s">&#34;fa-solid fa-language&#34;</span> <span class="nx">aria</span><span class="o">-</span><span class="nx">hidden</span><span class="p">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;&lt;</span><span class="o">/</span><span class="nx">i</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">	<span class="p">&lt;</span><span class="nx">span</span><span class="p">&gt;{{</span> <span class="nx">site</span><span class="p">.</span><span class="nx">Language</span><span class="p">.</span><span class="nx">LanguageName</span> <span class="p">}}&lt;</span><span class="o">/</span><span class="nx">span</span><span class="p">&gt;</span>                     
+</span></span><span class="line"><span class="ln">4</span><span class="cl">	<span class="p">&lt;</span><span class="k">select</span> <span class="nx">class</span><span class="p">=</span><span class="s">&#34;language-select&#34;</span> <span class="nx">id</span><span class="p">=</span><span class="s">&#34;language-select-desktop&#34;</span> <span class="nx">onchange</span><span class="p">=</span><span class="s">&#34;location = this.value;&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">	<span class="o">...</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">	<span class="p">&lt;</span><span class="o">/</span><span class="k">select</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="p">&lt;</span><span class="o">/</span><span class="nx">a</span><span class="p">&gt;</span>
 </span></span></code></pre></div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
