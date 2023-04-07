@@ -11,5 +11,29 @@
     <guid>https://wilajeni.github.io/zh-cn/posts/r-plot-1.html/</guid>
     <description><![CDATA[比较同类图表使用ggplot2和baseR的不同做法。]]></description>
 </item>
+<item>
+    <title>R语言寿险精算（二）：人寿保险</title>
+    <link>https://wilajeni.github.io/zh-cn/posts/r-life-2.html/</link>
+    <pubDate>Mon, 23 Jan 2023 00:00:00 &#43;0000</pubDate>
+    <author>wilajeni</author>
+    <guid>https://wilajeni.github.io/zh-cn/posts/r-life-2.html/</guid>
+    <description><![CDATA[用R构建各类常见寿险的期望现值计算函数。]]></description>
+</item>
+<item>
+    <title>R语言寿险精算（一）：年金保险</title>
+    <link>https://wilajeni.github.io/zh-cn/posts/r-life-1.html/</link>
+    <pubDate>Thu, 29 Dec 2022 00:00:00 &#43;0000</pubDate>
+    <author>wilajeni</author>
+    <guid>https://wilajeni.github.io/zh-cn/posts/r-life-1.html/</guid>
+    <description><![CDATA[用R构建各类常见年金的期望现值计算函数。]]></description>
+</item>
+<item>
+    <title>用R语言编码理解区块链的数据形式</title>
+    <link>https://wilajeni.github.io/zh-cn/posts/r-blockchain.html/</link>
+    <pubDate>Wed, 02 Nov 2022 00:00:00 &#43;0000</pubDate>
+    <author>wilageni</author>
+    <guid>https://wilajeni.github.io/zh-cn/posts/r-blockchain.html/</guid>
+    <description><![CDATA[使用R语言的list数据类型和BTC的proof-of-work算法实现最简单的区块链。]]></description>
+</item>
 </channel>
 </rss>

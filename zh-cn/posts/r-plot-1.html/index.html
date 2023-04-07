@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/wilajeni.github.io\/zh-cn\/posts\/r-plot-1.html\/"
-        },"genre": "posts","keywords": "R","wordcount":  689 ,
+        },"genre": "posts","keywords": "R","wordcount":  790 ,
         "url": "https:\/\/wilajeni.github.io\/zh-cn\/posts\/r-plot-1.html\/","datePublished": "2023-04-01T00:00:00+00:00","dateModified": "2023-04-01T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -79,7 +79,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">用R作图：ggplot2和baseR比较</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://wilajeni.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>wilajeni</a></span>&nbsp;<span class="post-category">收录于 <a href="/zh-cn/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>数据分析</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-01">2023-04-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 689 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-01">2023-04-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 790 字&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
@@ -111,7 +111,7 @@
 <p>使用<code>breaks</code>指定组数，<code>freq = F</code>指定显示频率而不是频数，<code>main</code>指定图标题。</p>
 <p><code>lines(density(smpl))</code>可直接画出样本的概率分布曲线，<code>density()</code>返回一个<code>list</code>变量。</p>
 <p><code>lines(x,y)</code>指定x和y画线，<code>lty=&quot;dashed&quot;</code>指定线型为虚线，和样本的曲线相区别。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">hist</span><span class="p">(</span><span class="n">smpl</span><span class="p">,</span> <span class="n">breaks</span> <span class="o">=</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="n">by</span><span class="o">=</span><span class="m">.05</span><span class="p">),</span> <span class="n">freq</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span><span class="s">&#34;Monte Carlo Sample Distribution and Beta Density&#34;</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">hist</span><span class="p">(</span><span class="n">smpl</span><span class="p">,</span> <span class="n">breaks</span> <span class="o">=</span> <span class="m">20</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span><span class="s">&#34;Monte Carlo Sample Distribution and Beta Density&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="nf">lines</span><span class="p">(</span><span class="nf">density</span><span class="p">(</span><span class="n">smpl</span><span class="p">))</span>
 </span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="nf">lines</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">lty</span><span class="o">=</span><span class="s">&#34;dashed&#34;</span><span class="p">)</span>
 </span></span></code></pre></div><p><img
@@ -126,19 +126,21 @@
 <li>ggplot2作图</li>
 </ol>
 <p>ggplot的每个图层都使用一个<code>geom_</code>开头的函数，由于<code>smpl</code>数据需要作2个图层，因此作为dataframe传入<code>ggplot</code>主函数，而在<code>geom_line()</code>单独指定<code>dbeta</code>生成的pdf数据点作为<code>data</code>。</p>
-<p><code>geom_histogram</code>不指定aes()时y轴显示频数，<code>aes(y=..density..)</code>将y轴修改为频率。使用<code>binwidth</code>指定组数，<code>colour</code>和<code>fill</code>是为了接近baseR指定的条形边框和填充色。</p>
-<p><code>geom_density()</code>直接画出样本的概率分布曲线。</p>
-<p><code>geom_line()</code>指定x和y画线，<code>linetype=&quot;dashed&quot;</code>指定线型为虚线。</p>
+<p><code>geom_histogram</code>不指定aes()时y轴显示频数，<code>aes(y=..density..)</code>将y轴修改为频率。使用<code>bins</code>指定组数，<code>colour</code>和<code>fill</code>是为了接近baseR指定的条形边框和填充色。</p>
+<p><code>geom_density()</code>直接画出样本的概率分布曲线，和baseR的<code>lines(density(smpl))</code>作用一致。</p>
 <p><code>labs(title =&quot;&quot;)</code>指定图标题。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">smpl</span><span class="p">),</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">smpl</span><span class="p">))</span><span class="o">+</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">  <span class="nf">geom_histogram</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">..density..</span><span class="p">),</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">                 <span class="n">binwidth</span><span class="o">=</span><span class="m">0.05</span><span class="p">,</span><span class="n">colour</span><span class="o">=</span><span class="s">&#34;black&#34;</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="s">&#34;grey&#34;</span><span class="p">)</span><span class="o">+</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">  <span class="nf">geom_density</span><span class="p">()</span><span class="o">+</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl">  <span class="nf">geom_line</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span>
-</span></span><span class="line"><span class="ln">7</span><span class="cl">            <span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span>
-</span></span><span class="line"><span class="ln">8</span><span class="cl">            <span class="n">linetype</span><span class="o">=</span><span class="s">&#34;dashed&#34;</span><span class="p">)</span><span class="o">+</span>
-</span></span><span class="line"><span class="ln">9</span><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Monte Carlo Sample Distribution and Beta Density&#34;</span><span class="p">)</span>
+<p><code>geom_line()</code>指定x和y画线，和baseR的<code>lines(x,y)</code>作用一致。</p>
+<p><code>stat_function()</code>可直接画出指定function的图形，不需要先生成采样点数据。例如<code>dbeta</code>即为beta分布的pdf函数。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">smpl</span><span class="p">),</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">smpl</span><span class="p">))</span><span class="o">+</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">  <span class="nf">geom_histogram</span><span class="p">(</span><span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">..density..</span><span class="p">),</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">                 <span class="n">bins</span><span class="o">=</span><span class="m">20</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span><span class="s">&#34;black&#34;</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="s">&#34;grey&#34;</span><span class="p">)</span><span class="o">+</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">  <span class="nf">geom_density</span><span class="p">()</span><span class="o">+</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">  <span class="c1">#geom_line(data = data.frame(x,y),</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">  <span class="c1">#          mapping = aes(x,y),</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">  <span class="c1">#          linetype=&#34;dashed&#34;)+</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">  <span class="nf">stat_function</span><span class="p">(</span><span class="n">fun</span> <span class="o">=</span> <span class="n">dbeta</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">shape1</span> <span class="o">=</span> <span class="m">6</span><span class="p">,</span> <span class="n">shape2</span> <span class="o">=</span> <span class="m">3</span><span class="p">),</span> <span class="n">linetype</span><span class="o">=</span><span class="s">&#34;dashed&#34;</span><span class="p">)</span><span class="o">+</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Monte Carlo Sample Distribution and Beta Density&#34;</span><span class="p">)</span>
 </span></span></code></pre></div><p><img
         class="lazyload"
         src="/svg/loading.min.svg"
