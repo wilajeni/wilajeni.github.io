@@ -3,9 +3,17 @@
         <title>wilajeni&#39;s blog | learn, build, share</title>
         <link>https://wilajeni.github.io/zh-cn/</link>
         <description>This is my cool site</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 01 Apr 2023 00:00:00 &#43;0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 24 Apr 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://wilajeni.github.io/zh-cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>快速选用admonition shortcodes</title>
+    <link>https://wilajeni.github.io/zh-cn/posts/web-3.html/</link>
+    <pubDate>Mon, 24 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <author>wilajeni</author>
+    <guid>https://wilajeni.github.io/zh-cn/posts/web-3.html/</guid>
+    <description><![CDATA[admonition shortcodes和示例代码粘贴]]></description>
+</item>
+<item>
     <title>用R作图：ggplot2和baseR比较</title>
     <link>https://wilajeni.github.io/zh-cn/posts/r-plot-1.html/</link>
     <pubDate>Sat, 01 Apr 2023 00:00:00 &#43;0000</pubDate>
