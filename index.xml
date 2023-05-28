@@ -3,9 +3,17 @@
         <title>wilajeni&#39;s blog | learn, build, share</title>
         <link>https://wilajeni.github.io/</link>
         <description>This is my cool site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 07 Apr 2023 00:00:00 &#43;0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 28 May 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://wilajeni.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Intro to GLM (Part 1): Modeling in R and SAS</title>
+    <link>https://wilajeni.github.io/posts/glm-1.html/</link>
+    <pubDate>Sun, 28 May 2023 00:00:00 &#43;0000</pubDate>
+    <author>wilajeni</author>
+    <guid>https://wilajeni.github.io/posts/glm-1.html/</guid>
+    <description><![CDATA[A comparison of the proc genmod in SAS and the glm() function in R for building GLM models.]]></description>
+</item>
+<item>
     <title>Irish Beginner: An Corp</title>
     <link>https://wilajeni.github.io/posts/irish-10.html/</link>
     <pubDate>Fri, 07 Apr 2023 00:00:00 &#43;0000</pubDate>

@@ -3,7 +3,15 @@
         <title>R - 标签 - wilajeni&#39;s blog | learn, build, share</title>
         <link>https://wilajeni.github.io/zh-cn/tags/r/</link>
         <description>R - 标签 - wilajeni&#39;s blog | learn, build, share</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 01 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wilajeni.github.io/zh-cn/tags/r/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 25 May 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wilajeni.github.io/zh-cn/tags/r/" rel="self" type="application/rss+xml" /><item>
+    <title>GLM基础（一）：R和SAS建模对比</title>
+    <link>https://wilajeni.github.io/zh-cn/posts/glm-1.html/</link>
+    <pubDate>Thu, 25 May 2023 00:00:00 &#43;0000</pubDate>
+    <author>wilajeni</author>
+    <guid>https://wilajeni.github.io/zh-cn/posts/glm-1.html/</guid>
+    <description><![CDATA[对比SAS的proc genmod和R的glm()函数，构建GLM模型。]]></description>
+</item>
+<item>
     <title>用R作图：ggplot2和baseR比较</title>
     <link>https://wilajeni.github.io/zh-cn/posts/r-plot-1.html/</link>
     <pubDate>Sat, 01 Apr 2023 00:00:00 &#43;0000</pubDate>
