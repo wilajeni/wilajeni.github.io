@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>GLM基础（四）：SAS计算车险纯保费示例 - wilajeni&#39;s blog | learn, build, share</title><meta name="Description" content="以一组仅有4个自变量的数据作为示例拟合GLM计算车险纯保费。"><meta property="og:title" content="GLM基础（四）：SAS计算车险纯保费示例" />
+<meta property="og:description" content="以一组仅有4个自变量的数据作为示例拟合GLM计算车险纯保费。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wilajeni.github.io/zh-cn/posts/glm-4.html/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-05-29T00:00:00+00:00" /><meta property="og:site_name" content="wilajeni&#39;s blog | learn, build, share" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="GLM基础（四）：SAS计算车险纯保费示例"/>
+<meta name="twitter:description" content="以一组仅有4个自变量的数据作为示例拟合GLM计算车险纯保费。"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wilajeni.github.io/zh-cn/posts/glm-4.html/" /><link rel="prev" href="https://wilajeni.github.io/zh-cn/posts/glm-3.html/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "GLM基础（四）：SAS计算车险纯保费示例",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/wilajeni.github.io\/zh-cn\/posts\/glm-4.html\/"
+        },"genre": "posts","keywords": "非寿险, SAS, R","wordcount":  1302 ,
+        "url": "https:\/\/wilajeni.github.io\/zh-cn\/posts\/glm-4.html\/","datePublished": "2023-05-29T00:00:00+00:00","dateModified": "2023-05-29T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "wilajeni"
+            },"description": "以一组仅有4个自变量的数据作为示例拟合GLM计算车险纯保费。"
+    }
+    </script></head>
+    <body data-header-desktop="auto" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/zh-cn/" title="wilajeni&#39;s blog | learn, build, share"><span class="header-title-pre"><i class='fa-solid fa-square-w'></i></span>wilajeni&#39;s blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/zh-cn/"><i class='fa-solid fa-house'></i> 主页 </a><a class="menu-item" href="/zh-cn/posts/"><i class='fa fa-file'></i> 文章 </a><a class="menu-item" href="/zh-cn/tags/"><i class='fa fa-tags'></i> 标签 </a><a class="menu-item" href="/zh-cn/categories/"><i class='fa fa-list-ul'></i> 分类 </a><a class="menu-item" href="/zh-cn/about/"><i class='fas fa-user-circle'></i> 关于 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="选择语言">
+                    <i class="fa-solid fa-language" aria-hidden="true"></i>
+                    <span>简体中文</span>                     
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/zh-cn/posts/glm-4.html/" selected>简体中文</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/zh-cn/" title="wilajeni&#39;s blog | learn, build, share"><span class="header-title-pre"><i class='fa-solid fa-square-w'></i></span>wilajeni&#39;s blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/zh-cn/" title=""><i class='fa-solid fa-house'></i>主页</a><a class="menu-item" href="/zh-cn/posts/" title=""><i class='fa fa-file'></i>文章</a><a class="menu-item" href="/zh-cn/tags/" title=""><i class='fa fa-tags'></i>标签</a><a class="menu-item" href="/zh-cn/categories/" title=""><i class='fa fa-list-ul'></i>分类</a><a class="menu-item" href="/zh-cn/about/" title=""><i class='fas fa-user-circle'></i>关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">
+                    <i class="fa-solid fa-language" aria-hidden="true"></i>
+                    <span>简体中文</span>
+                    <select class="language-select" onchange="location = this.value;"><option value="/zh-cn/posts/glm-4.html/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+
+<script type="text/javascript"
+	color="	135,206,235" opacity='0.6' zIndex="-2" count="130" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">GLM基础（四）：SAS计算车险纯保费示例</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://wilajeni.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>wilajeni</a></span>&nbsp;<span class="post-category">收录于 <a href="/zh-cn/categories/%E7%B2%BE%E7%AE%97%E7%A7%91%E5%AD%A6/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>精算科学</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-05-29">2023-05-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1302 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#数据说明">数据说明</a></li>
+    <li><a href="#输入数据">输入数据</a></li>
+    <li><a href="#分别拟合索赔频率和索赔强度">分别拟合索赔频率和索赔强度</a>
+      <ul>
+        <li><a href="#索赔频率泊松模型">索赔频率泊松模型</a></li>
+        <li><a href="#索赔强度伽马模型">索赔强度伽马模型</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="数据说明">数据说明</h2>
+<p>数据名：<a href="https://instruction.bus.wisc.edu/jfrees/jfreesbooks/Regression%20Modeling/BookWebDec2010/CSVData/SwedishMotorInsurance.csv" target="_blank" rel="noopener noreffer ">SwedishMotorInsurance</a></p>
+<p>行数：2182，列数：7</p>
+<table>
+<thead>
+<tr>
+<th>变量名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kilometres</td>
+<td>车辆的行驶距离分组，有5个level，取值为1-5</td>
+</tr>
+<tr>
+<td>Zone</td>
+<td>地理区域分区, 有7个分类，取值为1-7</td>
+</tr>
+<tr>
+<td>Bonus</td>
+<td>司机的历史索赔分级，和NCD近似，有7个level，取值为1-7</td>
+</tr>
+<tr>
+<td>Make</td>
+<td>此处指车辆种类，有9个分类，取值为1-9</td>
+</tr>
+<tr>
+<td>Insured</td>
+<td>承保的风险单位数，“已赚保单年”在该行分类下的汇总，取值0.01从到127687.3</td>
+</tr>
+<tr>
+<td>Claims</td>
+<td>案件数量</td>
+</tr>
+<tr>
+<td>Payment</td>
+<td>总赔款</td>
+</tr>
+</tbody>
+</table>
+<p>数据示例：</p>
+<table>
+<thead>
+<tr>
+<th>Kilometres</th>
+<th>Zone</th>
+<th>Bonus</th>
+<th>Make</th>
+<th>Insured</th>
+<th>Claims</th>
+<th>Payment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>455.13</td>
+<td>108</td>
+<td>392491</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>69.17</td>
+<td>19</td>
+<td>46221</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>72.88</td>
+<td>13</td>
+<td>15694</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>数据来源: Frees, Edward W. Regression modeling with actuarial and financial applications. Cambridge University Press, 2009.</p>
+</blockquote>
+<h2 id="输入数据">输入数据</h2>
+<p><code>PROC IMPORT</code> 步骤：</p>
+<ol>
+<li><code>DATAFILE=REFFILE</code> 指定要导入的CSV文件的路径和文件名。</li>
+<li><code>DBMS=CSV</code> 指定要导入的文件类型为CSV格式。</li>
+<li><code>OUT=glm.swe</code> 指定导入后创建的数据集的名称为 &ldquo;glm.swe&rdquo;。</li>
+<li><code>GETNAMES=YES</code> 指定导入的CSV文件的第一行包含变量名。</li>
+<li><code>RUN;</code> 执行 <code>PROC IMPORT</code> 步骤。</li>
+</ol>
+<p><code>PROC CONTENTS</code> 用于查看导入的数据集 &ldquo;glm.swe&rdquo; 的变量名、类型、长度等。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SAS" data-lang="SAS"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c">/*指定REFFILE作为要导入的CSV文件的路径*/</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="k">FILENAME</span> REFFILE <span class="s">&#39;/[文件路径]/SwedishMotorInsurance.csv&#39;</span><span class="kr">;
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="kr">
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="kr">PROC IMPORT </span>DATAFILE=REFFILE
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">	DBMS=CSV
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">	<span class="k">OUT</span>=glm<span class="m">.</span>swe;
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">	GETNAMES=YES<span class="kr">;
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="kr">RUN;</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="kr">
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="kr">PROC CONTENTS </span>DATA=glm<span class="m">.</span>swe<span class="kr">; RUN;</span>
+</span></span></code></pre></div><h2 id="分别拟合索赔频率和索赔强度">分别拟合索赔频率和索赔强度</h2>
+<p>纯保费 = 出险率 * 案均赔款 = 索赔频率 * 索赔强度</p>
+<p>索赔频率 = 出险率 = 案件数量 / 已赚件数</p>
+<p>索赔强度 = 案均赔款 = 总赔款 / 案件数量</p>
+<p>新建变量索赔频率<code>frequency</code>和索赔强度<code>severity</code>作为GLM模型的目标变量。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SAS" data-lang="SAS"><span class="line"><span class="ln">1</span><span class="cl"><span class="kr">data </span>glm<span class="m">.</span>swe;
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="k">set</span> glm<span class="m">.</span>swe;
+</span></span><span class="line"><span class="ln">3</span><span class="cl">severity=Payment/Claims;
+</span></span><span class="line"><span class="ln">4</span><span class="cl">frequency=Claims/Insured<span class="kr">;
+</span></span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="kr">run;</span>
+</span></span></code></pre></div><h3 id="索赔频率泊松模型">索赔频率泊松模型</h3>
+<p><code>data=glm.swe;</code> 指定数据集。</p>
+<p><code>class kilometres(ref=&quot;2&quot;) zone(ref=&quot;1&quot;) bonus make;</code> 指定分类变量，SAS默认使用字母降序最大值（例如Z）作为base level（reference level）。应使用观测数最多的level作为base，默认base不符合则使用<code>ref</code>强制指定。</p>
+<p><code>model frequecy = kilometres zone bonus make</code> 指定<code>frequency</code>是因变量，<code>kilometres</code> <code>zone</code> <code>bonus</code> <code>make</code>是自变量。</p>
+<p><code>/dist=poisson link=log;</code> 使用泊松分布和log link function。</p>
+<p><code>ods output parameterestimates=glm.frequency;</code> 将参数估计结果输出指定数据集。在SAS中，ODS代表&quot;Output Delivery System&quot;，用于控制和管理输出结果的格式、位置和样式。ODS允许将SAS过程和过程输出以多种不同的格式输出，例如HTML、PDF、RTF、Excel等。</p>
+<p><code>weight insured; </code> 指定使用 &ldquo;insured&rdquo; 变量作为权重。</p>
+<p><code>run;</code> 执行 <code>proc genmod</code> 步骤。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SAS" data-lang="SAS"><span class="line"><span class="ln">1</span><span class="cl"><span class="kr">proc genmod </span>data=glm<span class="m">.</span>swe;
+</span></span><span class="line"><span class="ln">2</span><span class="cl">class kilometres(ref=<span class="s">&#34;2&#34;</span>) zone(ref=<span class="s">&#34;1&#34;</span>) bonus make;
+</span></span><span class="line"><span class="ln">3</span><span class="cl">model frequency = kilometres zone bonus make/dist=poisson <span class="k">link</span>=log;
+</span></span><span class="line"><span class="ln">4</span><span class="cl">ods <span class="k">output</span> parameterestimates=glm<span class="m">.</span>frequency;
+</span></span><span class="line"><span class="ln">5</span><span class="cl">weight insured<span class="kr">;
+</span></span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="kr">run;</span>
+</span></span></code></pre></div><h6 id="对应的r代码">对应的R代码</h6>
+<p>指定reference level：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">swe</span><span class="o">$</span><span class="n">Kilometres</span> <span class="o">&lt;-</span> <span class="nf">relevel</span><span class="p">(</span><span class="n">swe</span><span class="o">$</span><span class="n">Kilometres</span><span class="p">,</span> <span class="n">ref</span> <span class="o">=</span> <span class="s">&#34;2&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>拟合模型，输出结果应与SAS一致。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">freq</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="n">frequency</span> <span class="o">~</span> <span class="n">Kilometres</span> <span class="o">+</span> <span class="n">Zone</span> <span class="o">+</span> <span class="n">Bonus</span> <span class="o">+</span> <span class="n">Make</span><span class="p">,</span> 
+</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="n">family</span> <span class="o">=</span> <span class="n">poisson</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">swe</span><span class="p">,</span> <span class="n">weights</span> <span class="o">=</span> <span class="n">Insured</span><span class="p">)</span>
+</span></span></code></pre></div><h3 id="索赔强度伽马模型">索赔强度伽马模型</h3>
+<p>使用的语句和前述模型一致，目标变量替换为<code>severity</code>，指定分布为<code>gamma</code>。</p>
+<p><code>weight claims;</code> 指定使用 &ldquo;claims&rdquo; 变量作为权重。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SAS" data-lang="SAS"><span class="line"><span class="ln">1</span><span class="cl"><span class="kr">proc genmod </span>data=glm<span class="m">.</span>swe;
+</span></span><span class="line"><span class="ln">2</span><span class="cl">class kilometres(ref=<span class="s">&#34;2&#34;</span>) zone(ref=<span class="s">&#34;1&#34;</span>) bonus make;
+</span></span><span class="line"><span class="ln">3</span><span class="cl">model severity = kilometres zone bonus make/dist=gamma <span class="k">link</span>=log;
+</span></span><span class="line"><span class="ln">4</span><span class="cl">ods <span class="k">output</span> parameterestimates=glm<span class="m">.</span>severity;
+</span></span><span class="line"><span class="ln">5</span><span class="cl">weight claims<span class="kr">;
+</span></span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="kr">run;</span>
+</span></span></code></pre></div><h6 id="对应的r代码-1">对应的R代码</h6>
+<p>Gamma分布的canonical link是inverse function，但此处选择了log link function。</p>
+<p>log link function通常用于处理正数响应变量，如计数数据或severity等级。</p>
+<p>inverse link function通常用于处理正数响应变量的倒数，例如某些测量的时间间隔。如果此处选择inverse link，参数的magnitude将会非常小。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">sev</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="n">severity</span> <span class="o">~</span> <span class="n">Kilometres</span> <span class="o">+</span> <span class="n">Zone</span> <span class="o">+</span> <span class="n">Bonus</span> <span class="o">+</span> <span class="n">Make</span><span class="p">,</span> 
+</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="n">family</span> <span class="o">=</span> <span class="nf">Gamma</span><span class="p">(</span><span class="n">link</span> <span class="o">=</span> <span class="s">&#34;log&#34;</span><span class="p">),</span> <span class="n">data</span> <span class="o">=</span> <span class="n">swe</span><span class="p">,</span> <span class="n">weights</span> <span class="o">=</span> <span class="n">Claims</span><span class="p">)</span>
+</span></span></code></pre></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-05-29</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/zh-cn/tags/%E9%9D%9E%E5%AF%BF%E9%99%A9/">非寿险</a>,&nbsp;<a href="/zh-cn/tags/sas/">SAS</a>,&nbsp;<a href="/zh-cn/tags/r/">R</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/zh-cn/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/zh-cn/posts/glm-3.html/" class="prev" rel="prev" title="GLM基础（三）：R和SAS建模对比"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>GLM基础（三）：R和SAS建模对比</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container">
+
+            
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+			</script>
+            <span id="busuanzi_container_site_pv">
+                <i class='fas fa-chalkboard'></i>PV: <span id="busuanzi_value_site_pv"></span>
+            </span> | 
+            <span id="busuanzi_container_site_uv">
+                <i class='fas fa-chalkboard-teacher'></i>UV: <span id="busuanzi_value_site_uv"></span>
+            </span><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.109.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://wilajeni.github.io/" target="_blank">wilajeni</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":30},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

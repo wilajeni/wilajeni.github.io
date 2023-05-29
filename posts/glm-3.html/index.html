@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Intro to GLM: Modeling in R and SAS - wilajeni&#39;s blog | learn, build, share</title><meta name="Description" content="A comparison of the proc genmod in SAS and the glm() function in R for building GLM models."><meta property="og:title" content="Intro to GLM: Modeling in R and SAS" />
+<meta property="og:description" content="A comparison of the proc genmod in SAS and the glm() function in R for building GLM models." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wilajeni.github.io/posts/glm-3.html/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-05-28T00:00:00+00:00" /><meta property="og:site_name" content="wilajeni&#39;s blog | learn, build, share" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Intro to GLM: Modeling in R and SAS"/>
+<meta name="twitter:description" content="A comparison of the proc genmod in SAS and the glm() function in R for building GLM models."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wilajeni.github.io/posts/glm-3.html/" /><link rel="prev" href="https://wilajeni.github.io/posts/irish-10.html/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Intro to GLM: Modeling in R and SAS",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/wilajeni.github.io\/posts\/glm-3.html\/"
+        },"genre": "posts","keywords": "non-life, SAS, R","wordcount":  706 ,
+        "url": "https:\/\/wilajeni.github.io\/posts\/glm-3.html\/","datePublished": "2023-05-28T00:00:00+00:00","dateModified": "2023-05-28T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "wilajeni"
+            },"description": "A comparison of the proc genmod in SAS and the glm() function in R for building GLM models."
+    }
+    </script></head>
+    <body data-header-desktop="auto" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="wilajeni&#39;s blog | learn, build, share"><span class="header-title-pre"><i class='fa-solid fa-square-w'></i></span>wilajeni&#39;s blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/"><i class='fa-solid fa-house'></i> Home </a><a class="menu-item" href="/posts/"><i class='fa fa-file'></i> Posts </a><a class="menu-item" href="/tags/"><i class='fa fa-tags'></i> Tags </a><a class="menu-item" href="/categories/"><i class='fa fa-list-ul'></i> Categories </a><a class="menu-item" href="/about/"><i class='fas fa-user-circle'></i> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa-solid fa-language" aria-hidden="true"></i>
+                    <span>English</span>                     
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/posts/glm-3.html/" selected>English</option><option value="/zh-cn/posts/glm-3.html/">简体中文</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="wilajeni&#39;s blog | learn, build, share"><span class="header-title-pre"><i class='fa-solid fa-square-w'></i></span>wilajeni&#39;s blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/" title=""><i class='fa-solid fa-house'></i>Home</a><a class="menu-item" href="/posts/" title=""><i class='fa fa-file'></i>Posts</a><a class="menu-item" href="/tags/" title=""><i class='fa fa-tags'></i>Tags</a><a class="menu-item" href="/categories/" title=""><i class='fa fa-list-ul'></i>Categories</a><a class="menu-item" href="/about/" title=""><i class='fas fa-user-circle'></i>About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa-solid fa-language" aria-hidden="true"></i>
+                    <span>English</span>
+                    <select class="language-select" onchange="location = this.value;"><option value="/posts/glm-3.html/" selected>English</option><option value="/zh-cn/posts/glm-3.html/">简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+
+<script type="text/javascript"
+	color="	135,206,235" opacity='0.6' zIndex="-2" count="130" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Intro to GLM: Modeling in R and SAS</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://wilajeni.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>wilajeni</a></span>&nbsp;<span class="post-category">included in <a href="/categories/actuarial-science/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Actuarial Science</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-05-28">2023-05-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;706 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#data-description">Data Description</a></li>
+    <li><a href="#approach-in-r">Approach in R</a>
+      <ul>
+        <li><a href="#constructing-data">Constructing Data</a></li>
+        <li><a href="#glm-function"><code>glm()</code> Function</a></li>
+      </ul>
+    </li>
+    <li><a href="#approach-in-sas">Approach in SAS</a>
+      <ul>
+        <li><a href="#constructing-data-1">Constructing Data</a></li>
+        <li><a href="#proc-genmod-procedure"><code>proc genmod</code> Procedure</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="data-description">Data Description</h2>
+<p>The following table shows the number of <code>claims</code> for two different companies over various periods, which can be fitted using a Poisson model.</p>
+<table>
+<thead>
+<tr>
+<th>claims</th>
+<th>company</th>
+<th>time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8</td>
+<td>A</td>
+<td>2</td>
+</tr>
+<tr>
+<td>6</td>
+<td>A</td>
+<td>4</td>
+</tr>
+<tr>
+<td>10</td>
+<td>A</td>
+<td>6</td>
+</tr>
+<tr>
+<td>18</td>
+<td>A</td>
+<td>8</td>
+</tr>
+<tr>
+<td>11</td>
+<td>A</td>
+<td>10</td>
+</tr>
+<tr>
+<td>19</td>
+<td>A</td>
+<td>12</td>
+</tr>
+<tr>
+<td>13</td>
+<td>A</td>
+<td>14</td>
+</tr>
+<tr>
+<td>19</td>
+<td>A</td>
+<td>16</td>
+</tr>
+<tr>
+<td>17</td>
+<td>A</td>
+<td>18</td>
+</tr>
+<tr>
+<td>21</td>
+<td>A</td>
+<td>20</td>
+</tr>
+<tr>
+<td>16</td>
+<td>A</td>
+<td>22</td>
+</tr>
+<tr>
+<td>21</td>
+<td>A</td>
+<td>24</td>
+</tr>
+<tr>
+<td>12</td>
+<td>B</td>
+<td>2</td>
+</tr>
+<tr>
+<td>19</td>
+<td>B</td>
+<td>4</td>
+</tr>
+<tr>
+<td>14</td>
+<td>B</td>
+<td>6</td>
+</tr>
+<tr>
+<td>15</td>
+<td>B</td>
+<td>8</td>
+</tr>
+<tr>
+<td>23</td>
+<td>B</td>
+<td>10</td>
+</tr>
+<tr>
+<td>27</td>
+<td>B</td>
+<td>12</td>
+</tr>
+<tr>
+<td>19</td>
+<td>B</td>
+<td>14</td>
+</tr>
+<tr>
+<td>29</td>
+<td>B</td>
+<td>16</td>
+</tr>
+<tr>
+<td>37</td>
+<td>B</td>
+<td>18</td>
+</tr>
+<tr>
+<td>27</td>
+<td>B</td>
+<td>20</td>
+</tr>
+<tr>
+<td>35</td>
+<td>B</td>
+<td>22</td>
+</tr>
+<tr>
+<td>26</td>
+<td>B</td>
+<td>24</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Data source: Boland, Philip J. Statistical and probabilistic methods in actuarial science. CRC Press, 2007.</p>
+</blockquote>
+<h2 id="approach-in-r">Approach in R</h2>
+<h3 id="constructing-data">Constructing Data</h3>
+<p>Use the <code>data.frame</code> function to combine the columns into a dataframe for inputting into the <code>glm()</code> function.</p>
+<p>Use <code>factor</code> to specify <code>company</code> as a categorical variable.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">policy</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">claims</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">8</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="m">18</span><span class="p">,</span><span class="m">11</span><span class="p">,</span><span class="m">19</span><span class="p">,</span><span class="m">13</span><span class="p">,</span><span class="m">19</span><span class="p">,</span><span class="m">17</span><span class="p">,</span><span class="m">21</span><span class="p">,</span><span class="m">16</span><span class="p">,</span><span class="m">21</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">                                <span class="m">12</span><span class="p">,</span><span class="m">19</span><span class="p">,</span><span class="m">14</span><span class="p">,</span><span class="m">15</span><span class="p">,</span><span class="m">23</span><span class="p">,</span><span class="m">27</span><span class="p">,</span><span class="m">19</span><span class="p">,</span><span class="m">29</span><span class="p">,</span><span class="m">37</span><span class="p">,</span><span class="m">27</span><span class="p">,</span><span class="m">35</span><span class="p">,</span><span class="m">26</span><span class="p">),</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">                     <span class="n">company</span> <span class="o">=</span> <span class="nf">factor</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="s">&#34;A&#34;</span><span class="p">,</span><span class="m">12</span><span class="p">),</span><span class="nf">rep</span><span class="p">(</span><span class="s">&#34;B&#34;</span><span class="p">,</span><span class="m">12</span><span class="p">))),</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">                     <span class="n">time</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="nf">seq</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">24</span><span class="p">,</span><span class="m">2</span><span class="p">),</span><span class="m">2</span><span class="p">)))</span>
+</span></span></code></pre></div><h3 id="glm-function"><code>glm()</code> Function</h3>
+<p>The <code>glm()</code> function specifies the target variable ~ predictors, <code>family</code> specifies the Poisson distribution, and <code>data</code> specifies the dataframe used.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">lm</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="n">claims</span> <span class="o">~</span> <span class="n">company</span> <span class="o">+</span> <span class="n">time</span><span class="p">,</span> <span class="n">family</span> <span class="o">=</span> <span class="n">poisson</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">policy</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">lm</span><span class="p">)</span>
+</span></span></code></pre></div><p>Use <code>summary</code> to output the results.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1">## Call:</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1">## glm(formula = claims ~ company + time, family = poisson, data = policy)</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="c1">## </span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c1">## Deviance Residuals: </span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="c1">##     Min       1Q   Median       3Q      Max  </span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="c1">## -1.5490  -0.8039  -0.2589   0.6722   1.7024  </span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="c1">## </span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1">## Coefficients:</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1">##             Estimate Std. Error z value Pr(&gt;|z|)    </span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1">## (Intercept) 2.169665   0.126339  17.173  &lt; 2e-16 ***</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="c1">## companyB    0.458061   0.095500   4.796 1.61e-06 ***</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="c1">## time        0.038313   0.006882   5.567 2.59e-08 ***</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="c1">## ---</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="c1">## Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="c1">## </span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="c1">## (Dispersion parameter for poisson family taken to be 1)</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="c1">## </span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="c1">##     Null deviance: 75.689  on 23  degrees of freedom</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="c1">## Residual deviance: 20.422  on 21  degrees of freedom</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="c1">## AIC: 139.63</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="c1">## </span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="c1">## Number of Fisher Scoring iterations: 4</span>
+</span></span></code></pre></div><h2 id="approach-in-sas">Approach in SAS</h2>
+<h3 id="constructing-data-1">Constructing Data</h3>
+<p>In SAS, data is generally read from external files. For manual input data, use <code>cards</code>.</p>
+<p>Use <code>company$</code> to specify company as a string variable.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SAS" data-lang="SAS"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c">/* Create dataset */</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="kr">data </span>policy;
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="k">input</span> claims company$ time;
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="k">    cards;</span><span class="x">
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="x">8 A 2
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="x">6 A 4
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="x">10 A 6
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="x">18 A 8
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="x">11 A 10
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="x">19 A 12
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="x">13 A 14
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="x">19 A 16
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="x">17 A 18
+</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="x">21 A 20
+</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="x">16 A 22
+</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="x">21 A 24
+</span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="x">12 B 2
+</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="x">19 B 4
+</span></span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="x">14 B 6
+</span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="x">15 B 8
+</span></span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="x">23 B 10
+</span></span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="x">27 B 12
+</span></span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="x">19 B 14
+</span></span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="x">29 B 16
+</span></span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="x">37 B 18
+</span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="x">27 B 20
+</span></span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="x">35 B 22
+</span></span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="x">26 B 24
+</span></span></span><span class="line"><span class="ln">29</span><span class="cl"><span class="x">;</span>
+</span></span><span class="line"><span class="ln">30</span><span class="cl"><span class="kr">run;</span>
+</span></span></code></pre></div><h3 id="proc-genmod-procedure"><code>proc genmod</code> Procedure</h3>
+<p><code>class company;</code> specifies the company variable as a categorical variable. Unlike R, where the base level is specified in alphabetical order (e.g., A) , SAS uses descending alphabetical order for the base level (e.g., Z). Therefore, (ref=&ldquo;A&rdquo;) is used to specify the base level to obtain the same model as in R.</p>
+<p><code>model claims = company time</code>specifies the target variable and predictors.</p>
+<p><code>/ dist=poisson link=log;</code>specifies the Poisson distribution and log link function.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SAS" data-lang="SAS"><span class="line"><span class="ln">1</span><span class="cl"><span class="c">/* Fit the Poisson regression model */</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="kr">proc genmod </span>data=policy;
+</span></span><span class="line"><span class="ln">3</span><span class="cl">    class company(ref=<span class="s">&#34;A&#34;</span>);
+</span></span><span class="line"><span class="ln">4</span><span class="cl">    model claims = company time / dist=poisson <span class="k">link</span>=log<span class="kr">;
+</span></span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="kr">run;</span>
+</span></span></code></pre></div><p>SAS outputs the results as 6 tables in HTML format.</p>
+<h6 id="the-genmod-procedure">The GENMOD Procedure</h6>
+<h6 id="model-information">Model Information</h6>
+<table>
+<thead>
+<tr>
+<th>Model Information</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data Set</td>
+<td>WORK.POLICY</td>
+</tr>
+<tr>
+<td>Distribution</td>
+<td>Poisson</td>
+</tr>
+<tr>
+<td>Link Function</td>
+<td>Log</td>
+</tr>
+<tr>
+<td>Dependent Variable</td>
+<td>claims</td>
+</tr>
+</tbody>
+</table>
+<h6 id="number-of-observations">Number of Observations</h6>
+<table>
+<thead>
+<tr>
+<th>Number of Observations Read</th>
+<th>24</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Number of Observations Used</td>
+<td>24</td>
+</tr>
+</tbody>
+</table>
+<h6 id="class-level-information">Class Level Information</h6>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Levels</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>company</td>
+<td>2</td>
+<td>B A</td>
+</tr>
+</tbody>
+</table>
+<h6 id="criteria-for-assessing-goodness-of-fit">Criteria For Assessing Goodness Of Fit</h6>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>DF</th>
+<th>Value</th>
+<th>Value/DF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deviance</td>
+<td>21</td>
+<td>20.4221</td>
+<td>0.9725</td>
+</tr>
+<tr>
+<td>Scaled Deviance</td>
+<td>21</td>
+<td>20.4221</td>
+<td>0.9725</td>
+</tr>
+<tr>
+<td>Pearson Chi-Square</td>
+<td>21</td>
+<td>20.6958</td>
+<td>0.9855</td>
+</tr>
+<tr>
+<td>Scaled Pearson X2</td>
+<td>21</td>
+<td>20.6958</td>
+<td>0.9855</td>
+</tr>
+<tr>
+<td>Log Likelihood</td>
+<td></td>
+<td>932.0033</td>
+<td></td>
+</tr>
+<tr>
+<td>Full Log Likelihood</td>
+<td></td>
+<td>-66.8166</td>
+<td></td>
+</tr>
+<tr>
+<td>AIC (smaller is better)</td>
+<td></td>
+<td>139.6332</td>
+<td></td>
+</tr>
+<tr>
+<td>AICC (smaller is better)</td>
+<td></td>
+<td>140.8332</td>
+<td></td>
+</tr>
+<tr>
+<td>BIC (smaller is better)</td>
+<td></td>
+<td>143.1673</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h6 id="convergence-status">Convergence Status</h6>
+<table>
+<thead>
+<tr>
+<th>Convergence Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Algorithm converged.</td>
+</tr>
+</tbody>
+</table>
+<h6 id="analysis-of-parameter-estimates">Analysis Of Parameter Estimates</h6>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th></th>
+<th>DF</th>
+<th>Estimate</th>
+<th>Standard Error</th>
+<th>Wald 95% Confidence Limits</th>
+<th>Wald Chi-Square</th>
+<th>Pr &gt; ChiSq</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intercept</td>
+<td></td>
+<td>1</td>
+<td>2.1697</td>
+<td>0.1263</td>
+<td>1.9220 2.4173</td>
+<td>294.93</td>
+<td>&lt;.0001</td>
+</tr>
+<tr>
+<td>company</td>
+<td>B</td>
+<td>1</td>
+<td>0.4581</td>
+<td>0.0955</td>
+<td>0.2709 0.6452</td>
+<td>23.01</td>
+<td>&lt;.0001</td>
+</tr>
+<tr>
+<td>company</td>
+<td>A</td>
+<td>0</td>
+<td>0.0000</td>
+<td>0.0000</td>
+<td>0.0000 0.0000</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>time</td>
+<td></td>
+<td>1</td>
+<td>0.0383</td>
+<td>0.0069</td>
+<td>0.0248 0.0518</td>
+<td>31.00</td>
+<td>&lt;.0001</td>
+</tr>
+<tr>
+<td>Scale</td>
+<td></td>
+<td>0</td>
+<td>1.0000</td>
+<td>0.0000</td>
+<td>1.0000 1.0000</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-05-28</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/non-life/">non-life</a>,&nbsp;<a href="/tags/sas/">SAS</a>,&nbsp;<a href="/tags/r/">R</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/irish-10.html/" class="prev" rel="prev" title="Irish Beginner: An Corp"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Irish Beginner: An Corp</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container">
+
+            
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+			</script>
+            <span id="busuanzi_container_site_pv">
+                <i class='fas fa-chalkboard'></i>PV: <span id="busuanzi_value_site_pv"></span>
+            </span> | 
+            <span id="busuanzi_container_site_uv">
+                <i class='fas fa-chalkboard-teacher'></i>UV: <span id="busuanzi_value_site_uv"></span>
+            </span><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.109.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://wilajeni.github.io/" target="_blank">wilajeni</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":30},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
