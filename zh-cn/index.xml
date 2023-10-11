@@ -3,9 +3,17 @@
         <title>wilajeni&#39;s blog | learn, build, share</title>
         <link>https://wilajeni.github.io/zh-cn/</link>
         <description>This is my cool site</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 29 May 2023 00:00:00 &#43;0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 03 Jul 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://wilajeni.github.io/zh-cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>GLM基础（一）：广义线性模型原理</title>
+    <link>https://wilajeni.github.io/zh-cn/posts/glm-1.html/</link>
+    <pubDate>Mon, 03 Jul 2023 00:00:00 &#43;0000</pubDate>
+    <author>wilajeni</author>
+    <guid>https://wilajeni.github.io/zh-cn/posts/glm-1.html/</guid>
+    <description><![CDATA[简单总结广义线性模型基础理论。]]></description>
+</item>
+<item>
     <title>GLM基础（四）：SAS计算车险纯保费示例</title>
     <link>https://wilajeni.github.io/zh-cn/posts/glm-4.html/</link>
     <pubDate>Mon, 29 May 2023 00:00:00 &#43;0000</pubDate>
@@ -76,14 +84,6 @@
     <author>wilageni</author>
     <guid>https://wilajeni.github.io/zh-cn/posts/r-blockchain.html/</guid>
     <description><![CDATA[使用R语言的list数据类型和BTC的proof-of-work算法实现最简单的区块链。]]></description>
-</item>
-<item>
-    <title>Excel VBA通过企业微信群机器人发送工作表区域截图</title>
-    <link>https://wilajeni.github.io/zh-cn/posts/vba-1.html/</link>
-    <pubDate>Fri, 30 Sep 2022 00:00:00 &#43;0000</pubDate>
-    <author>wilajeni</author>
-    <guid>https://wilajeni.github.io/zh-cn/posts/vba-1.html/</guid>
-    <description><![CDATA[化简为繁：不用Python，一个Excel搞定发表自动化。]]></description>
 </item>
 </channel>
 </rss>

@@ -4,36 +4,36 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>GLM基础（一）：R和SAS建模对比 - wilajeni&#39;s blog | learn, build, share</title><meta name="Description" content="对比SAS的proc genmod和R的glm()函数，构建GLM模型。"><meta property="og:title" content="GLM基础（一）：R和SAS建模对比" />
-<meta property="og:description" content="对比SAS的proc genmod和R的glm()函数，构建GLM模型。" />
+        <title>GLM基础（一）：广义线性模型原理 - wilajeni&#39;s blog | learn, build, share</title><meta name="Description" content="简单总结广义线性模型基础理论。"><meta property="og:title" content="GLM基础（一）：广义线性模型原理" />
+<meta property="og:description" content="简单总结广义线性模型基础理论。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://wilajeni.github.io/zh-cn/posts/glm-1.html/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-05-25T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-05-25T00:00:00+00:00" /><meta property="og:site_name" content="wilajeni&#39;s blog | learn, build, share" />
+<meta property="article:published_time" content="2023-07-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-07-03T00:00:00+00:00" /><meta property="og:site_name" content="wilajeni&#39;s blog | learn, build, share" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="GLM基础（一）：R和SAS建模对比"/>
-<meta name="twitter:description" content="对比SAS的proc genmod和R的glm()函数，构建GLM模型。"/>
+<meta name="twitter:title" content="GLM基础（一）：广义线性模型原理"/>
+<meta name="twitter:description" content="简单总结广义线性模型基础理论。"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wilajeni.github.io/zh-cn/posts/glm-1.html/" /><link rel="prev" href="https://wilajeni.github.io/zh-cn/posts/web-3.html/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wilajeni.github.io/zh-cn/posts/glm-1.html/" /><link rel="prev" href="https://wilajeni.github.io/zh-cn/posts/glm-4.html/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "GLM基础（一）：R和SAS建模对比",
+        "headline": "GLM基础（一）：广义线性模型原理",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/wilajeni.github.io\/zh-cn\/posts\/glm-1.html\/"
-        },"genre": "posts","keywords": "非寿险, SAS, R","wordcount":  1047 ,
-        "url": "https:\/\/wilajeni.github.io\/zh-cn\/posts\/glm-1.html\/","datePublished": "2023-05-25T00:00:00+00:00","dateModified": "2023-05-25T00:00:00+00:00","publisher": {
+        },"genre": "posts","keywords": "非寿险","wordcount":  974 ,
+        "url": "https:\/\/wilajeni.github.io\/zh-cn\/posts\/glm-1.html\/","datePublished": "2023-07-03T00:00:00+00:00","dateModified": "2023-07-03T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
                 "name": "wilajeni"
-            },"description": "对比SAS的proc genmod和R的glm()函数，构建GLM模型。"
+            },"description": "简单总结广义线性模型基础理论。"
     }
     </script></head>
     <body data-header-desktop="auto" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
@@ -49,7 +49,7 @@
                 </a><a href="javascript:void(0);" class="menu-item language" title="选择语言">
                     <i class="fa-solid fa-language" aria-hidden="true"></i>
                     <span>简体中文</span>                     
-                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/posts/glm-1.html/">English</option><option value="/zh-cn/posts/glm-1.html/" selected>简体中文</option></select>
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/zh-cn/posts/glm-1.html/" selected>简体中文</option></select>
                 </a></div>
         </div>
     </div>
@@ -68,7 +68,7 @@
             </a><a href="javascript:void(0);" class="menu-item" title="选择语言">
                     <i class="fa-solid fa-language" aria-hidden="true"></i>
                     <span>简体中文</span>
-                    <select class="language-select" onchange="location = this.value;"><option value="/posts/glm-1.html/">English</option><option value="/zh-cn/posts/glm-1.html/" selected>简体中文</option></select>
+                    <select class="language-select" onchange="location = this.value;"><option value="/zh-cn/posts/glm-1.html/" selected>简体中文</option></select>
                 </a></div>
     </div>
 </header>
@@ -79,10 +79,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">GLM基础（一）：R和SAS建模对比</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">GLM基础（一）：广义线性模型原理</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://wilajeni.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>wilajeni</a></span>&nbsp;<span class="post-category">收录于 <a href="/zh-cn/categories/%E7%B2%BE%E7%AE%97%E7%A7%91%E5%AD%A6/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>精算科学</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-05-25">2023-05-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1047 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-07-03">2023-07-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 974 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -90,441 +90,31 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#数据说明">数据说明</a></li>
-    <li><a href="#r的做法">R的做法</a>
-      <ul>
-        <li><a href="#输入数据">输入数据</a></li>
-        <li><a href="#glm函数"><code>glm()</code>函数</a></li>
-      </ul>
-    </li>
-    <li><a href="#sas的做法">SAS的做法</a>
-      <ul>
-        <li><a href="#输入数据-1">输入数据</a></li>
-        <li><a href="#proc-genmod过程"><code>proc genmod</code>过程</a></li>
-      </ul>
-    </li>
+    <li><a href="#应用glm的条件">应用GLM的条件</a></li>
+    <li><a href="#各分布和风险保费的关系">各分布和风险保费的关系</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="数据说明">数据说明</h2>
-<p>以下是两家不同company在各时期的案件数量，可使用poisson模型拟合。</p>
-<table>
-<thead>
-<tr>
-<th>claims</th>
-<th>company</th>
-<th>time</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>8</td>
-<td>A</td>
-<td>2</td>
-</tr>
-<tr>
-<td>6</td>
-<td>A</td>
-<td>4</td>
-</tr>
-<tr>
-<td>10</td>
-<td>A</td>
-<td>6</td>
-</tr>
-<tr>
-<td>18</td>
-<td>A</td>
-<td>8</td>
-</tr>
-<tr>
-<td>11</td>
-<td>A</td>
-<td>10</td>
-</tr>
-<tr>
-<td>19</td>
-<td>A</td>
-<td>12</td>
-</tr>
-<tr>
-<td>13</td>
-<td>A</td>
-<td>14</td>
-</tr>
-<tr>
-<td>19</td>
-<td>A</td>
-<td>16</td>
-</tr>
-<tr>
-<td>17</td>
-<td>A</td>
-<td>18</td>
-</tr>
-<tr>
-<td>21</td>
-<td>A</td>
-<td>20</td>
-</tr>
-<tr>
-<td>16</td>
-<td>A</td>
-<td>22</td>
-</tr>
-<tr>
-<td>21</td>
-<td>A</td>
-<td>24</td>
-</tr>
-<tr>
-<td>12</td>
-<td>B</td>
-<td>2</td>
-</tr>
-<tr>
-<td>19</td>
-<td>B</td>
-<td>4</td>
-</tr>
-<tr>
-<td>14</td>
-<td>B</td>
-<td>6</td>
-</tr>
-<tr>
-<td>15</td>
-<td>B</td>
-<td>8</td>
-</tr>
-<tr>
-<td>23</td>
-<td>B</td>
-<td>10</td>
-</tr>
-<tr>
-<td>27</td>
-<td>B</td>
-<td>12</td>
-</tr>
-<tr>
-<td>19</td>
-<td>B</td>
-<td>14</td>
-</tr>
-<tr>
-<td>29</td>
-<td>B</td>
-<td>16</td>
-</tr>
-<tr>
-<td>37</td>
-<td>B</td>
-<td>18</td>
-</tr>
-<tr>
-<td>27</td>
-<td>B</td>
-<td>20</td>
-</tr>
-<tr>
-<td>35</td>
-<td>B</td>
-<td>22</td>
-</tr>
-<tr>
-<td>26</td>
-<td>B</td>
-<td>24</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>数据来源：Boland, Philip J. Statistical and probabilistic methods in actuarial science. CRC Press, 2007.</p>
-</blockquote>
-<h2 id="r的做法">R的做法</h2>
-<h3 id="输入数据">输入数据</h3>
-<p>使用data.frame函数将各列组合成dataframe用以输入<code>glm()</code>函数。</p>
-<p>用<code>factor</code>指明<code>company</code>为分类变量。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">policy</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">claims</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">8</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="m">18</span><span class="p">,</span><span class="m">11</span><span class="p">,</span><span class="m">19</span><span class="p">,</span><span class="m">13</span><span class="p">,</span><span class="m">19</span><span class="p">,</span><span class="m">17</span><span class="p">,</span><span class="m">21</span><span class="p">,</span><span class="m">16</span><span class="p">,</span><span class="m">21</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">                                <span class="m">12</span><span class="p">,</span><span class="m">19</span><span class="p">,</span><span class="m">14</span><span class="p">,</span><span class="m">15</span><span class="p">,</span><span class="m">23</span><span class="p">,</span><span class="m">27</span><span class="p">,</span><span class="m">19</span><span class="p">,</span><span class="m">29</span><span class="p">,</span><span class="m">37</span><span class="p">,</span><span class="m">27</span><span class="p">,</span><span class="m">35</span><span class="p">,</span><span class="m">26</span><span class="p">),</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">                     <span class="n">company</span> <span class="o">=</span> <span class="nf">factor</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="s">&#34;A&#34;</span><span class="p">,</span><span class="m">12</span><span class="p">),</span><span class="nf">rep</span><span class="p">(</span><span class="s">&#34;B&#34;</span><span class="p">,</span><span class="m">12</span><span class="p">))),</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">                     <span class="n">time</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="nf">seq</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">24</span><span class="p">,</span><span class="m">2</span><span class="p">),</span><span class="m">2</span><span class="p">)))</span>
-</span></span></code></pre></div><h3 id="glm函数"><code>glm()</code>函数</h3>
-<p><code>glm()</code>函数指定目标变量~自变量，<code>family</code>指定分布，<code>data</code>指定一个dataframe格式数据。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">lm</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="n">claims</span> <span class="o">~</span> <span class="n">company</span> <span class="o">+</span> <span class="n">time</span><span class="p">,</span> <span class="n">family</span> <span class="o">=</span> <span class="n">poisson</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">policy</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">lm</span><span class="p">)</span>
-</span></span></code></pre></div><p>使用<code>summary</code>输出结果。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1">## Call:</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1">## glm(formula = claims ~ company + time, family = poisson, data = policy)</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="c1">## </span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c1">## Deviance Residuals: </span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="c1">##     Min       1Q   Median       3Q      Max  </span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="c1">## -1.5490  -0.8039  -0.2589   0.6722   1.7024  </span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="c1">## </span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1">## Coefficients:</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1">##             Estimate Std. Error z value Pr(&gt;|z|)    </span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1">## (Intercept) 2.169665   0.126339  17.173  &lt; 2e-16 ***</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="c1">## companyB    0.458061   0.095500   4.796 1.61e-06 ***</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="c1">## time        0.038313   0.006882   5.567 2.59e-08 ***</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="c1">## ---</span>
-</span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="c1">## Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span>
-</span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="c1">## </span>
-</span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="c1">## (Dispersion parameter for poisson family taken to be 1)</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="c1">## </span>
-</span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="c1">##     Null deviance: 75.689  on 23  degrees of freedom</span>
-</span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="c1">## Residual deviance: 20.422  on 21  degrees of freedom</span>
-</span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="c1">## AIC: 139.63</span>
-</span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="c1">## </span>
-</span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="c1">## Number of Fisher Scoring iterations: 4</span>
-</span></span></code></pre></div><h2 id="sas的做法">SAS的做法</h2>
-<h3 id="输入数据-1">输入数据</h3>
-<p>SAS一般使用外部读入数据，对于手工输入的数据，使用<code>cards</code>。</p>
-<p><code>company$</code>指定为字符串变量。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SAS" data-lang="SAS"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c">/* 创建数据集 */</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="kr">data </span>policy;
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="k">input</span> claims company$ time;
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="k">    cards;</span><span class="x">
-</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="x">8 A 2
-</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="x">6 A 4
-</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="x">10 A 6
-</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="x">18 A 8
-</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="x">11 A 10
-</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="x">19 A 12
-</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="x">13 A 14
-</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="x">19 A 16
-</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="x">17 A 18
-</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="x">21 A 20
-</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="x">16 A 22
-</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="x">21 A 24
-</span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="x">12 B 2
-</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="x">19 B 4
-</span></span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="x">14 B 6
-</span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="x">15 B 8
-</span></span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="x">23 B 10
-</span></span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="x">27 B 12
-</span></span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="x">19 B 14
-</span></span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="x">29 B 16
-</span></span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="x">37 B 18
-</span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="x">27 B 20
-</span></span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="x">35 B 22
-</span></span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="x">26 B 24
-</span></span></span><span class="line"><span class="ln">29</span><span class="cl"><span class="x">;</span>
-</span></span><span class="line"><span class="ln">30</span><span class="cl"><span class="kr">run;</span>
-</span></span></code></pre></div><h3 id="proc-genmod过程"><code>proc genmod</code>过程</h3>
-<p><code>class company;</code>指定了company变量为分类变量，和R以字母升序排列指定base level（例如A）不同，SAS以字母降序为base（例如Z），因此使用<code>(ref=&quot;A&quot;)</code>指定base来获得和R中相同的模型。</p>
-<p><code>model claims = company time</code>指定目标变量和自变量。</p>
-<p><code>/ dist=poisson link=log;</code>指定了泊松分布和log link function。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SAS" data-lang="SAS"><span class="line"><span class="ln">1</span><span class="cl"><span class="c">/* 拟合泊松回归模型 */</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="kr">proc genmod </span>data=policy;
-</span></span><span class="line"><span class="ln">3</span><span class="cl">    class company(ref=<span class="s">&#34;A&#34;</span>);
-</span></span><span class="line"><span class="ln">4</span><span class="cl">    model claims = company time / dist=poisson <span class="k">link</span>=log<span class="kr">;
-</span></span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="kr">run;</span>
-</span></span></code></pre></div><p>SAS输出网页格式的6张表格作为结果。</p>
-<h6 id="genmod-过程">Genmod 过程</h6>
-<h6 id="模型信息">模型信息</h6>
-<table>
-<thead>
-<tr>
-<th>模型信息</th>
-<th>值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>数据集</td>
-<td>WORK.POLICY</td>
-</tr>
-<tr>
-<td>分布</td>
-<td>Poisson</td>
-</tr>
-<tr>
-<td>关联函数</td>
-<td>Log</td>
-</tr>
-<tr>
-<td>因变量</td>
-<td>claims</td>
-</tr>
-</tbody>
-</table>
-<h6 id="观测数">观测数</h6>
-<table>
-<thead>
-<tr>
-<th>观测数</th>
-<th>值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>读取的观测数</td>
-<td>24</td>
-</tr>
-<tr>
-<td>使用的观测数</td>
-<td>24</td>
-</tr>
-</tbody>
-</table>
-<h6 id="分类水平信息">分类水平信息</h6>
-<table>
-<thead>
-<tr>
-<th>分类</th>
-<th>水平</th>
-<th>值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>company</td>
-<td>2</td>
-<td>B A</td>
-</tr>
-</tbody>
-</table>
-<h6 id="评估拟合优度的准则">评估拟合优度的准则</h6>
-<table>
-<thead>
-<tr>
-<th>准则</th>
-<th>自由度</th>
-<th>值</th>
-<th>值/自由度</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>偏差</td>
-<td>21</td>
-<td>20.4221</td>
-<td>0.9725</td>
-</tr>
-<tr>
-<td>调整后的偏差</td>
-<td>21</td>
-<td>20.4221</td>
-<td>0.9725</td>
-</tr>
-<tr>
-<td>Pearson 卡方</td>
-<td>21</td>
-<td>20.6958</td>
-<td>0.9855</td>
-</tr>
-<tr>
-<td>调整后的 Pearson X2</td>
-<td>21</td>
-<td>20.6958</td>
-<td>0.9855</td>
-</tr>
-<tr>
-<td>对数似然</td>
-<td></td>
-<td>932.0033</td>
-<td></td>
-</tr>
-<tr>
-<td>完全对数似然</td>
-<td></td>
-<td>-66.8166</td>
-<td></td>
-</tr>
-<tr>
-<td>AIC（越小越好）</td>
-<td></td>
-<td>139.6332</td>
-<td></td>
-</tr>
-<tr>
-<td>AICC（越小越好）</td>
-<td></td>
-<td>140.8332</td>
-<td></td>
-</tr>
-<tr>
-<td>BIC（越小越好）</td>
-<td></td>
-<td>143.1673</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h6 id="收敛状态">收敛状态</h6>
-<p>算法收敛。</p>
-<h6 id="参数估计分析">参数估计分析</h6>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th></th>
-<th>自由度</th>
-<th>估计</th>
-<th>标准误差</th>
-<th>Wald 95% 置信限</th>
-<th>Wald 卡方</th>
-<th>Pr &gt; 卡方</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Intercept</td>
-<td></td>
-<td>1</td>
-<td>2.1697</td>
-<td>0.1263</td>
-<td>1.9220</td>
-<td>2.4173</td>
-<td>294.93</td>
-</tr>
-<tr>
-<td>company</td>
-<td>B</td>
-<td>1</td>
-<td>0.4581</td>
-<td>0.0955</td>
-<td>0.2709</td>
-<td>0.6452</td>
-<td>23.01</td>
-</tr>
-<tr>
-<td>company</td>
-<td>A</td>
-<td>0</td>
-<td>0.0000</td>
-<td>0.0000</td>
-<td>0.0000</td>
-<td>0.0000</td>
-<td>.</td>
-</tr>
-<tr>
-<td>time</td>
-<td></td>
-<td>1</td>
-<td>0.0383</td>
-<td>0.0069</td>
-<td>0.0248 0.0518</td>
-<td>31.00</td>
-<td>&lt;.0001</td>
-</tr>
-<tr>
-<td>Scale</td>
-<td></td>
-<td>0</td>
-<td>1.0000</td>
-<td>0.0000</td>
-<td>1.0000 1.0000</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+            </div><div class="content" id="content"><h2 id="应用glm的条件">应用GLM的条件</h2>
+<p>GLM（广义线性模型）是线性模型（LM）的推广和延申，可分为3个组成部分：</p>
+<ol>
+<li><strong>随机成分</strong>：因变量 $y$ 中的每一个 $y_i$ 相互独立，且服从指数型分布族中的一种分布。指数型分布族包括：正态分布、泊松分布、二项分布、伽马分布、逆高斯分布等。</li>
+<li><strong>系统成分</strong>：为自变量的线性组合 $ \eta = β_1x_1 + β_2x_2 + … + β_nx_n$</li>
+<li><strong>联结函数</strong>：因变量的预测值 $\hat y$ 不直接等于 $\eta$，而是 $\eta$ 的一个函数变换。线性组合 $\eta$ 等于预测值 $\hat y$ 的期望的一个函数 $g(E(\hat y)) = \eta$。 $g$ 称为联结函数，是一个单调可导函数。</li>
+</ol>
+<p>对于拟合LM，通常使用的最小二乘法（OLS）要求数据符合7个假设，包括误差项独立同分布等等。而拟合GLM则对因变量 $y$ 和误差项 $\epsilon$ 的假设由正态分布放宽到指数型分布。同时，将预测值与线性组合的联结函数g由 $\hat y = x $ 放宽到任意单调可导函数。</p>
+<p>指数型分布族具有pdf通式和特征参数，将正态分布、泊松分布、二项分布、伽马分布的pdf展开为指数型分布族的pdf通式即可证明以上分布属于指数型分布族并指出其特征参数。</p>
+<h2 id="各分布和风险保费的关系">各分布和风险保费的关系</h2>
+<p>泊松分布通常用于事件计数，其取值范围从0到正无穷，适合模拟索赔次数。</p>
+<p>在学习统计之前，我觉得因为这些模型的假设完全不能被满足，所以模型没有意义。例如泊松分布的数据均值等于方差，且假设前一个事件和后一个事件的发生无关，这些都过于理想化。但是学习统计之后，我觉得这些数据分布可以模仿现实发生的事情，从而使用分布的统计量来预测/估计现实。如果某个分布模仿效果太差，就拟合更复杂的分布并承受过拟合和计算量复杂解释性低的代价。一切都是为了找更有效/有依据的方法来分析/预测现实罢了。</p>
+<p>二项分布本义为n个0/1中抽到1的个数，通过变换可以解释为抽到1的概率，即logistic模型，适合模拟续保率。</p>
+<p>指数分布是泊松分布的“逆向”，泊松分布是单位时间发生的事件数，指数分布是两个先后发生的泊松分布事件的间隔时间，取值范围为0到正无穷。</p>
+<p>伽马分布是多个指数分布的复合，即间隔n个的泊松事件的间隔时间。适合模拟索赔强度（每次赔款的金额）。</p>
+<p>Tweedie是泊松和伽马的复合分布，可以理解为同时拟合索赔数量（泊松）和索赔强度（伽马），总索赔金额等于X（服从泊松分布）个伽马随机变量的和。其优点在于有一定的概率生成数值为0的样本，这种“零膨胀”适合模拟存在无赔款赔案的现实数据。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2023-05-25</span>
+                <span>更新于 2023-07-03</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
@@ -535,13 +125,13 @@
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/zh-cn/tags/%E9%9D%9E%E5%AF%BF%E9%99%A9/">非寿险</a>,&nbsp;<a href="/zh-cn/tags/sas/">SAS</a>,&nbsp;<a href="/zh-cn/tags/r/">R</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/zh-cn/tags/%E9%9D%9E%E5%AF%BF%E9%99%A9/">非寿险</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/zh-cn/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/zh-cn/posts/web-3.html/" class="prev" rel="prev" title="快速选用admonition shortcodes"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>快速选用admonition shortcodes</a></div>
+    <div class="post-nav"><a href="/zh-cn/posts/glm-4.html/" class="prev" rel="prev" title="GLM基础（四）：SAS计算车险纯保费示例"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>GLM基础（四）：SAS计算车险纯保费示例</a></div>
 </div>
 </article></div>
             </main><footer class="footer">
