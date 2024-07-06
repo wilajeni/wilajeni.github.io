@@ -3,7 +3,15 @@
         <title>All Posts - wilajeni&#39;s blog | learn, build, share</title>
         <link>https://wilajeni.github.io/posts/</link>
         <description>All Posts | wilajeni&#39;s blog | learn, build, share</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 28 May 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wilajeni.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 21 Dec 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wilajeni.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Intro to GLM: Calculating Pure Premium with SAS</title>
+    <link>https://wilajeni.github.io/posts/glm-4.html/</link>
+    <pubDate>Thu, 21 Dec 2023 00:00:00 &#43;0000</pubDate>
+    <author>wilajeni</author>
+    <guid>https://wilajeni.github.io/posts/glm-4.html/</guid>
+    <description><![CDATA[Using a dataset with only four variables as an example to fit a GLM and calculate pure car insurance premiums.]]></description>
+</item>
+<item>
     <title>Intro to GLM: Modeling in R and SAS</title>
     <link>https://wilajeni.github.io/posts/glm-3.html/</link>
     <pubDate>Sun, 28 May 2023 00:00:00 &#43;0000</pubDate>

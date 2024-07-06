@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Intro to GLM: Calculating Pure Premium with SAS - wilajeni&#39;s blog | learn, build, share</title><meta name="Description" content="Using a dataset with only four variables as an example to fit a GLM and calculate pure car insurance premiums."><meta property="og:title" content="Intro to GLM: Calculating Pure Premium with SAS" />
+<meta property="og:description" content="Using a dataset with only four variables as an example to fit a GLM and calculate pure car insurance premiums." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wilajeni.github.io/posts/glm-4.html/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-12-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-12-21T00:00:00+00:00" /><meta property="og:site_name" content="wilajeni&#39;s blog | learn, build, share" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Intro to GLM: Calculating Pure Premium with SAS"/>
+<meta name="twitter:description" content="Using a dataset with only four variables as an example to fit a GLM and calculate pure car insurance premiums."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wilajeni.github.io/posts/glm-4.html/" /><link rel="prev" href="https://wilajeni.github.io/posts/glm-3.html/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Intro to GLM: Calculating Pure Premium with SAS",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/wilajeni.github.io\/posts\/glm-4.html\/"
+        },"genre": "posts","keywords": "non-life, SAS","wordcount":  834 ,
+        "url": "https:\/\/wilajeni.github.io\/posts\/glm-4.html\/","datePublished": "2023-12-21T00:00:00+00:00","dateModified": "2023-12-21T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "wilajeni"
+            },"description": "Using a dataset with only four variables as an example to fit a GLM and calculate pure car insurance premiums."
+    }
+    </script></head>
+    <body data-header-desktop="auto" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="wilajeni&#39;s blog | learn, build, share"><span class="header-title-pre"><i class='fa-solid fa-square-w'></i></span>wilajeni&#39;s blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/"><i class='fa-solid fa-house'></i> Home </a><a class="menu-item" href="/posts/"><i class='fa fa-file'></i> Posts </a><a class="menu-item" href="/tags/"><i class='fa fa-tags'></i> Tags </a><a class="menu-item" href="/categories/"><i class='fa fa-list-ul'></i> Categories </a><a class="menu-item" href="/about/"><i class='fas fa-user-circle'></i> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa-solid fa-language" aria-hidden="true"></i>
+                    <span>English</span>                     
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/posts/glm-4.html/" selected>English</option><option value="/zh-cn/posts/glm-4.html/">简体中文</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="wilajeni&#39;s blog | learn, build, share"><span class="header-title-pre"><i class='fa-solid fa-square-w'></i></span>wilajeni&#39;s blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/" title=""><i class='fa-solid fa-house'></i>Home</a><a class="menu-item" href="/posts/" title=""><i class='fa fa-file'></i>Posts</a><a class="menu-item" href="/tags/" title=""><i class='fa fa-tags'></i>Tags</a><a class="menu-item" href="/categories/" title=""><i class='fa fa-list-ul'></i>Categories</a><a class="menu-item" href="/about/" title=""><i class='fas fa-user-circle'></i>About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa-solid fa-language" aria-hidden="true"></i>
+                    <span>English</span>
+                    <select class="language-select" onchange="location = this.value;"><option value="/posts/glm-4.html/" selected>English</option><option value="/zh-cn/posts/glm-4.html/">简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+
+<script type="text/javascript"
+	color="	135,206,235" opacity='0.6' zIndex="-2" count="130" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Intro to GLM: Calculating Pure Premium with SAS</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://wilajeni.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>wilajeni</a></span>&nbsp;<span class="post-category">included in <a href="/categories/actuarial-science/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Actuarial Science</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-12-21">2023-12-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;834 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#data-description">Data Description</a></li>
+    <li><a href="#input-data">Input Data</a></li>
+    <li><a href="#fitting-claim-frequency-and-severity-separately">Fitting Claim Frequency and Severity Separately</a>
+      <ul>
+        <li><a href="#claim-frequency-poisson-model">Claim Frequency Poisson Model</a></li>
+        <li><a href="#claim-severity-gamma-model">Claim Severity Gamma Model</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="data-description">Data Description</h2>
+<blockquote>
+<p>These data were compiled by the Swedish Committee on the Analysis of Risk Premium in Motor Insurance, summarized in Hallin and Ingenbleek (1983) and Andrews and Herzberg (1985). The data are cross-sectional, describing third party automobile insurance claims for the year 1977.</p>
+</blockquote>
+<blockquote>
+<p>The outcomes of interest are the number of claims (the <strong>frequency</strong>) and sum of payments (the severity), in Swedish kroners. Outcomes are based on 5 categories of distance driven by a vehicle, broken down by 7 geographic zones, 7 categories of recent driver claims experience and 9 types of automobile. Even though there are 2,205 potential distance, zone, experience and type combinations (5 x 7 x 7 x 9 = 2,205), only n = 2,182 were realized in the 1977 data set.</p>
+</blockquote>
+<p>File Name: SwedishMotorInsurance</p>
+<p>Number of obs: 2182</p>
+<p>Number of variables: 7</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kilometres</td>
+<td>Distance driven by a vehicle, grouped into five categories</td>
+</tr>
+<tr>
+<td>Zone</td>
+<td>Graphic zone of a vehicle, grouped into 7 categories</td>
+</tr>
+<tr>
+<td>Bonus</td>
+<td>Driver claim experience, grouped into 7 categories</td>
+</tr>
+<tr>
+<td>Make</td>
+<td>The type of a vehicle</td>
+</tr>
+<tr>
+<td>Insured</td>
+<td>The number of policyholder years. A “policyholder year” is the fraction of the year that the policyholder has a contract with the issuing company.</td>
+</tr>
+<tr>
+<td>Claims</td>
+<td>Number of claims</td>
+</tr>
+<tr>
+<td>Payment</td>
+<td>Sum of payments</td>
+</tr>
+</tbody>
+</table>
+<p><em>Source: Hallin and Ingenbleek (1983) and Andrews and Herzberg (1985).</em></p>
+<p>Example of the first five observations:</p>
+<table>
+<thead>
+<tr>
+<th>Kilometres</th>
+<th>Zone</th>
+<th>Bonus</th>
+<th>Make</th>
+<th>Insured</th>
+<th>Claims</th>
+<th>Payment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>455.13</td>
+<td>108</td>
+<td>392491</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>69.17</td>
+<td>19</td>
+<td>46221</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+<td>72.88</td>
+<td>13</td>
+<td>15694</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+<td>4</td>
+<td>1292.39</td>
+<td>124</td>
+<td>422201</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>5</td>
+<td>1</td>
+<td>191.01</td>
+<td>40</td>
+<td>119373</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Reference: Frees, Edward W. Regression modeling with actuarial and financial applications. Cambridge University Press, 2009. <a href="https://instruction.bus.wisc.edu/jfrees/jfreesbooks/Regression%20Modeling/BookWebDec2010/CSVData/SwedishMotorInsurance.csv" target="_blank" rel="noopener noreffer ">Swedish Automobile Claims</a></p>
+</blockquote>
+<h2 id="input-data">Input Data</h2>
+<p><code>PROC IMPORT</code> Step:</p>
+<ol>
+<li><code>DATAFILE=REFFILE</code> specifies the path and filename of the CSV file to be imported.</li>
+<li><code>DBMS=CSV</code> specifies that the file type to be imported is in CSV format.</li>
+<li><code>OUT=glm.swe</code> specifies the name of the dataset to be created after import.</li>
+<li><code>GETNAMES=YES</code> specifies that the first row of the imported CSV file contains the variable names.</li>
+<li><code>RUN;</code> executes the <code>PROC IMPORT</code> step.</li>
+</ol>
+<p><code>PROC CONTENTS</code> is used to view the variable names, types, lengths, etc., of the imported dataset &ldquo;glm.swe&rdquo;.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SAS" data-lang="SAS"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c">/* Specify REFFILE as the path to the CSV file to be imported */</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="k">FILENAME</span> REFFILE <span class="s">&#39;/[file path]/SwedishMotorInsurance.csv&#39;</span><span class="kr">;
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="kr">
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="kr">PROC IMPORT </span>DATAFILE=REFFILE
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    DBMS=CSV
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="k">OUT</span>=glm<span class="m">.</span>swe;
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    GETNAMES=YES<span class="kr">;
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="kr">RUN;</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="kr">
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="kr">PROC CONTENTS </span>DATA=glm<span class="m">.</span>swe<span class="kr">; RUN;</span>
+</span></span></code></pre></div><h2 id="fitting-claim-frequency-and-severity-separately">Fitting Claim Frequency and Severity Separately</h2>
+<p>Pure premium = Claim frequency * Claim severity</p>
+<p>Claim frequency = Number of claims / Earned exposure</p>
+<p>Claim severity = Total payments / Number of claims</p>
+<p>Create new variables frequency and severity as target variables for the GLM model.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SAS" data-lang="SAS"><span class="line"><span class="ln">1</span><span class="cl"><span class="kr">data </span>glm<span class="m">.</span>swe;
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="k">set</span> glm<span class="m">.</span>swe;
+</span></span><span class="line"><span class="ln">3</span><span class="cl">severity=Payment/Claims;
+</span></span><span class="line"><span class="ln">4</span><span class="cl">frequency=Claims/Insured<span class="kr">;
+</span></span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="kr">run;</span>
+</span></span></code></pre></div><h3 id="claim-frequency-poisson-model">Claim Frequency Poisson Model</h3>
+<p><code>data=glm.swe;</code> specifies the dataset.</p>
+<p><code>class kilometres(ref=&quot;2&quot;) zone(ref=&quot;1&quot;) bonus make;</code> specifies the categorical variables. SAS by default uses the maximum value (e.g., Z) as the base level (reference level) in descending order. It should use the level with the most observations as the base. If the default base is not appropriate, use <code>ref</code> to force specification.</p>
+<p><code>model frequency = kilometres zone bonus make</code> specifies <code>frequency</code> as the dependent variable, and <code>kilometres</code>, <code>zone</code>, <code>bonus</code>, and <code>make</code> as independent variables.</p>
+<p><code>/dist=poisson link=log;</code> uses the Poisson distribution and log link function.</p>
+<p><code>ods output parameterestimates=glm.frequency;</code> outputs the parameter estimates to the specified dataset. In SAS, ODS stands for &ldquo;Output Delivery System&rdquo;, which is used to control and manage the format, location, and style of output results. ODS allows SAS processes and outputs to be output in various formats, such as HTML, PDF, RTF, Excel, etc.</p>
+<p><code>weight insured;</code> specifies using the <code>insured</code> variable as the weight.</p>
+<p><code>run;</code> executes the proc genmod step.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SAS" data-lang="SAS"><span class="line"><span class="ln">1</span><span class="cl"><span class="kr">proc genmod </span>data=glm<span class="m">.</span>swe;
+</span></span><span class="line"><span class="ln">2</span><span class="cl">class kilometres(ref=<span class="s">&#34;2&#34;</span>) zone(ref=<span class="s">&#34;1&#34;</span>) bonus make;
+</span></span><span class="line"><span class="ln">3</span><span class="cl">model frequency = kilometres zone bonus make/dist=poisson <span class="k">link</span>=log;
+</span></span><span class="line"><span class="ln">4</span><span class="cl">ods <span class="k">output</span> parameterestimates=glm<span class="m">.</span>frequency;
+</span></span><span class="line"><span class="ln">5</span><span class="cl">weight insured<span class="kr">;
+</span></span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="kr">run;</span>
+</span></span></code></pre></div><h6 id="r-makes-things-simple">R makes things simple</h6>
+<p>Specify reference level:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">swe</span><span class="o">$</span><span class="n">Kilometres</span> <span class="o">&lt;-</span> <span class="nf">relevel</span><span class="p">(</span><span class="n">swe</span><span class="o">$</span><span class="n">Kilometres</span><span class="p">,</span> <span class="n">ref</span> <span class="o">=</span> <span class="s">&#34;2&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>Fit the model, the output should be consistent with SAS.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">freq</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="n">frequency</span> <span class="o">~</span> <span class="n">Kilometres</span> <span class="o">+</span> <span class="n">Zone</span> <span class="o">+</span> <span class="n">Bonus</span> <span class="o">+</span> <span class="n">Make</span><span class="p">,</span> 
+</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="n">family</span> <span class="o">=</span> <span class="n">poisson</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">swe</span><span class="p">,</span> <span class="n">weights</span> <span class="o">=</span> <span class="n">Insured</span><span class="p">)</span>
+</span></span></code></pre></div><h3 id="claim-severity-gamma-model">Claim Severity Gamma Model</h3>
+<p>Use the same statements as the previous model, but replace the target variable with <code>severity</code>, and specify the distribution as <code>gamma</code>.</p>
+<p><code>weight claims;</code> specifies using the <code>claims</code> variable as the weight.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SAS" data-lang="SAS"><span class="line"><span class="ln">1</span><span class="cl"><span class="kr">proc genmod </span>data=glm<span class="m">.</span>swe;
+</span></span><span class="line"><span class="ln">2</span><span class="cl">class kilometres(ref=<span class="s">&#34;2&#34;</span>) zone(ref=<span class="s">&#34;1&#34;</span>) bonus make;
+</span></span><span class="line"><span class="ln">3</span><span class="cl">model severity = kilometres zone bonus make/dist=gamma <span class="k">link</span>=log;
+</span></span><span class="line"><span class="ln">4</span><span class="cl">ods <span class="k">output</span> parameterestimates=glm<span class="m">.</span>severity;
+</span></span><span class="line"><span class="ln">5</span><span class="cl">weight claims<span class="kr">;
+</span></span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="kr">run;</span>
+</span></span></code></pre></div><h6 id="r-makes-things-simple-1">R makes things simple</h6>
+<p>The canonical link for the Gamma distribution is the inverse function, but here we use the log link function.</p>
+<p>The log link function is typically used for handling positive response variables, such as count data or severity levels.</p>
+<p>The inverse link function is typically used for handling the reciprocals of positive response variables, such as certain measured time intervals. If the inverse link is chosen here, the magnitude of the parameters would be very small.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">sev</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="n">severity</span> <span class="o">~</span> <span class="n">Kilometres</span> <span class="o">+</span> <span class="n">Zone</span> <span class="o">+</span> <span class="n">Bonus</span> <span class="o">+</span> <span class="n">Make</span><span class="p">,</span> 
+</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="n">family</span> <span class="o">=</span> <span class="nf">Gamma</span><span class="p">(</span><span class="n">link</span> <span class="o">=</span> <span class="s">&#34;log&#34;</span><span class="p">),</span> <span class="n">data</span> <span class="o">=</span> <span class="n">swe</span><span class="p">,</span> <span class="n">weights</span> <span class="o">=</span> <span class="n">Claims</span><span class="p">)</span>
+</span></span></code></pre></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-12-21</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/non-life/">non-life</a>,&nbsp;<a href="/tags/sas/">SAS</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/glm-3.html/" class="prev" rel="prev" title="Intro to GLM: Modeling in R and SAS"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Intro to GLM: Modeling in R and SAS</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container">
+
+            
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+			</script>
+            <span id="busuanzi_container_site_pv">
+                <i class='fas fa-chalkboard'></i>PV: <span id="busuanzi_value_site_pv"></span>
+            </span> | 
+            <span id="busuanzi_container_site_uv">
+                <i class='fas fa-chalkboard-teacher'></i>UV: <span id="busuanzi_value_site_uv"></span>
+            </span><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.109.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://wilajeni.github.io/" target="_blank">wilajeni</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":30},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -41,7 +41,15 @@
                     /></url><url>
             <loc>https://wilajeni.github.io/zh-cn/tags/%E9%9D%9E%E5%AF%BF%E9%99%A9/</loc><lastmod>2023-07-03T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://wilajeni.github.io/zh-cn/categories/%E7%B2%BE%E7%AE%97%E7%A7%91%E5%AD%A6/</loc><lastmod>2023-07-03T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://wilajeni.github.io/zh-cn/posts/glm-4.html/</loc><lastmod>2023-05-29T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://wilajeni.github.io/zh-cn/posts/glm-4.html/</loc><lastmod>2023-05-29T00:00:00&#43;00:00</lastmod><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="https://wilajeni.github.io/posts/glm-4.html/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="zh-cn"
+                    href="https://wilajeni.github.io/zh-cn/posts/glm-4.html/"
+                    /></url><url>
             <loc>https://wilajeni.github.io/zh-cn/tags/r/</loc><lastmod>2023-05-29T00:00:00&#43;00:00</lastmod><xhtml:link
                         rel="alternate"
                         hreflang="en"
