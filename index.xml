@@ -3,9 +3,17 @@
         <title>wilajeni&#39;s blog | learn, build, share</title>
         <link>https://wilajeni.github.io/</link>
         <description>This is my cool site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 21 Dec 2023 00:00:00 &#43;0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 06 Jul 2024 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://wilajeni.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>PySpark Basics: Data Manipulation</title>
+    <link>https://wilajeni.github.io/posts/pyspark-1.html/</link>
+    <pubDate>Sat, 06 Jul 2024 00:00:00 &#43;0000</pubDate>
+    <author>wilajeni</author>
+    <guid>https://wilajeni.github.io/posts/pyspark-1.html/</guid>
+    <description><![CDATA[Explore common PySpark syntax for data manipulation, and compare it to SQL and dplyr in R.]]></description>
+</item>
+<item>
     <title>Intro to GLM: Calculating Pure Premium with SAS</title>
     <link>https://wilajeni.github.io/posts/glm-4.html/</link>
     <pubDate>Thu, 21 Dec 2023 00:00:00 &#43;0000</pubDate>
@@ -76,14 +84,6 @@
     <author>wilajeni</author>
     <guid>https://wilajeni.github.io/posts/r-life-1.html/</guid>
     <description><![CDATA[Composing R functions to calculate EPVs of common life products.]]></description>
-</item>
-<item>
-    <title>Simple Blockchain with R</title>
-    <link>https://wilajeni.github.io/posts/r-blockchain.html/</link>
-    <pubDate>Fri, 28 Oct 2022 00:00:00 &#43;0000</pubDate>
-    <author>wilageni</author>
-    <guid>https://wilajeni.github.io/posts/r-blockchain.html/</guid>
-    <description><![CDATA[Learning about how blockchain works and the basic structure by writing one in R.]]></description>
 </item>
 </channel>
 </rss>

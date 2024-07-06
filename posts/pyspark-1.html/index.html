@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>PySpark Basics: Data Manipulation - wilajeni&#39;s blog | learn, build, share</title><meta name="Description" content="Explore common PySpark syntax for data manipulation, and compare it to SQL and dplyr in R."><meta property="og:title" content="PySpark Basics: Data Manipulation" />
+<meta property="og:description" content="Explore common PySpark syntax for data manipulation, and compare it to SQL and dplyr in R." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wilajeni.github.io/posts/pyspark-1.html/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-07-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-07-06T00:00:00+00:00" /><meta property="og:site_name" content="wilajeni&#39;s blog | learn, build, share" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="PySpark Basics: Data Manipulation"/>
+<meta name="twitter:description" content="Explore common PySpark syntax for data manipulation, and compare it to SQL and dplyr in R."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wilajeni.github.io/posts/pyspark-1.html/" /><link rel="prev" href="https://wilajeni.github.io/posts/glm-4.html/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "PySpark Basics: Data Manipulation",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/wilajeni.github.io\/posts\/pyspark-1.html\/"
+        },"genre": "posts","keywords": "pyspark","wordcount":  592 ,
+        "url": "https:\/\/wilajeni.github.io\/posts\/pyspark-1.html\/","datePublished": "2024-07-06T00:00:00+00:00","dateModified": "2024-07-06T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "wilajeni"
+            },"description": "Explore common PySpark syntax for data manipulation, and compare it to SQL and dplyr in R."
+    }
+    </script></head>
+    <body data-header-desktop="auto" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="wilajeni&#39;s blog | learn, build, share"><span class="header-title-pre"><i class='fa-solid fa-square-w'></i></span>wilajeni&#39;s blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/"><i class='fa-solid fa-house'></i> Home </a><a class="menu-item" href="/posts/"><i class='fa fa-file'></i> Posts </a><a class="menu-item" href="/tags/"><i class='fa fa-tags'></i> Tags </a><a class="menu-item" href="/categories/"><i class='fa fa-list-ul'></i> Categories </a><a class="menu-item" href="/about/"><i class='fas fa-user-circle'></i> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa-solid fa-language" aria-hidden="true"></i>
+                    <span>English</span>                     
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/posts/pyspark-1.html/" selected>English</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="wilajeni&#39;s blog | learn, build, share"><span class="header-title-pre"><i class='fa-solid fa-square-w'></i></span>wilajeni&#39;s blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/" title=""><i class='fa-solid fa-house'></i>Home</a><a class="menu-item" href="/posts/" title=""><i class='fa fa-file'></i>Posts</a><a class="menu-item" href="/tags/" title=""><i class='fa fa-tags'></i>Tags</a><a class="menu-item" href="/categories/" title=""><i class='fa fa-list-ul'></i>Categories</a><a class="menu-item" href="/about/" title=""><i class='fas fa-user-circle'></i>About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa-solid fa-language" aria-hidden="true"></i>
+                    <span>English</span>
+                    <select class="language-select" onchange="location = this.value;"><option value="/posts/pyspark-1.html/" selected>English</option></select>
+                </a></div>
+    </div>
+</header>
+
+<script type="text/javascript"
+	color="	135,206,235" opacity='0.6' zIndex="-2" count="130" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">PySpark Basics: Data Manipulation</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://wilajeni.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>wilajeni</a></span>&nbsp;<span class="post-category">included in <a href="/categories/data-analysis/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Data Analysis</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-06">2024-07-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;592 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#initialization">Initialization</a></li>
+    <li><a href="#creating-a-dataframe">Creating a DataFrame</a></li>
+    <li><a href="#common-pyspark-operations">Common PySpark Operations</a>
+      <ul>
+        <li><a href="#examples">Examples</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>PySpark is the Python API for Apache Spark, an open-source distributed computing system. The Resilient Distributed Datasets (RDDs) and DataFrames of PySpark provide a way to handle large-scale data processing tasks efficiently.</p>
+<h2 id="initialization">Initialization</h2>
+<p>First, let&rsquo;s initialize a SparkSession:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">&#34;PySparkExample&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+</span></span></code></pre></div><h2 id="creating-a-dataframe">Creating a DataFrame</h2>
+<p>We can create a DataFrame from a variety of data sources, such as a CSV file or a list of dictionaries:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&#34;Alice&#34;</span><span class="p">,</span> <span class="mi">34</span><span class="p">),</span> <span class="p">(</span><span class="s2">&#34;Bob&#34;</span><span class="p">,</span> <span class="mi">45</span><span class="p">),</span> <span class="p">(</span><span class="s2">&#34;Catherine&#34;</span><span class="p">,</span> <span class="mi">29</span><span class="p">)]</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;Name&#34;</span><span class="p">,</span> <span class="s2">&#34;Age&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="p">)</span>
+</span></span></code></pre></div><p>In PySpark, when we create a DataFrame from a list of tuples (as shown in your example), the schema is implicitly defined by the structure of the data and the provided column names. The schema consists of column names and their corresponding data types.</p>
+<p>However, if we want to explicitly define the schema, we can do so using the <code>StructType</code> and <code>StructField</code> classes from the <code>pyspark.sql.types</code> module. This can be particularly useful if we need more control over the data types or if we want to ensure the schema is exactly as expected.</p>
+<ol>
+<li>
+<p><strong>Import Required Modules</strong>:</p>
+<ul>
+<li><code>StructType</code>, <code>StructField</code>, <code>StringType</code>, and <code>IntegerType</code> from <code>pyspark.sql.types</code> to define the schema.</li>
+</ul>
+</li>
+<li>
+<p><strong>Define the Schema</strong>:</p>
+<ul>
+<li>Create a <code>StructType</code> object that contains <code>StructField</code> objects.</li>
+<li>Each <code>StructField</code> specifies the name of the field, the data type (e.g., <code>StringType</code> or <code>IntegerType</code>), and a flag indicating whether the field can contain null values (<code>True</code> in this case).</li>
+</ul>
+</li>
+<li>
+<p><strong>Create the DataFrame</strong>:</p>
+<ul>
+<li>Use <code>spark.createDataFrame(data, schema)</code> to create the DataFrame with the specified schema.</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="n">StructType</span><span class="p">,</span> <span class="n">StructField</span><span class="p">,</span> <span class="n">StringType</span><span class="p">,</span> <span class="n">IntegerType</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c1"># Initialize SparkSession</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">&#34;PySparkExample&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="c1"># Define the schema explicitly</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="n">schema</span> <span class="o">=</span> <span class="n">StructType</span><span class="p">([</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="n">StructField</span><span class="p">(</span><span class="s2">&#34;Name&#34;</span><span class="p">,</span> <span class="n">StringType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="n">StructField</span><span class="p">(</span><span class="s2">&#34;Age&#34;</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="p">])</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">
+</span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="c1"># Create the DataFrame with the specified schema</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&#34;Alice&#34;</span><span class="p">,</span> <span class="mi">34</span><span class="p">),</span> <span class="p">(</span><span class="s2">&#34;Bob&#34;</span><span class="p">,</span> <span class="mi">45</span><span class="p">),</span> <span class="p">(</span><span class="s2">&#34;Catherine&#34;</span><span class="p">,</span> <span class="mi">29</span><span class="p">)]</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">schema</span><span class="p">)</span>
+</span></span></code></pre></div><h2 id="common-pyspark-operations">Common PySpark Operations</h2>
+<p>PySpark&rsquo;s APIs for data manipulation are with functionality that can be closely compared to SQL and <code>dplyr</code> in R.</p>
+<ul>
+<li><strong>Filtering Rows:</strong> <code>filter()</code> in PySpark, <code>WHERE</code> in SQL, <code>filter()</code> in <code>dplyr</code></li>
+<li><strong>Selecting Columns:</strong> <code>select()</code> in PySpark, <code>SELECT</code> in SQL, <code>select()</code> in <code>dplyr</code></li>
+<li><strong>Adding Columns:</strong> <code>withColumn()</code> in PySpark, computed column in SQL, <code>mutate()</code> in <code>dplyr</code></li>
+<li><strong>Grouping and Aggregating:</strong> <code>groupBy().agg(F.sum(...))</code> in PySpark, <code>GROUP BY</code> in SQL, <code>group_by() %&gt;% summarize(sumvar=sum(...))</code> in <code>dplyr</code></li>
+<li><strong>Joining DataFrames:</strong> <code>join()</code> in PySpark, <code>JOIN</code> in SQL, <code>join()</code> in <code>dplyr</code></li>
+<li><strong>Removing Columns:</strong> <code>drop()</code> in PySpark, selecting specific columns in SQL, <code>select(-column)</code> in <code>dplyr</code></li>
+<li><strong>Sorting Data:</strong> <code>orderBy()</code> in PySpark, <code>ORDER BY</code> in SQL, <code>arrange()</code> in <code>dplyr</code></li>
+</ul>
+<h3 id="examples">Examples</h3>
+<ul>
+<li><strong>PySpark:</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kn">import</span> <span class="nn">pyspark.sql.functions</span> <span class="k">as</span> <span class="nn">F</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="n">result</span> <span class="o">=</span> <span class="p">(</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="n">df</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s2">&#34;Age&#34;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">18</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&#34;Name&#34;</span><span class="p">,</span> <span class="s2">&#34;Age&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s2">&#34;Age&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">desc</span><span class="p">())</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&#34;New_Column&#34;</span><span class="p">,</span> <span class="n">lit</span><span class="p">(</span><span class="s2">&#34;Value&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&#34;New_Column&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s2">&#34;Name&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="s2">&#34;Age&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&#34;Total_Age&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">
+</span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="n">df_joined</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&#34;Name&#34;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&#34;inner&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><ul>
+<li><strong>SQL:</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Name</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">Age</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Total_Age</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Value&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">New_Column</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">Name</span><span class="p">,</span><span class="w"> </span><span class="n">Age</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="k">table</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">Age</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">18</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w">    </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">Age</span><span class="w"> </span><span class="k">DESC</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="w"></span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">subquery</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="w"></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">Name</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table2</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">table1</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table2</span><span class="p">.</span><span class="n">Name</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li><strong>dplyr:</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="n">df</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="n">Name</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;Alice&#34;</span><span class="p">,</span> <span class="s">&#34;Bob&#34;</span><span class="p">,</span> <span class="s">&#34;Catherine&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="n">Age</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">34</span><span class="p">,</span> <span class="m">45</span><span class="p">,</span> <span class="m">29</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="n">result</span> <span class="o">&lt;-</span> <span class="n">df</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="nf">filter</span><span class="p">(</span><span class="n">Age</span> <span class="o">&gt;</span> <span class="m">18</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="nf">select</span><span class="p">(</span><span class="n">Name</span><span class="p">,</span> <span class="n">Age</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">Age</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="nf">mutate</span><span class="p">(</span><span class="n">New_Column</span> <span class="o">=</span> <span class="s">&#34;Value&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">    <span class="nf">group_by</span><span class="p">(</span><span class="n">Name</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="nf">summarize</span><span class="p">(</span><span class="n">Total_Age</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">Age</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">
+</span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="n">df_joined</span> <span class="o">&lt;-</span> <span class="nf">inner_join</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s">&#34;Name&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>The flow in PySpark using methods chaining is quite similar to the pipe operator (%&gt;%) in <code>dplyr</code>, as it allows for a streamlined, readable sequence of data manipulation operations. In contrast, SQL uses a more nested and declarative style of querying.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-07-06</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/pyspark/">pyspark</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/glm-4.html/" class="prev" rel="prev" title="Intro to GLM: Calculating Pure Premium with SAS"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Intro to GLM: Calculating Pure Premium with SAS</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container">
+
+            
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+			</script>
+            <span id="busuanzi_container_site_pv">
+                <i class='fas fa-chalkboard'></i>PV: <span id="busuanzi_value_site_pv"></span>
+            </span> | 
+            <span id="busuanzi_container_site_uv">
+                <i class='fas fa-chalkboard-teacher'></i>UV: <span id="busuanzi_value_site_uv"></span>
+            </span><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.109.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://wilajeni.github.io/" target="_blank">wilajeni</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":30},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

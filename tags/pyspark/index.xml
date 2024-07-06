@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>pyspark - Tag - wilajeni&#39;s blog | learn, build, share</title>
+        <link>https://wilajeni.github.io/tags/pyspark/</link>
+        <description>pyspark - Tag - wilajeni&#39;s blog | learn, build, share</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 06 Jul 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wilajeni.github.io/tags/pyspark/" rel="self" type="application/rss+xml" /><item>
+    <title>PySpark Basics: Data Manipulation</title>
+    <link>https://wilajeni.github.io/posts/pyspark-1.html/</link>
+    <pubDate>Sat, 06 Jul 2024 00:00:00 &#43;0000</pubDate>
+    <author>wilajeni</author>
+    <guid>https://wilajeni.github.io/posts/pyspark-1.html/</guid>
+    <description><![CDATA[Explore common PySpark syntax for data manipulation, and compare it to SQL and dplyr in R.]]></description>
+</item>
+</channel>
+</rss>

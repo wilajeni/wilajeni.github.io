@@ -3,7 +3,15 @@
         <title>Data Analysis - Category - wilajeni&#39;s blog | learn, build, share</title>
         <link>https://wilajeni.github.io/categories/data-analysis/</link>
         <description>Data Analysis - Category - wilajeni&#39;s blog | learn, build, share</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 05 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wilajeni.github.io/categories/data-analysis/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 06 Jul 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wilajeni.github.io/categories/data-analysis/" rel="self" type="application/rss+xml" /><item>
+    <title>PySpark Basics: Data Manipulation</title>
+    <link>https://wilajeni.github.io/posts/pyspark-1.html/</link>
+    <pubDate>Sat, 06 Jul 2024 00:00:00 &#43;0000</pubDate>
+    <author>wilajeni</author>
+    <guid>https://wilajeni.github.io/posts/pyspark-1.html/</guid>
+    <description><![CDATA[Explore common PySpark syntax for data manipulation, and compare it to SQL and dplyr in R.]]></description>
+</item>
+<item>
     <title>Plotting with R: ggplot2 vs baseR</title>
     <link>https://wilajeni.github.io/posts/r-plot-1.html/</link>
     <pubDate>Wed, 05 Apr 2023 00:00:00 &#43;0000</pubDate>
