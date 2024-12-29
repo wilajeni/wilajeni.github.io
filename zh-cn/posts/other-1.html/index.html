@@ -4,36 +4,36 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>GLM基础（一）：广义线性模型原理 - wilajeni&#39;s blog | learn, build, share</title><meta name="Description" content="简单总结广义线性模型基础理论。"><meta property="og:title" content="GLM基础（一）：广义线性模型原理" />
-<meta property="og:description" content="简单总结广义线性模型基础理论。" />
+        <title>男权文化与社会治理 - wilajeni&#39;s blog | learn, build, share</title><meta name="Description" content="探讨男权文化在社会治理中的作用与影响。"><meta property="og:title" content="男权文化与社会治理" />
+<meta property="og:description" content="探讨男权文化在社会治理中的作用与影响。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://wilajeni.github.io/zh-cn/posts/glm-1.html/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-07-03T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-07-03T00:00:00+00:00" /><meta property="og:site_name" content="wilajeni&#39;s blog | learn, build, share" />
+<meta property="og:url" content="https://wilajeni.github.io/zh-cn/posts/other-1.html/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-12-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-12-29T00:00:00+00:00" /><meta property="og:site_name" content="wilajeni&#39;s blog | learn, build, share" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="GLM基础（一）：广义线性模型原理"/>
-<meta name="twitter:description" content="简单总结广义线性模型基础理论。"/>
+<meta name="twitter:title" content="男权文化与社会治理"/>
+<meta name="twitter:description" content="探讨男权文化在社会治理中的作用与影响。"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wilajeni.github.io/zh-cn/posts/glm-1.html/" /><link rel="prev" href="https://wilajeni.github.io/zh-cn/posts/glm-4.html/" /><link rel="next" href="https://wilajeni.github.io/zh-cn/posts/other-1.html/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wilajeni.github.io/zh-cn/posts/other-1.html/" /><link rel="prev" href="https://wilajeni.github.io/zh-cn/posts/glm-1.html/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "GLM基础（一）：广义线性模型原理",
+        "headline": "男权文化与社会治理",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/wilajeni.github.io\/zh-cn\/posts\/glm-1.html\/"
-        },"genre": "posts","keywords": "非寿险","wordcount":  974 ,
-        "url": "https:\/\/wilajeni.github.io\/zh-cn\/posts\/glm-1.html\/","datePublished": "2023-07-03T00:00:00+00:00","dateModified": "2023-07-03T00:00:00+00:00","publisher": {
+            "@id": "https:\/\/wilajeni.github.io\/zh-cn\/posts\/other-1.html\/"
+        },"genre": "posts","keywords": "文化研究","wordcount":  1143 ,
+        "url": "https:\/\/wilajeni.github.io\/zh-cn\/posts\/other-1.html\/","datePublished": "2024-12-29T00:00:00+00:00","dateModified": "2024-12-29T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
                 "name": "wilajeni"
-            },"description": "简单总结广义线性模型基础理论。"
+            },"description": "探讨男权文化在社会治理中的作用与影响。"
     }
     </script></head>
     <body data-header-desktop="auto" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
@@ -49,7 +49,7 @@
                 </a><a href="javascript:void(0);" class="menu-item language" title="选择语言">
                     <i class="fa-solid fa-language" aria-hidden="true"></i>
                     <span>简体中文</span>                     
-                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/zh-cn/posts/glm-1.html/" selected>简体中文</option></select>
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/zh-cn/posts/other-1.html/" selected>简体中文</option></select>
                 </a></div>
         </div>
     </div>
@@ -68,7 +68,7 @@
             </a><a href="javascript:void(0);" class="menu-item" title="选择语言">
                     <i class="fa-solid fa-language" aria-hidden="true"></i>
                     <span>简体中文</span>
-                    <select class="language-select" onchange="location = this.value;"><option value="/zh-cn/posts/glm-1.html/" selected>简体中文</option></select>
+                    <select class="language-select" onchange="location = this.value;"><option value="/zh-cn/posts/other-1.html/" selected>简体中文</option></select>
                 </a></div>
     </div>
 </header>
@@ -79,10 +79,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">GLM基础（一）：广义线性模型原理</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://wilajeni.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>wilajeni</a></span>&nbsp;<span class="post-category">收录于 <a href="/zh-cn/categories/%E7%B2%BE%E7%AE%97%E7%A7%91%E5%AD%A6/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>精算科学</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-07-03">2023-07-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 974 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">男权文化与社会治理</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://wilajeni.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>wilajeni</a></span>&nbsp;<span class="post-category">收录于 <a href="/zh-cn/categories/%E5%85%B6%E5%AE%83/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>其它</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-12-29">2024-12-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1143 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -90,31 +90,86 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#应用glm的条件">应用GLM的条件</a></li>
-    <li><a href="#各分布和风险保费的关系">各分布和风险保费的关系</a></li>
+    <li>
+      <ul>
+        <li><a href="#1-社会结构的稳定作用传统性别分工的影响">1. 社会结构的稳定作用：传统性别分工的影响</a></li>
+        <li><a href="#2-文化与合法性传统观念的利用">2. 文化与合法性：传统观念的利用</a></li>
+        <li><a href="#3-政治结构的维护男性主导的权力体系">3. 政治结构的维护：男性主导的权力体系</a></li>
+        <li><a href="#4-经济发展的驱动性别不平等的利用">4. 经济发展的驱动：性别不平等的利用</a></li>
+        <li><a href="#5-社会控制的隐性工具压制性别平等">5. 社会控制的隐性工具：压制性别平等</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="应用glm的条件">应用GLM的条件</h2>
-<p>GLM（广义线性模型）是线性模型（LM）的推广和延申，可分为3个组成部分：</p>
+            </div><div class="content" id="content"><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>导论<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">在东亚的社会治理结构中，男权主义以其深厚的文化根基和制度效用，成为维持社会稳定和政治统治的隐性工具。本文将从社会稳定、文化认同、政治结构、经济发展和社会控制五个方面，探讨男权文化如何塑造治理逻辑</div>
+        </div>
+    </div>
+<h3 id="1-社会结构的稳定作用传统性别分工的影响">1. 社会结构的稳定作用：传统性别分工的影响</h3>
+<p>通过强化男性作为家庭经济支柱的角色，一方面将男性捆绑在家庭中而减少社会动荡，另一方面提高男性劳动参与率，可以有效发展农业和重工业化生产:</p>
 <ol>
-<li><strong>随机成分</strong>：因变量 $y$ 中的每一个 $y_i$ 相互独立，且服从指数型分布族中的一种分布。指数型分布族包括：正态分布、泊松分布、二项分布、伽马分布、逆高斯分布等。</li>
-<li><strong>系统成分</strong>：为自变量的线性组合 $ \eta = β_1x_1 + β_2x_2 + … + β_nx_n$</li>
-<li><strong>联结函数</strong>：因变量的预测值 $\hat y$ 不直接等于 $\eta$，而是 $\eta$ 的一个函数变换。线性组合 $\eta$ 等于预测值 $\hat y$ 的期望的一个函数 $g(E(\hat y)) = \eta$。 $g$ 称为联结函数，是一个单调可导函数。</li>
+<li>
+<p><strong>减少社会冲突</strong>：男性主导家庭决策，女性更多承担育儿和家务，降低了家庭内部因角色竞争引发的矛盾。</p>
+</li>
+<li>
+<p><strong>降低治理成本</strong>：家庭内部的性别分工强化了基层社会控制，男性对家庭成员的约束力减少了政府对个体的直接干预需求。</p>
+</li>
 </ol>
-<p>对于拟合LM，通常使用的最小二乘法（OLS）要求数据符合7个假设，包括误差项独立同分布等等。而拟合GLM则对因变量 $y$ 和误差项 $\epsilon$ 的假设由正态分布放宽到指数型分布。同时，将预测值与线性组合的联结函数g由 $\hat y = x $ 放宽到任意单调可导函数。</p>
-<p>指数型分布族具有pdf通式和特征参数，将正态分布、泊松分布、二项分布、伽马分布的pdf展开为指数型分布族的pdf通式即可证明以上分布属于指数型分布族并指出其特征参数。</p>
-<h2 id="各分布和风险保费的关系">各分布和风险保费的关系</h2>
-<p>泊松分布通常用于事件计数，其取值范围从0到正无穷，适合模拟索赔次数。</p>
-<p>在学习统计之前，我觉得因为这些模型的假设完全不能被满足，所以模型没有意义。例如泊松分布的数据均值等于方差，且假设前一个事件和后一个事件的发生无关，这些都过于理想化。但是学习统计之后，我觉得这些数据分布可以模仿现实发生的事情，从而使用分布的统计量来预测/估计现实。如果某个分布模仿效果太差，就拟合更复杂的分布并承受过拟合和计算量复杂解释性低的代价。一切都是为了找更有效/有依据的方法来分析/预测现实罢了。</p>
-<p>二项分布本义为n个0/1中抽到1的个数，通过变换可以解释为抽到1的概率，即logistic模型，适合模拟续保率。</p>
-<p>指数分布是泊松分布的“逆向”，泊松分布是单位时间发生的事件数，指数分布是两个先后发生的泊松分布事件的间隔时间，取值范围为0到正无穷。</p>
-<p>伽马分布是多个指数分布的复合，即间隔n个的泊松事件的间隔时间。适合模拟索赔强度（每次赔款的金额）。</p>
-<p>Tweedie是泊松和伽马的复合分布，可以理解为同时拟合索赔数量（泊松）和索赔强度（伽马），总索赔金额等于X（服从泊松分布）个伽马随机变量的和。其优点在于有一定的概率生成数值为0的样本，这种“零膨胀”适合模拟存在无赔款赔案的现实数据。</p>
+<p>虽然这种模式在短期内提供了稳定，但从长期看，限制女性的社会参与可能削弱社会的创新能力与治理的可持续性。</p>
+<h3 id="2-文化与合法性传统观念的利用">2. 文化与合法性：传统观念的利用</h3>
+<p>男权文化与东亚历史上的伦理规范息息相关，通过将儒家文化中的父权理念与现代治理结合，有效强化了社会凝聚力和文化认同：</p>
+<ol>
+<li>
+<p><strong>强化家庭伦理</strong>：通过宣传家庭稳定的重要性，将男权与社会和谐绑定。</p>
+</li>
+<li>
+<p><strong>降低改革阻力</strong>：借助传统性别观念，避免快速社会变革对稳定性造成的威胁。性别平等被视为挑战传统价值观的潜在威胁，因此推行性别平等可能会引发社会舆论分裂。</p>
+</li>
+</ol>
+<p>相比之下，北欧国家的社会变革更为漫长，民众有更多时间接受和经济发展程度相符的现代观念，且人口相对东亚稀少，更不容易造成社会不稳定。</p>
+<h3 id="3-政治结构的维护男性主导的权力体系">3. 政治结构的维护：男性主导的权力体系</h3>
+<p>东亚的政治权力体系长期以男性为主导：</p>
+<ol>
+<li>
+<p><strong>代表性不足</strong>：性别文化影响了社会各领域的代表性分布，比如女性在高层决策中的比例相对较低，公共政策和资源分配往往更倾向于男性主导的需求。</p>
+</li>
+<li>
+<p><strong>性别分工的政治效应</strong>：男权文化明确了家庭与公共领域的角色分配，强化了政治体系的稳定性。</p>
+</li>
+<li>
+<p><strong>权力结构稳固</strong>：将女性局限于家庭领域，减少了对公共领域权力结构的挑战。</p>
+</li>
+</ol>
+<h3 id="4-经济发展的驱动性别不平等的利用">4. 经济发展的驱动：性别不平等的利用</h3>
+<p>在以经济发展为核心目标的治理模式中，男权主义的经济逻辑与工业化国家需求高度契合：</p>
+<ol>
+<li>
+<p><strong>资源分配的倾斜</strong>：优先分配教育、就业资源给男性以提升经济效益。</p>
+</li>
+<li>
+<p><strong>维持劳动力供给</strong>：男性在劳动密集型行业中的主导作用，在工业化阶段推动了经济增长。性别平等的长远收益较难与经济增长的短期目标匹配。</p>
+</li>
+</ol>
+<p>随着服务业和知识经济的崛起，体力要素在经济产出中的占比下降，女性的经济角色日益重要。北欧通过社会福利政策（如带薪育儿假和就业支持），实现了经济效率与性别平等的平衡，这种模式为传统性别文化的转型提供了经验。</p>
+<h3 id="5-社会控制的隐性工具压制性别平等">5. 社会控制的隐性工具：压制性别平等</h3>
+<p>性别不平等还在社会治理中被工具化，用于缓解社会矛盾并控制不满情绪：</p>
+<ol>
+<li>
+<p><strong>婚姻挤压的调节</strong>：通过传统婚姻观为农村单身男性提供在家庭内部的权力以降低社会不稳定因素。</p>
+</li>
+<li>
+<p><strong>削弱女性的政治力量</strong>：性别不平等限制了女性的经济和社会地位，减少了反对派力量的形成。</p>
+</li>
+</ol>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2023-07-03</span>
+                <span>更新于 2024-12-29</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
@@ -125,14 +180,13 @@
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/zh-cn/tags/%E9%9D%9E%E5%AF%BF%E9%99%A9/">非寿险</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/zh-cn/tags/%E6%96%87%E5%8C%96%E7%A0%94%E7%A9%B6/">文化研究</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/zh-cn/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/zh-cn/posts/glm-4.html/" class="prev" rel="prev" title="GLM基础（四）：SAS计算车险纯保费示例"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>GLM基础（四）：SAS计算车险纯保费示例</a>
-            <a href="/zh-cn/posts/other-1.html/" class="next" rel="next" title="男权文化与社会治理">男权文化与社会治理<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/zh-cn/posts/glm-1.html/" class="prev" rel="prev" title="GLM基础（一）：广义线性模型原理"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>GLM基础（一）：广义线性模型原理</a></div>
 </div>
 </article></div>
             </main><footer class="footer">

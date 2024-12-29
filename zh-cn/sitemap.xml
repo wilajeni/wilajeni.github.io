@@ -2,7 +2,7 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://wilajeni.github.io/zh-cn/categories/</loc><lastmod>2023-07-03T00:00:00&#43;00:00</lastmod><xhtml:link
+            <loc>https://wilajeni.github.io/zh-cn/categories/</loc><lastmod>2024-12-29T00:00:00&#43;00:00</lastmod><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://wilajeni.github.io/categories/"
@@ -11,8 +11,7 @@
                     hreflang="zh-cn"
                     href="https://wilajeni.github.io/zh-cn/categories/"
                     /></url><url>
-            <loc>https://wilajeni.github.io/zh-cn/posts/glm-1.html/</loc><lastmod>2023-07-03T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://wilajeni.github.io/zh-cn/posts/</loc><lastmod>2023-07-03T00:00:00&#43;00:00</lastmod><xhtml:link
+            <loc>https://wilajeni.github.io/zh-cn/posts/</loc><lastmod>2024-12-29T00:00:00&#43;00:00</lastmod><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://wilajeni.github.io/posts/"
@@ -21,7 +20,7 @@
                     hreflang="zh-cn"
                     href="https://wilajeni.github.io/zh-cn/posts/"
                     /></url><url>
-            <loc>https://wilajeni.github.io/zh-cn/tags/</loc><lastmod>2023-07-03T00:00:00&#43;00:00</lastmod><xhtml:link
+            <loc>https://wilajeni.github.io/zh-cn/tags/</loc><lastmod>2024-12-29T00:00:00&#43;00:00</lastmod><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://wilajeni.github.io/tags/"
@@ -30,7 +29,7 @@
                     hreflang="zh-cn"
                     href="https://wilajeni.github.io/zh-cn/tags/"
                     /></url><url>
-            <loc>https://wilajeni.github.io/zh-cn/</loc><lastmod>2023-07-03T00:00:00&#43;00:00</lastmod><xhtml:link
+            <loc>https://wilajeni.github.io/zh-cn/</loc><lastmod>2024-12-29T00:00:00&#43;00:00</lastmod><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://wilajeni.github.io/"
@@ -39,6 +38,10 @@
                     hreflang="zh-cn"
                     href="https://wilajeni.github.io/zh-cn/"
                     /></url><url>
+            <loc>https://wilajeni.github.io/zh-cn/posts/other-1.html/</loc><lastmod>2024-12-29T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://wilajeni.github.io/zh-cn/categories/%E5%85%B6%E5%AE%83/</loc><lastmod>2024-12-29T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://wilajeni.github.io/zh-cn/tags/%E6%96%87%E5%8C%96%E7%A0%94%E7%A9%B6/</loc><lastmod>2024-12-29T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://wilajeni.github.io/zh-cn/posts/glm-1.html/</loc><lastmod>2023-07-03T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://wilajeni.github.io/zh-cn/tags/%E9%9D%9E%E5%AF%BF%E9%99%A9/</loc><lastmod>2023-07-03T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://wilajeni.github.io/zh-cn/categories/%E7%B2%BE%E7%AE%97%E7%A7%91%E5%AD%A6/</loc><lastmod>2023-07-03T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://wilajeni.github.io/zh-cn/posts/glm-4.html/</loc><lastmod>2023-05-29T00:00:00&#43;00:00</lastmod><xhtml:link
